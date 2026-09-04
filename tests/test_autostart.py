@@ -8,6 +8,10 @@ def completed(args, returncode=0, stdout="", stderr=""):
     return subprocess.CompletedProcess(args, returncode, stdout, stderr)
 
 
+def test_launch_agent_label_uses_personal_project_namespace():
+    assert autostart.LABEL == "io.github.kmgeon.orca-keychron"
+
+
 def test_install_autostart_writes_and_bootstraps_launch_agent(tmp_path, monkeypatch):
     path = tmp_path / "LaunchAgents" / "agent.plist"
     logs = tmp_path / "config"

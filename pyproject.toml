@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=68", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "orca-keychron"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Show Orca agent lifecycle states on a Keychron keyboard"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -34,6 +34,9 @@ orca-keychron = "orca_keychron.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools_scm]
+fallback_version = "0.1.0"
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

@@ -1,6 +1,6 @@
 import pytest
 
-from orca_keychron import cli
+from orca_keychron import __version__, cli
 from orca_keychron.cli import build_parser
 from orca_keychron.config import Config
 
@@ -46,7 +46,7 @@ def test_cli_prints_package_version(capsys):
         build_parser().parse_args(["--version"])
 
     assert exit_info.value.code == 0
-    assert capsys.readouterr().out == "orca-keychron 0.1.0\n"
+    assert capsys.readouterr().out == f"orca-keychron {__version__}\n"
 
 
 def test_run_uses_saved_keyboard_config(monkeypatch):

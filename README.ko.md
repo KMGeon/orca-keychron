@@ -281,6 +281,14 @@ python3 -m venv .venv
 .venv/bin/ruff check .
 ```
 
+## 릴리즈
+
+병합된 pull request를 포함해 `main`에 push가 발생할 때마다 전체 테스트와 lint를
+실행합니다. 모두 통과하면 GitHub Actions가 patch 버전을 자동으로 올리고,
+`github-actions[bot]` 명의의 `vX.Y.Z` annotated tag를 생성한 다음 Trusted Publishing으로
+PyPI에 배포하고 동일한 산출물을 첨부한 GitHub Release를 생성합니다. 실패한 작업은 새
+버전을 만들지 않고 다시 실행할 수 있습니다.
+
 프로젝트 구조는 다음과 같습니다.
 
 ```text
