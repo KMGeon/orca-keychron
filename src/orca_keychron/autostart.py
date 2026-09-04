@@ -9,7 +9,7 @@ from pathlib import Path
 
 from .config import config_dir
 
-LABEL = "com.tobenetworks.orca-keychron"
+LABEL = "io.github.kmgeon.orca-keychron"
 
 
 class AutostartError(RuntimeError):

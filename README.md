@@ -276,6 +276,14 @@ python3 -m venv .venv
 .venv/bin/ruff check .
 ```
 
+## Releases
+
+Every push to `main`, including a merged pull request, runs the full test and lint suite.
+If they pass, GitHub Actions automatically increments the patch version, creates an
+annotated `vX.Y.Z` tag as `github-actions[bot]`, publishes the distributions to PyPI with
+Trusted Publishing, and creates a GitHub Release with the same artifacts. Failed jobs can
+be rerun without creating another version.
+
 Project structure:
 
 ```text
