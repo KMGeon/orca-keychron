@@ -118,6 +118,7 @@ def test_setup_verifies_previews_restores_and_saves(monkeypatch, tmp_path):
     monkeypatch.setattr(cli, "KeychronDevice", lambda **_kwargs: FakeDevice())
     monkeypatch.setattr(cli, "save_config", lambda config: saved.update(config=config) or path)
     monkeypatch.setattr(cli, "macos_permission_status", lambda request: None)
+    monkeypatch.setattr(cli, "default_orca_command", lambda: ["orca"])
 
     args = build_parser().parse_args(
         ["setup", "--leds", "1,2,3", "--preview-seconds", "0", "--no-autostart"]
