@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orca-keychron"
+version = "0.1.0"
+description = "Show Orca agent lifecycle states on a Keychron keyboard"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "KMGeon" }]
+keywords = ["orca", "keychron", "rgb", "ai-agents", "developer-tools"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: MacOS X",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: User Interfaces",
+]
+dependencies = ["hidapi>=0.14.0", "pynput>=1.7.7,<1.8"]
+
+[project.urls]
+Homepage = "https://github.com/KMGeon/orca-keychron"
+Repository = "https://github.com/KMGeon/orca-keychron"
+Issues = "https://github.com/KMGeon/orca-keychron/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+orca-keychron = "orca_keychron.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
