@@ -10,6 +10,7 @@ from typing import Callable
 
 from .digit_hold import DigitHoldListener, HoldSelection
 from .keychron_hid import EFFECT_MIXED, KeychronDevice, KeychronError
+from .models import OrcaAgent
 from .orca_navigation import (
     OrcaNavigationError,
     OrcaWorktreeTab,
@@ -65,6 +66,8 @@ class Indicator:
         next_poll = 0.0
         next_health_check = 0.0
         focus_future: Future[OrcaWorktreeTab] | None = None
+        poll_future: Future[list[OrcaAgent]] | None = None
+        poll_executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="orca-status")
         try:
             if not device.supports_per_key_rgb():
                 raise KeychronError(
@@ -89,9 +92,9 @@ class Indicator:
             with ThreadPoolExecutor(max_workers=1, thread_name_prefix="orca-focus") as executor:
                 while not self.stop_event.is_set():
                     now = time.monotonic()
-                    if now >= next_poll:
+                    if poll_future is not None and poll_future.done():
                         try:
-                            worktrees = self.tracker.update(self.source.snapshot(), now)
+                            worktrees = self.tracker.update(poll_future.result(), now)
                             self.selection.set_worktrees(worktrees)
                             source_available = True
                             signature = tuple(
@@ -114,6 +117,11 @@ class Indicator:
                             print(f"Orca status unavailable: {exc}", flush=True)
                             self.selection.set_worktrees([])
                             source_available = False
+                        poll_future = None
+                    # Never queue another request while one is in flight. Consume every
+                    # result on this thread before starting the next snapshot.
+                    if poll_future is None and now >= next_poll:
+                        poll_future = poll_executor.submit(self.source.snapshot)
                         next_poll = now + self.poll_interval
                     if focus_future is None:
                         ready_pane = self.selection.pop_ready(now)
@@ -153,4 +161,9 @@ class Indicator:
                     if restore_required:
                         device.restore_lighting(previous_effect, previous_brightness)
                 finally:
-                    device.close()
+                    try:
+                        device.close()
+                    finally:
+                        # Restore lighting before waiting for an in-flight CLI request.
+                        # snapshot() bounds that wait with its subprocess timeout.
+                        poll_executor.shutdown(wait=True, cancel_futures=True)

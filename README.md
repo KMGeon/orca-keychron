@@ -49,7 +49,7 @@ local sessions, and agents running on paired hosts. No agent-specific hooks are 
 | **Blocked** | 🔴 Red | The current turn failed or needs recovery |
 | **Done** | 🟢 Green | The worktree is ready for its next task |
 | **Mixed** | 🟣 Magenta | Multiple action states need attention |
-| **Idle** | ⚪ White | The tracked worktree is available |
+| **Idle / unassigned** | 🩵 Sky blue | No active agent occupies this slot |
 
 `working` is background activity and does not create a mixed state by itself. Historical
 `done` rows are ignored until the same pane has first been observed live, preventing stale
@@ -154,7 +154,8 @@ Orca already normalizes agent activity as `working`, `waiting`, `blocked`, and `
 This project consumes that public status surface instead of adding another set of Codex,
 Claude Code, or Grok lifecycle hooks.
 
-A single long-running process polls Orca, owns the keyboard HID handle, updates RGB only
+A single long-running process polls Orca on a dedicated worker thread, owns the keyboard
+HID handle, updates RGB only
 when the rendered state changes, and checks the selected lighting effect every 10 seconds.
 
 ## Configuration

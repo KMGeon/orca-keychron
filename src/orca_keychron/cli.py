@@ -27,7 +27,7 @@ from .indicator import Indicator
 from .keychron_hid import KeychronDevice, KeychronError, enumerate_keychron_interfaces
 from .orca_status import OrcaStatusError, OrcaStatusSource, default_orca_command
 from .permissions import macos_permission_status
-from .rendering import GREEN, MAGENTA, OFF, ORANGE, RED, WHITE, YELLOW
+from .rendering import GREEN, MAGENTA, OFF, ORANGE, RED, SKY_BLUE, YELLOW
 
 
 def parse_leds(value: str) -> list[int]:
@@ -302,7 +302,7 @@ def preview_command(args: argparse.Namespace) -> int:
         "blocked": RED,
         "done": GREEN,
         "mixed": MAGENTA,
-        "idle": WHITE,
+        "idle": SKY_BLUE,
         "off": OFF,
     }
     device = KeychronDevice(product=args.product)

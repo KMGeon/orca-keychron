@@ -1,6 +1,8 @@
+import sys
+
 import pytest
 
-from orca_keychron.orca_status import OrcaStatusError, parse_orca_agents
+from orca_keychron.orca_status import OrcaStatusError, OrcaStatusSource, parse_orca_agents
 
 
 def test_parse_orca_agents_flattens_worktrees_and_filters_states():
@@ -40,3 +42,18 @@ def test_parse_orca_agents_flattens_worktrees_and_filters_states():
 def test_parse_orca_agents_rejects_non_success_response():
     with pytest.raises(OrcaStatusError):
         parse_orca_agents({"ok": False})
+
+
+def test_real_cli_timeout_is_reported_and_next_snapshot_can_recover():
+    source = OrcaStatusSource(
+        command=[sys.executable, "-c", "import time; time.sleep(5)"],
+        timeout_seconds=0.1,
+    )
+    with pytest.raises(OrcaStatusError, match="timed out"):
+        source.snapshot()
+    source.command = [
+        sys.executable, "-c",
+        'print(\'{"ok": true, "result": {"worktrees": []}}\')',
+    ]
+    source.timeout_seconds = 2
+    assert source.snapshot() == []
