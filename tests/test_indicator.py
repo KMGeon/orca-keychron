@@ -1,9 +1,14 @@
+import threading
+from types import SimpleNamespace
+
 import pytest
 
 from orca_keychron.indicator import Indicator
 from orca_keychron.keychron_hid import EFFECT_MIXED, KeychronError
+from orca_keychron.models import OrcaAgent
+from orca_keychron.orca_navigation import OrcaWorktreeTab
 from orca_keychron.orca_status import OrcaStatusError
-from orca_keychron.rendering import OFF
+from orca_keychron.rendering import GREEN, OFF, YELLOW
 
 
 class UnsupportedDevice:
@@ -104,40 +109,147 @@ def test_indicator_restores_previous_lighting_on_exit():
     assert listener.stopped is True
 
 
-def test_indicator_turns_zone_off_when_orca_status_is_unavailable():
-    class PollingDevice(SupportedDevice):
-        def __init__(self):
-            super().__init__()
-            self.colors = None
+class PassiveListener:
+    def start(self):
+        pass
 
-        def get_effect(self):
-            return EFFECT_MIXED
+    def stop(self):
+        pass
 
-        def set_zone(self, colors, total):
-            self.colors = (colors, total)
 
-    class PassiveListener:
-        def start(self):
-            pass
+class RecordingDevice(SupportedDevice):
+    def __init__(self):
+        super().__init__()
+        self.frames = []
 
-        def stop(self):
-            pass
+    def get_effect(self):
+        return EFFECT_MIXED
 
-    class FailingSource:
+    def set_zone(self, colors, total):
+        self.frames.append(colors)
+
+
+def agent(state):
+    return OrcaAgent("pane", state, "codex", "repo::/one", "local")
+
+
+def run_bounded(indicator):
+    # Fail instead of hanging pytest if a regression prevents loop progress.
+    timer = threading.Timer(3, indicator.stop)
+    timer.start()
+    try:
+        indicator.run()
+    finally:
+        timer.cancel()
+        timer.join()
+
+
+@pytest.mark.parametrize("failure", ["offline", "CLI request timed out"])
+def test_indicator_clears_failed_snapshot_and_recovers(failure):
+    class RecoveringSource:
         command = ("orca",)
+        calls = 0
 
         def snapshot(self):
-            indicator.stop()
-            raise OrcaStatusError("offline")
+            self.calls += 1
+            if self.calls == 2:
+                raise OrcaStatusError(failure)
+            return [agent("working" if self.calls == 1 else "done")]
 
-    device = PollingDevice()
+    class Device(RecordingDevice):
+        def set_zone(self, colors, total):
+            super().set_zone(colors, total)
+            if colors[1] == OFF and any(frame[1] == YELLOW for frame in self.frames):
+                assert indicator.selection.pop_ready(0) is None
+            if colors[1] == GREEN:
+                indicator.stop()
+
+    device = Device()
+    source = RecoveringSource()
     indicator = Indicator(
-        source=FailingSource(),
-        zone=(1, 2),
+        source=source, zone=(1,), poll_interval=0.01,
         device_factory=lambda **_kwargs: device,
         listener_factory=lambda _selection: PassiveListener(),
     )
+    run_bounded(indicator)
 
-    indicator.run()
+    assert [frame[1] for frame in device.frames] == [OFF, YELLOW, OFF, GREEN]
+    assert source.calls in (3, 4)  # A fourth request may start before the green frame stops us.
+    assert device.restored == (EFFECT_MIXED, 42)
+    assert device.closed
 
-    assert device.colors == ({1: OFF, 2: OFF}, 100)
+
+def test_slow_poll_does_not_block_navigation_health_checks_or_restore(monkeypatch):
+    started = threading.Event()
+    released = threading.Event()
+    navigated = threading.Event()
+    source_finished = threading.Event()
+    clock = [0.0]
+
+    class SlowSource:
+        command = ("orca",)
+        calls = 0
+
+        def snapshot(self):
+            self.calls += 1
+            started.set()
+            assert released.wait(3), "Lighting was not restored while the request was pending"
+            source_finished.set()
+            return []
+
+    class Device(RecordingDevice):
+        health_checks = 0
+
+        def get_effect(self):
+            self.health_checks += 1
+            if self.health_checks == 4:
+                assert started.is_set()
+                assert not source_finished.is_set()
+                assert navigated.is_set()
+                indicator.stop()
+            return EFFECT_MIXED
+
+        def restore_lighting(self, effect, brightness):
+            super().restore_lighting(effect, brightness)
+            assert not source_finished.is_set()
+            released.set()
+
+    class Selection:
+        calls = 0
+
+        def pop_ready(self, now):
+            self.calls += 1
+            if self.calls == 1:
+                assert started.wait(1)
+                return "pane"
+            assert navigated.wait(1)
+            # Cross two lighting health-check deadlines without a real 20s wait.
+            clock[0] += 11.0
+            return None
+
+    def open_pane(_self, pane):
+        assert pane == "pane"
+        assert not source_finished.is_set()
+        navigated.set()
+        return OrcaWorktreeTab("repo::/one", "tab")
+
+    monkeypatch.setattr("orca_keychron.indicator.time", SimpleNamespace(monotonic=lambda: clock[0]))
+    monkeypatch.setattr("orca_keychron.indicator.OrcaWorktreeTabNavigator.open", open_pane)
+    device = Device()
+    source = SlowSource()
+    indicator = Indicator(
+        source=source, zone=(1,), poll_interval=0.01,
+        device_factory=lambda **_kwargs: device,
+        listener_factory=lambda _selection: PassiveListener(),
+    )
+    indicator.selection = Selection()
+    run_bounded(indicator)
+
+    assert source.calls == 1
+    assert device.health_checks == 4
+    assert device.frames == [{1: OFF}]
+    assert navigated.is_set()
+    assert source_finished.is_set()
+    assert device.restored == (EFFECT_MIXED, 42)
+    assert device.closed
+    assert not any(t.name.startswith("orca-status") for t in threading.enumerate())

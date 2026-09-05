@@ -11,14 +11,14 @@ ORANGE: HsvColor = (21, 255, 255)
 RED: HsvColor = (0, 255, 255)
 GREEN: HsvColor = (85, 255, 255)
 MAGENTA: HsvColor = (213, 255, 255)
-WHITE: HsvColor = (0, 0, 255)
+SKY_BLUE: HsvColor = (145, 150, 255)
 
 
 def render_zone(
     worktrees: Iterable[WorktreeIndicator],
     zone: Sequence[int],
 ) -> dict[int, HsvColor]:
-    colors = dict.fromkeys(zone, WHITE)
+    colors = dict.fromkeys(zone, SKY_BLUE)
     for worktree in worktrees:
         if worktree.slot >= len(zone):
             continue
@@ -33,7 +33,7 @@ def render_zone(
         elif worktree.state == "mixed":
             color = MAGENTA
         elif worktree.state == "idle":
-            color = WHITE
+            color = SKY_BLUE
         else:
             continue
         colors[zone[worktree.slot]] = color

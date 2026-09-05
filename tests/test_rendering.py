@@ -4,7 +4,7 @@ from orca_keychron.rendering import (
     MAGENTA,
     ORANGE,
     RED,
-    WHITE,
+    SKY_BLUE,
     YELLOW,
     render_zone,
 )
@@ -33,14 +33,14 @@ def test_render_zone_maps_worktree_states_and_slots():
         30: RED,
         40: GREEN,
         50: MAGENTA,
-        60: WHITE,
+        60: SKY_BLUE,
     }
 
 
-def test_render_zone_uses_white_for_unassigned_number_slots():
-    assert render_zone([], [1, 2, 3]) == {1: WHITE, 2: WHITE, 3: WHITE}
+def test_render_zone_uses_sky_blue_for_unassigned_number_slots():
+    assert render_zone([], [1, 2, 3]) == {1: SKY_BLUE, 2: SKY_BLUE, 3: SKY_BLUE}
     assert render_zone([worktree("working", 0)], [1, 2, 3]) == {
         1: YELLOW,
-        2: WHITE,
-        3: WHITE,
+        2: SKY_BLUE,
+        3: SKY_BLUE,
     }
