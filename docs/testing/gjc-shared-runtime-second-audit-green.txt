@@ -1,0 +1,25 @@
+GJC shared runtime second audit - GREEN
+Date: 2026-09-06 Asia/Seoul
+
+Regression command:
+uv run --extra dev pytest -q tests/test_digit_hold.py::test_listener_wait_failure_stops_started_native_listener tests/test_gjc_cli_faults.py::test_human_status_distinguishes_assigned_slot_after_key_range_from_overflow tests/test_keychron_hid_faults.py::test_partial_usb_write_is_a_hard_failure_and_close_releases_lock tests/test_gjc_runtime_integration.py::test_actual_receiver_snapshot_drives_palette_fake_hid_and_navigation
+
+Observed after product fixes:
+....                                                                     [100%]
+4 passed in 0.40s
+
+New audit cases:
+uv run --extra dev pytest -q tests/test_digit_hold.py tests/test_gjc_cli_faults.py tests/test_keychron_hid_faults.py tests/test_gjc_runtime_integration.py
+.......................                                                  [100%]
+23 passed in 0.52s
+
+Owned focused regression suite:
+uv run --extra dev pytest -q tests/test_device_lock.py tests/test_digit_hold.py tests/test_indicator.py tests/test_keychron_hid.py tests/test_rendering.py tests/test_gjc_cli.py tests/test_gjc_cli_faults.py tests/test_gjc_runtime_integration.py tests/test_keychron_hid_faults.py
+112 passed in 1.95s
+
+Static checks:
+uv run --extra dev ruff check src/orca_keychron/digit_hold.py src/orca_keychron/keychron_hid.py src/orca_keychron_gjc/cli.py tests/test_digit_hold.py tests/test_gjc_cli_faults.py tests/test_keychron_hid_faults.py tests/test_gjc_runtime_integration.py
+All checks passed!
+
+git diff --check
+No output (passed).

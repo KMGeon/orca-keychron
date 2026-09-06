@@ -1,0 +1,257 @@
+[
+  {
+    "case": "transport_sigkill",
+    "actualGjc": true,
+    "syntheticLocalModel": true,
+    "sdkDisabled": true,
+    "returncode": -9,
+    "pid": 5070,
+    "hookTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end"
+    ],
+    "streamTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end"
+    ],
+    "sessionIds": [
+      "01a072b6-9961-7209-8d16-44e85f4d7058"
+    ],
+    "producerIds": [
+      "6b066e01-4c34-4b19-be52-bc040f8666f2"
+    ],
+    "connections": 1,
+    "hookCount": 6,
+    "streamCount": 6,
+    "termination": "SIGKILL only this experiment child PID",
+    "terminalEventObserved": false
+  },
+  {
+    "case": "transport_after_sigkill",
+    "actualGjc": true,
+    "syntheticLocalModel": true,
+    "sdkDisabled": true,
+    "returncode": 0,
+    "pid": 5230,
+    "hookTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "streamTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b6-a2f1-7484-872c-d605cf699b00"
+    ],
+    "producerIds": [
+      "2fa8c031-9fbb-4d36-b35c-61fd95affd5c"
+    ],
+    "connections": 1,
+    "hookCount": 10,
+    "streamCount": 10,
+    "reusedWorkspace": "/private/tmp/gjc-keychron-live-experiments/cases/transport_sigkill/workspace",
+    "newProducer": true,
+    "newSession": true
+  },
+  {
+    "case": "transport_same_cwd_a",
+    "actualGjc": true,
+    "syntheticLocalModel": true,
+    "sdkDisabled": true,
+    "returncode": 0,
+    "pid": 5072,
+    "hookTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "streamTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b6-9935-7085-bb39-0c4ba5d8a217"
+    ],
+    "producerIds": [
+      "940b5a10-4a26-4281-b40d-92b5e1a34ecb"
+    ],
+    "connections": 1,
+    "hookCount": 10,
+    "streamCount": 10,
+    "sameCwdDifferentSessions": true,
+    "sameInheritedOrcaTerminalHandle": true,
+    "meaning": "Inherited Orca handle is a location hint, not unique session identity."
+  },
+  {
+    "case": "transport_same_cwd_b",
+    "actualGjc": true,
+    "syntheticLocalModel": true,
+    "sdkDisabled": true,
+    "returncode": 0,
+    "pid": 5074,
+    "hookTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "streamTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b6-9942-7540-82f6-fa1b341dd797"
+    ],
+    "producerIds": [
+      "b66e415d-0ba8-4b48-95fd-f3633e9259b7"
+    ],
+    "connections": 1,
+    "hookCount": 10,
+    "streamCount": 10,
+    "reusedWorkspace": "/private/tmp/gjc-keychron-live-experiments/cases/transport_same_cwd_a/workspace",
+    "sameCwdDifferentSessions": true,
+    "sameInheritedOrcaTerminalHandle": true,
+    "meaning": "Inherited Orca handle is a location hint, not unique session identity."
+  },
+  {
+    "case": "transport_late_receiver",
+    "actualGjc": true,
+    "syntheticLocalModel": true,
+    "sdkDisabled": true,
+    "returncode": 0,
+    "pid": 5073,
+    "hookTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "streamTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b6-9948-71f8-a9e2-76927bd35012"
+    ],
+    "producerIds": [
+      "ec115c0e-c1b9-40f8-9c99-dbc1e1e28041"
+    ],
+    "connections": 1,
+    "hookCount": 10,
+    "streamCount": 10,
+    "eventsBeforeReceiver": 3,
+    "queuedEventIdsDelivered": true,
+    "snapshotOnConnect": false
+  },
+  {
+    "case": "transport_receiver_loss",
+    "actualGjc": true,
+    "syntheticLocalModel": true,
+    "sdkDisabled": true,
+    "returncode": 0,
+    "pid": 5071,
+    "hookTypes": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "streamTypes": [
+      "session_start",
+      "before_agent_start",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b6-993f-7565-b122-07f6eb333208"
+    ],
+    "producerIds": [
+      "459a196d-ca3a-498b-9e68-2bf94272f9ce"
+    ],
+    "connections": 2,
+    "hookCount": 10,
+    "streamCount": 6,
+    "simulatedCollectorLossEvent": "agent_start",
+    "lostEventPresentInLocalTrace": true,
+    "lostEventReplayedAfterReconnect": false,
+    "snapshotAfterReconnect": false,
+    "laterCompletionArrived": true,
+    "interpretation": "Receiver crash after socket acceptance can lose state. Later events resume; no snapshot or ACK reconstructs the missing start."
+  }
+]

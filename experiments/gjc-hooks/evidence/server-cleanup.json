@@ -1,0 +1,34 @@
+[
+  {
+    "pid": 1289,
+    "ppid": 1,
+    "candidateCommand": "<home>/.local/bin/gjc sdk broker-internal --agent-dir /private/tmp/gjc-keychron-live-experiments/cases/ui_fixture/agent",
+    "ownedBrokerStopped": true
+  },
+  {
+    "pid": 5363,
+    "ownedServerStopped": true
+  },
+  {
+    "pid": 9217,
+    "ppid": 1,
+    "candidateCommand": "<home>/.local/bin/gjc sdk broker-internal --agent-dir /private/tmp/gjc-keychron-live-experiments/cases/tui_child/agent",
+    "ownedBrokerStopped": true
+  },
+  {
+    "pid": 9219,
+    "ppid": 1,
+    "candidateCommand": "<home>/.local/bin/gjc sdk broker-internal --agent-dir /private/tmp/gjc-keychron-live-experiments/cases/tui_retry/agent",
+    "ownedBrokerStopped": true
+  },
+  {
+    "pid": 92875,
+    "ppid": 1,
+    "candidateCommand": "<home>/.local/bin/gjc sdk broker-internal --agent-dir /private/tmp/gjc-keychron-live-experiments/cases/tui_v2/agent",
+    "ownedBrokerStopped": true
+  },
+  {
+    "pid": 96091,
+    "ownedServerStopped": true
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "wheel": "/tmp/gjc-validation.K3OypM/dist-gate-final/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl",
+  "wheelSha256": "ee6cd41f3c40efeb4329e5c2e6bc87a058654265e0d2b9f0eead1b41336937c3",
+  "packagedFilesMatchingCurrentSource": 27,
+  "entryPoints": [
+    "orca-keychron",
+    "orca-keychron-gjc"
+  ],
+  "astraReviewFilesMatchingCurrentSource": 49,
+  "fableReview": "docs/reviews/gjc-fable-release.md",
+  "physicalKeypress": false,
+  "opticalColorConfirmation": false,
+  "globalActivation": false,
+  "fableReviewFilesMatchingCurrentSource": 49,
+  "checkedAt": "2026-09-05T19:12:54.063495+00:00",
+  "productHashDrift": [],
+  "pytestPython39Passed": 298,
+  "pytestPython313Passed": 298,
+  "nativeHookTestsPassed": 21,
+  "finalValidationReport": "docs/gjc-validation.md",
+  "astraReview": "docs/reviews/gjc-astra-release.md",
+  "actualGjcRuntimeReport": "experiments/gjc-product-qa/REPORT.md",
+  "actualGjcRootSwitchReport": "experiments/gjc-product-qa/root-switch/REPORT.md",
+  "hardwareReport": "docs/gjc-hardware-validation.md"
+}

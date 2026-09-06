@@ -1,0 +1,4 @@
+interface:
+  display_name: "Keychron Git"
+  short_description: "orca-keychron 커밋·PR·merge 메시지 관리"
+  default_prompt: "Use $keychron-git to prepare safe orca-keychron commits and PRs with Korean Conventional Commit titles and verified merge messages."

@@ -1,0 +1,2274 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "report": "docs/testing/gjc-second-audit.md",
+    "note": "dated historical frozen audit; not a new execution"
+  },
+  "requirements": [
+    {
+      "id": "R01",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "호환성",
+      "title": "GJC 0.16.4 고정 지원",
+      "statement": "제품은 수정하지 않은 일반 `gjc/0.16.4` 실행을 지원하고, 실제 설치에서는 다른 버전을 변경 전에 거부해야 한다.",
+      "acceptance": [
+        "`gjc --version`이 정확히 `gjc/0.16.4`일 때만 실제 hook 설치가 진행된다.",
+        "사용자는 필수 wrapper나 upstream GJC 수정 없이 `gjc`를 직접 실행한다.",
+        "`--dry-run`은 버전 설치 여부와 무관하게 계획을 확인할 수 있다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/cli.py",
+        "src/orca_keychron_gjc/gjc_install.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_cli.py",
+          "selector": "test_real_install_refuses_unverified_gjc_before_mutation",
+          "layer": "unit",
+          "note": "주입한 비지원 버전에서 설치 변경 전 거부를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_doctor_process.py",
+          "selector": "test_doctor_reports_exact_version_and_missing_components_without_mutation",
+          "layer": "integration",
+          "note": "실제 CLI subprocess와 로컬 gjc stub으로 정확한 버전 판정 및 비변경을 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4와 Orca runtime이 필요하며 deterministic loopback provider를 사용한 frozen-wheel 실행이다; 실제 모델 계정 검증은 아니다."
+        }
+      ],
+      "limitations": [
+        "GJC 0.16.4 이외 버전은 지원하지 않는다.",
+        "실제 provider/model 준수는 검증하지 않았다."
+      ]
+    },
+    {
+      "id": "R02",
+      "kinds": [
+        "functional"
+      ],
+      "area": "설치 경로",
+      "title": "사용자·프로젝트 root 선택",
+      "statement": "사용자 hook root는 명시적 agent dir, `GJC_CODING_AGENT_DIR`, 기본 `~/.gjc/agent` 순으로 선택하고 프로젝트 root는 `<project>/.gjc`로 분리해야 한다.",
+      "acceptance": [
+        "명시적 `--agent-dir`이 환경 변수보다 우선한다.",
+        "명시적 경로가 없으면 환경 변수, 그 다음 기본 사용자 경로를 사용한다.",
+        "project scope는 지정 프로젝트의 `.gjc`만 관리한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_install.py",
+        "src/orca_keychron_gjc/cli.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_explicit_agent_dir_wins_over_profile_environment",
+          "layer": "unit",
+          "note": "명시적 사용자 root의 우선순위를 임시 경로로 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_gjc_environment_profile_is_used_when_explicit_is_missing",
+          "layer": "unit",
+          "note": "명시값 부재 시 환경 root 선택을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_project_install_uses_project_native_directory",
+          "layer": "integration",
+          "note": "실제 임시 파일시스템에서 project `.gjc` 설치 경계를 검증한다."
+        }
+      ],
+      "limitations": [
+        "사용자·프로젝트 hook의 서로 다른 socket 설정 충돌 전체 조합은 별도 운영 점검이 필요하다."
+      ]
+    },
+    {
+      "id": "R03",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "설치 자산",
+      "title": "불변 release와 최소 loader",
+      "statement": "설치기는 loader, decision worker, manifest와 SHA-256 release 자산을 정해진 경로에 배치하고 loader에는 socket path만 기록해야 한다.",
+      "acceptance": [
+        "release 경로는 자산 digest로 식별되고 manifest가 관리 파일과 digest를 기록한다.",
+        "재설치는 동일 상태에서 멱등이며 upgrade는 이전 소유 release를 제거한다.",
+        "loader 설정에 credential이나 대화 내용이 포함되지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_install.py",
+        "src/orca_keychron_gjc/assets/gjc_hook.ts",
+        "src/orca_keychron_gjc/assets/decision-worker.md"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_install_status_idempotency_and_loader_boundary",
+          "layer": "integration",
+          "note": "임시 native root에서 설치 경로, digest, loader endpoint와 멱등성을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_upgrade_replaces_owned_release_and_removes_old_files",
+          "layer": "integration",
+          "note": "소유권이 증명된 이전 release만 upgrade에서 교체되는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install_faults.py",
+          "selector": "test_manifest_shape_and_private_mode_are_part_of_ownership",
+          "layer": "integration",
+          "note": "manifest 구조와 private mode가 소유권 판정에 포함되는지 검증한다."
+        }
+      ],
+      "limitations": [
+        "임의 환경 변수와 모든 오류 로그까지 포괄하는 credential 누출 검사는 아니다."
+      ]
+    },
+    {
+      "id": "R04",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "설치 안전성",
+      "title": "증명된 소유 파일만 변경",
+      "statement": "설치와 제거는 manifest와 digest로 소유권이 증명된 변경되지 않은 파일만 수정하며 충돌, 사용자 수정, symlink와 unsafe path는 보존하고 거부해야 한다.",
+      "acceptance": [
+        "소유하지 않은 충돌 파일을 덮어쓰거나 삭제하지 않는다.",
+        "설치 후 사용자가 수정한 관리 파일은 보존하고 작업을 실패시킨다.",
+        "symlink, FIFO 등 안전하지 않은 경로를 따라가거나 변경하지 않는다.",
+        "기존 GJC root 전체 권한을 임의로 바꾸지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_install.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_install_refuses_and_preserves_unowned_conflicts",
+          "layer": "integration",
+          "note": "비소유 충돌 파일을 byte 단위로 보존하는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_modified_owned_file_blocks_install_and_uninstall",
+          "layer": "integration",
+          "note": "사용자 수정 뒤 install/uninstall 모두 보존적으로 실패하는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_symlink_installation_boundaries_are_refused_and_preserved",
+          "layer": "integration",
+          "note": "symlink 경계와 대상 보존을 임시 파일시스템에서 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install_faults.py",
+          "selector": "test_manifest_fifo_is_rejected_without_blocking_or_mutating_it",
+          "layer": "integration",
+          "note": "FIFO manifest를 block 없이 거부하고 변경하지 않는 subprocess 경계를 검증한다."
+        }
+      ],
+      "limitations": [
+        "협력적 파일 잠금은 hostile same-user TOCTOU를 완전히 배제하는 보안 경계가 아니다."
+      ]
+    },
+    {
+      "id": "R05",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "설치 복구",
+      "title": "private·transactional 설치",
+      "statement": "새 관리 디렉터리는 0700, 파일은 0600으로 만들고 journal을 사용해 실패나 중단 뒤 기존 설치를 복구할 수 있어야 한다.",
+      "acceptance": [
+        "umask와 무관하게 새 관리 디렉터리 체인은 0700이고 관리 파일은 0600이다.",
+        "upgrade 실패 시 모든 관리 byte가 이전 상태로 rollback된다.",
+        "남은 transaction journal은 다음 실행에서 검증 후 복구된다.",
+        "복구 중 사용자 변경을 발견하면 보존적으로 중단한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_install.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install_faults.py",
+          "selector": "test_new_managed_directory_chain_is_private_independent_of_umask",
+          "layer": "integration",
+          "note": "실제 mode를 확인해 0700/0600 생성을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_failed_upgrade_rolls_back_every_managed_file",
+          "layer": "integration",
+          "note": "주입한 upgrade 실패 뒤 관리 파일 전부가 복원되는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install_faults.py",
+          "selector": "test_directory_fsync_failure_leaves_recoverable_journal_then_rerun_recovers",
+          "layer": "integration",
+          "note": "fsync 실패와 다음 실행 복구를 실제 임시 파일로 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install_faults.py",
+          "selector": "test_recovery_refuses_a_post_crash_user_edit_and_keeps_journal",
+          "layer": "integration",
+          "note": "중단 후 사용자 edit를 보존하고 journal을 유지하는지 검증한다."
+        }
+      ],
+      "limitations": [
+        "모든 파일시스템과 전원 손실 checkpoint의 crash consistency를 증명하지는 않는다."
+      ]
+    },
+    {
+      "id": "R06",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "설치 수명주기",
+      "title": "비변경 dry-run과 hook 제거",
+      "statement": "dry-run은 지원 GJC가 없어도 변경 없이 계획을 보여주고, uninstall은 소유한 hook 자산만 제거하며 설정과 서비스는 유지해야 한다.",
+      "acceptance": [
+        "dry-run 전후 관리 root의 byte와 metadata가 동일하다.",
+        "dry-run은 GJC 0.16.4 설치를 요구하지 않는다.",
+        "uninstall은 소유한 loader, worker, release, manifest만 제거한다.",
+        "uninstall dry-run도 변경하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/cli.py",
+        "src/orca_keychron_gjc/gjc_install.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_dry_run_is_read_only_and_describes_owned_files",
+          "layer": "integration",
+          "note": "실제 임시 트리의 비변경과 계획 출력을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_cli.py",
+          "selector": "test_install_dry_run_does_not_require_installed_gjc",
+          "layer": "unit",
+          "note": "CLI 의존성 주입으로 GJC 미설치 dry-run 경계를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_uninstall_dry_run_and_clean_removal",
+          "layer": "integration",
+          "note": "uninstall dry-run 비변경과 실제 소유 자산 제거를 검증한다."
+        }
+      ],
+      "limitations": [
+        "전역 서비스 제거는 uninstall의 책임이 아니다."
+      ]
+    },
+    {
+      "id": "R07",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "설정·플랫폼",
+      "title": "분리된 private 설정과 Python 3.9",
+      "statement": "GJC 모드는 기존 Orca 모드와 분리된 runtime 설정을 사용하고 저장 경로와 파일을 private하게 유지하며 Python 3.9 이상에서 동작해야 한다.",
+      "acceptance": [
+        "GJC config, socket, registry 경로가 기존 Orca 모드 경로와 분리된다.",
+        "설정 디렉터리는 0700이고 config는 0600이다.",
+        "잘못되거나 unsafe한 config는 typed error로 거부되고 자동 덮어쓰지 않는다.",
+        "배포물의 Python 요구 버전은 3.9 이상이며 frozen suite가 3.9와 3.13에서 통과한 기록이 있다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/config.py",
+        "pyproject.toml"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_config.py",
+          "selector": "test_gjc_config_uses_distinct_owned_paths",
+          "layer": "unit",
+          "note": "기본 경로가 기존 모드와 분리되는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_config.py",
+          "selector": "test_gjc_config_round_trip_is_private",
+          "layer": "integration",
+          "note": "저장·재로드와 실제 private mode를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_config.py",
+          "selector": "test_config_fifo_is_rejected_without_blocking_or_mutating_it",
+          "layer": "integration",
+          "note": "FIFO 설정을 subprocess에서 block 없이 거부한다."
+        },
+        {
+          "kind": "document",
+          "target": "docs/testing/final-gate-results.json",
+          "layer": "documentation",
+          "note": "동결된 과거 gate의 Python 3.9.6/3.13.5 결과 기록이며 이 문서 생성 시 재실행한 것이 아니다."
+        }
+      ],
+      "limitations": [
+        "실제 Ubuntu runner 실행은 수행하지 않았다."
+      ]
+    },
+    {
+      "id": "R08",
+      "kinds": [
+        "functional"
+      ],
+      "area": "소켓 설정",
+      "title": "저장 socket의 일관된 상속",
+      "statement": "setup은 absolute socket path를 저장하고 install, run, serve, status, doctor는 명시적 override가 없을 때 그 값을 사용해야 한다.",
+      "acceptance": [
+        "상대 socket path는 거부되고 absolute path만 저장된다.",
+        "공백과 nondefault zone이 있는 저장 socket으로 실제 CLI 경계가 동작한다.",
+        "socket 변경 뒤 재설치하면 loader endpoint가 새 설정과 일치한다.",
+        "명시적 `--socket`은 해당 명령에서 저장값보다 우선한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/config.py",
+        "src/orca_keychron_gjc/cli.py",
+        "src/orca_keychron_gjc/gjc_install.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_cli_faults.py",
+          "selector": "test_saved_socket_reaches_status_clear_install_and_doctor",
+          "layer": "unit",
+          "note": "주입한 명령 의존성으로 저장 socket 전달 범위를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_cli_process.py",
+          "selector": "test_saved_socket_with_spaces_and_nondefault_zone_works_in_real_cli",
+          "layer": "integration",
+          "note": "실제 CLI subprocess와 AF_UNIX endpoint로 공백 경로를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_doctor_process.py",
+          "selector": "test_doctor_distinguishes_live_bridge_from_modified_installation_and_socket_override",
+          "layer": "integration",
+          "note": "저장 endpoint와 explicit override 진단을 실제 subprocess로 구분한다."
+        }
+      ],
+      "limitations": [
+        "모든 명령과 모든 override 조합의 완전한 조합표 검증은 아니다."
+      ]
+    },
+    {
+      "id": "R09",
+      "kinds": [
+        "functional"
+      ],
+      "area": "CLI",
+      "title": "전용 9개 명령과 진단",
+      "statement": "`orca-keychron-gjc`는 setup, run, serve, status, clear, install, uninstall, doctor, autostart와 각 도움말을 제공하고 doctor는 주요 구성요소의 건강 상태를 분리해 진단해야 한다.",
+      "acceptance": [
+        "9개 하위 명령이 parser와 설치된 entrypoint 도움말에 노출된다.",
+        "doctor는 GJC 버전, config, hook, receiver, autostart 상태를 각각 보고한다.",
+        "부분 장애를 전체 healthy로 표시하지 않는다.",
+        "패키지 버전을 CLI에서 확인할 수 있다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/cli.py",
+        "src/orca_keychron_gjc/__main__.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_cli.py",
+          "selector": "test_gjc_cli_exposes_dedicated_commands",
+          "layer": "unit",
+          "note": "parser의 정확한 하위 명령 surface를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_cli_faults.py",
+          "selector": "test_doctor_reports_each_partial_health_dimension",
+          "layer": "unit",
+          "note": "주입한 부분 건강 조합을 독립 필드로 보고하는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_distribution.py",
+          "selector": "test_wheel_contains_both_commands_and_exact_current_assets",
+          "layer": "integration",
+          "note": "fresh non-editable wheel 환경에서 두 entrypoint와 package asset을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_doctor_process.py",
+          "selector": "test_doctor_rejects_corrupt_config_without_reporting_healthy_or_rewriting_it",
+          "layer": "integration",
+          "note": "실제 doctor subprocess가 손상 설정을 재작성하거나 healthy로 오인하지 않는지 검증한다."
+        }
+      ],
+      "limitations": [
+        "doctor의 GJC와 launchctl은 integration test에서 로컬 stub을 사용한다."
+      ]
+    },
+    {
+      "id": "R10",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "수신 서비스",
+      "title": "serve의 로컬 전용 경계",
+      "statement": "serve는 현재 호스트의 local receiver와 registry tracker만 실행하며 HID, 렌더러, 외부 Orca 명령, 원격 집계를 시작하지 않아야 한다.",
+      "acceptance": [
+        "serve는 private AF_UNIX endpoint를 열고 status 요청에 응답한다.",
+        "serve 과정에서 HID 모듈을 열거나 외부 명령을 시작하지 않는다.",
+        "충돌한 live endpoint를 보존하고 bounded error로 종료한다.",
+        "종료 시 receiver thread와 소켓 자원을 정리한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/cli.py",
+        "src/orca_keychron_gjc/gjc_source.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_cli_process.py",
+          "selector": "test_serve_and_status_never_load_hardware_or_start_external_commands",
+          "layer": "integration",
+          "note": "실제 serve/status subprocess에 HID import와 외부 명령 tripwire를 둔다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_cli.py",
+          "selector": "test_serve_collision_is_a_bounded_cli_error_and_preserves_live_bridge",
+          "layer": "unit",
+          "note": "주입한 endpoint 충돌에서 live bridge 보존과 bounded 오류를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_stop_preserves_replacement_path_and_restart_is_supported",
+          "layer": "integration",
+          "note": "실제 AF_UNIX receiver stop/restart와 replacement path 보존을 검증한다."
+        }
+      ],
+      "limitations": [
+        "serve는 원격 host나 여러 Orca instance를 집계하지 않는다."
+      ]
+    },
+    {
+      "id": "R11",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "배포 패키지",
+      "title": "checkout 독립 wheel",
+      "statement": "built wheel은 두 CLI entrypoint와 현재 Python·TypeScript·지침 asset을 포함하고 checkout import 없이 fresh 환경에서 동작해야 한다.",
+      "acceptance": [
+        "wheel 안의 package 파일과 asset byte가 현재 배포 입력과 일치한다.",
+        "`orca-keychron`과 `orca-keychron-gjc` 도움말이 격리 설치에서 실행된다.",
+        "설치된 loader가 checkout 대신 wheel 자산을 사용해 receiver로 snapshot을 보낸다.",
+        "Python 3.9 fresh 환경에서 dependency check와 isolated import가 성공한 동결 기록이 있다."
+      ],
+      "implementation": [
+        "pyproject.toml",
+        "src/orca_keychron_gjc/assets/gjc_hook.ts",
+        "src/orca_keychron_gjc/assets/decision-parent.md",
+        "src/orca_keychron_gjc/assets/decision-worker.md"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_distribution.py",
+          "selector": "test_wheel_contains_both_commands_and_exact_current_assets",
+          "layer": "integration",
+          "note": "GJC_TEST_WHEEL_DIR의 non-editable wheel을 별도 venv에 설치해 정확한 byte와 명령을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_distribution.py",
+          "selector": "test_installed_managed_loader_executes_and_streams_to_installed_receiver",
+          "layer": "integration",
+          "note": "설치 wheel의 managed loader와 실제 local socket receiver 연결을 검증한다."
+        },
+        {
+          "kind": "document",
+          "target": "docs/testing/final-gate-results.json",
+          "layer": "documentation",
+          "note": "동결된 build, Twine, Python 3.9 install/check 및 isolated help 결과 기록이며 새 실행은 아니다."
+        }
+      ],
+      "limitations": [
+        "문서화된 frozen wheel digest는 현재 파일을 새로 빌드했다는 의미가 아니다."
+      ]
+    },
+    {
+      "id": "R12",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "자동 시작",
+      "title": "GJC 서비스의 독립·보수적 소유",
+      "statement": "GJC autostart는 별도 namespace를 사용하고 현재 또는 legacy Orca 서비스가 설치·로드된 상태에서는 변경 없이 거부하며 실패 시 이전 소유 상태를 복원해야 한다.",
+      "acceptance": [
+        "GJC LaunchAgent label과 파일이 기존 Orca 서비스와 분리된다.",
+        "현재·legacy Orca 서비스의 설치 또는 load를 발견하면 fail closed한다.",
+        "비소유·수정 plist는 보존한다.",
+        "bootstrap 실패 시 새 파일을 제거하거나 이전 소유 plist와 load 상태를 복원한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/autostart.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_autostart.py",
+          "selector": "test_launch_agent_uses_separate_gjc_namespace",
+          "layer": "unit",
+          "note": "정의와 label이 별도 namespace인지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_autostart.py",
+          "selector": "test_install_refuses_loaded_orca_agent_without_booting_it_out",
+          "layer": "unit",
+          "note": "가짜 launchctl에서 기존 loaded Orca 서비스를 변경하지 않고 거부하는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_autostart.py",
+          "selector": "test_failed_bootstrap_restores_and_reloads_previous_owned_plist",
+          "layer": "integration",
+          "note": "임시 plist와 주입 launchctl 실패로 rollback을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_autostart_faults.py",
+          "selector": "test_orca_service_inspection_error_fails_closed_without_writing",
+          "layer": "unit",
+          "note": "서비스 확인 오류가 쓰기 전 fail closed되는지 검증한다."
+        }
+      ],
+      "limitations": [
+        "실제 login LaunchAgent 활성화는 수행하지 않았다.",
+        "기존 Orca installer는 GJC 서비스를 대칭 검사하지 않으므로 전환은 수동 절차가 필요하다."
+      ]
+    },
+    {
+      "id": "R13",
+      "kinds": [
+        "functional"
+      ],
+      "area": "launch 식별",
+      "title": "대화형 root당 publisher 하나",
+      "statement": "실제 Orca pane metadata가 있는 대화형 root GJC 프로세스마다 publisher와 launch를 하나만 만들고 native child는 그 launch에 집계해야 한다.",
+      "acceptance": [
+        "root 등록에는 terminal handle, pane key, worktree ID와 대화형 context가 필요하다.",
+        "headless root 허용은 명시적 fixture opt-in에서만 가능하다.",
+        "같은 프로세스의 native child는 별도 launch나 슬롯을 만들지 않는다.",
+        "독립 GJC 프로세스는 서로 다른 launch가 된다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "requires actual interactive Orca identity; explicitly headless fixtures allowed",
+          "layer": "unit",
+          "note": "제조한 hook context로 interactive/headless 등록 경계를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/e2e/test_gjc_e2e_audit.py",
+          "selector": "test_slots_require_independent_launches_and_survive_restart",
+          "layer": "unit",
+          "note": "보존된 metadata evidence를 독립 oracle로 검증하며 실제 GJC 실행 자체는 아니다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "unmodified GJC 0.16.4, Orca runtime, frozen wheel과 deterministic loopback provider로 두 실제 launch와 child 집계를 실행한다; 실제 모델은 아니다."
+        }
+      ],
+      "limitations": [
+        "모든 native host의 대화형 identity 순서를 포괄하지 않는다."
+      ]
+    },
+    {
+      "id": "R14",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "lineage 보호",
+      "title": "중첩 프로세스의 root 사칭 방지",
+      "statement": "중첩 CLI나 SDK-only host는 상속된 Orca metadata, cwd 또는 PID header만으로 새 root 권한을 주장할 수 없어야 한다.",
+      "acceptance": [
+        "상속된 owner marker를 가진 nested process는 새 root를 등록하지 않는다.",
+        "child가 현재 root ID를 다시 열어도 switch, mutation, shutdown 권한을 얻지 않는다.",
+        "관련 없는 loader가 재사용 ID로 live root를 탈취하지 못한다.",
+        "cwd/PID만으로 parent-child를 추론하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-LINEAGE: real nested process inherits owner marker and cannot claim a root",
+          "layer": "integration",
+          "note": "실제 Bun child process에서 상속 owner marker의 root 억제를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "unrelated interactive loader cannot switch, mutate or close the root even with a reused ID",
+          "layer": "unit",
+          "note": "제조한 서로 다른 loader context의 권한 분리를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-ID: child reopening current root never takes authority even after resume",
+          "layer": "unit",
+          "note": "native-shaped event 순서에서 child 재개 뒤에도 root 권한 불획득을 검증한다."
+        }
+      ],
+      "limitations": [
+        "별도 actual GJC nested CLI/SDK 실행 전체 조합을 검증한 것은 아니다."
+      ]
+    },
+    {
+      "id": "R15",
+      "kinds": [
+        "functional"
+      ],
+      "area": "세션 수명",
+      "title": "같은 프로세스의 session 전환",
+      "statement": "같은 GJC 프로세스의 `/new`와 resume는 root session만 바꾸고 launch, publisher, slot과 미해결 요청을 유지해야 하며 새 프로세스는 새 identity를 가져야 한다.",
+      "acceptance": [
+        "`/new` 뒤 producer와 launch ID 및 slot이 유지된다.",
+        "resume 뒤 이전 root session으로 돌아가도 같은 publisher를 사용한다.",
+        "session 전환 중 기존 미해결 child 요청이 사라지지 않는다.",
+        "새 OS 프로세스는 이전 launch 승계를 보장하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts",
+        "src/orca_keychron_gjc/gjc_tracker.py"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "normal session switch keeps one root and preserves old unresolved requests",
+          "layer": "unit",
+          "note": "제조한 native event로 session switch와 pending 보존을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_root_session_switch_is_not_mistaken_for_a_new_process_generation",
+          "layer": "unit",
+          "note": "tracker가 root session 변경을 새 process generation으로 오인하지 않는지 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4와 deterministic loopback provider에서 실제 `/new`, `/resume`, `/exit`을 실행한다; 실제 모델 계정은 사용하지 않는다."
+        }
+      ],
+      "limitations": [
+        "모든 GJC event ordering 변형을 보장하지 않는다."
+      ]
+    },
+    {
+      "id": "R16",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "중복 hook",
+      "title": "user·project loader 중복 억제",
+      "statement": "사용자와 프로젝트 hook이 같은 GJC 프로세스에 함께 로드되어도 publisher와 launch는 하나이며 이벤트와 pending count가 중복 집계되지 않아야 한다.",
+      "acceptance": [
+        "두 loader가 같은 owner process에서 하나의 publisher를 공유한다.",
+        "동일 이벤트를 두 loader가 받아도 pending count가 한 번만 반영된다.",
+        "session switch 전후 delivery 순서가 바뀌어도 중복 root가 생기지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts",
+        "src/orca_keychron_gjc/gjc_install.py"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "separate installed loaders share a publisher and duplicate events",
+          "layer": "unit",
+          "note": "두 loader instance와 중복 이벤트를 제조해 단일 publisher/count를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-LOADER: original payloads establish duplicate root provenance in both delivery orders",
+          "layer": "unit",
+          "note": "원본 payload의 양방향 delivery order에서 provenance를 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4가 user/project 설치 hook을 실제로 중복 발견하는 상황을 deterministic loopback provider로 실행한다."
+        }
+      ],
+      "limitations": [
+        "서로 다른 hook 버전이나 socket 설정 충돌은 지원 범위가 아니다."
+      ]
+    },
+    {
+      "id": "R17",
+      "kinds": [
+        "functional"
+      ],
+      "area": "요청 상관관계",
+      "title": "pending ask 중복 방지",
+      "statement": "pending ask는 `(sessionId, toolCallId)`로 식별하고 중복·지연 start/end가 count를 늘리거나 해결된 call을 다시 열지 못하게 해야 한다.",
+      "acceptance": [
+        "같은 session과 call ID의 반복 start는 한 건으로 집계된다.",
+        "matching tool name과 call ID의 실제 종료만 pending을 해제한다.",
+        "해결된 call의 늦은 start가 pending을 다시 만들지 않는다.",
+        "bounded resolved history가 소진되면 `complete=false`로 불확실성을 드러낸다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "duplicate loaders and repeated or late starts never double count asks",
+          "layer": "unit",
+          "note": "중복 loader와 반복·지연 이벤트의 pending count를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "tool name mismatch cannot clear a pending ask",
+          "layer": "unit",
+          "note": "tool 이름 불일치가 matching call을 해제하지 못하는 negative case다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "resolved-call memory is bounded and exhaustion explicitly downgrades coverage",
+          "layer": "unit",
+          "note": "bounded receipt history 초과가 false completeness가 아닌 incomplete로 표시되는지 검증한다."
+        }
+      ],
+      "limitations": [
+        "모든 runtime/tool event permutation에 대한 형식 증명은 아니다."
+      ]
+    },
+    {
+      "id": "R18",
+      "kinds": [
+        "functional"
+      ],
+      "area": "의사결정 보존",
+      "title": "미해결 human request 유지",
+      "statement": "parent 완료나 child shutdown은 미해결 ask·decision을 지우지 않으며 상관된 실제 답만 해당 handoff를 해결해야 한다.",
+      "acceptance": [
+        "parent가 done이어도 child의 pending request가 waiting 우선순위를 유지한다.",
+        "child shutdown만으로 decision을 해결하지 않는다.",
+        "여러 답 중 request ID와 child correlation이 맞는 한 건만 해제한다.",
+        "answer-before-decision 또는 충돌한 답은 false resolution을 만들지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts",
+        "src/orca_keychron_gjc/gjc_tracker.py"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "child shutdown and parent completion retain decision; only matching real answer clears it",
+          "layer": "unit",
+          "note": "synthetic result.details를 이용해 pending 보존과 matching 해제를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "multi-answer correlation clears only matching decision and collisions stay uncertain",
+          "layer": "unit",
+          "note": "여러 결정의 cross-answer와 collision negative case를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_tracker.py",
+          "selector": "test_priority_child_asks_survive_root_done_and_full_recovery",
+          "layer": "unit",
+          "note": "tracker full snapshot 교체와 root done 뒤 child waiting 보존을 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4의 두 실제 child/request를 deterministic fixture answer로 순서대로 해결한다; 실제 사용자의 답변이나 모델은 아니다."
+        }
+      ],
+      "limitations": [
+        "runtime scenario의 답과 model 동작은 deterministic fixture가 제공한다."
+      ]
+    },
+    {
+      "id": "R19",
+      "kinds": [
+        "functional"
+      ],
+      "area": "yield 해석",
+      "title": "검증된 yield만 성공 인정",
+      "statement": "child의 성공이나 decision은 유효한 yield `result.data`를 검증해 판단하고 malformed result나 child shutdown만으로 green 처리하지 않아야 한다.",
+      "acceptance": [
+        "유효한 yield success만 child 성공으로 인정한다.",
+        "유효한 `needs_user_decision` envelope만 decision waiting으로 인정한다.",
+        "malformed yield는 `unknown`으로 표시한다.",
+        "shutdown 단독은 success가 아니다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "malformed yield is unknown, child shutdown alone never proves success",
+          "layer": "unit",
+          "note": "malformed payload와 shutdown-only negative case를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-YIELD: malformed yield receipt stays unknown 0",
+          "layer": "unit",
+          "note": "native-shaped null receipt가 unknown으로 남는 실행된 parameterized case를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_successor_fixture.py",
+          "selector": "test_launch_a_asks_only_after_actual_child_and_exact_pending_envelope",
+          "layer": "unit",
+          "note": "독립 fixture oracle이 실제 child ID와 정확한 decision envelope를 요구한다."
+        }
+      ],
+      "limitations": [
+        "모든 향후 GJC yield schema 변형을 지원하지 않는다."
+      ]
+    },
+    {
+      "id": "R20",
+      "kinds": [
+        "functional"
+      ],
+      "area": "턴 상태",
+      "title": "최종 outcome과 retry 해석",
+      "statement": "최종 assistant stop, error, aborted와 retry·pause·maintenance·queued 상태를 구분하고 임시 tool 실패만으로 최종 상태를 확정하지 않아야 한다.",
+      "acceptance": [
+        "최종 assistant stop은 앞선 tool error 뒤에도 done으로 회복할 수 있다.",
+        "assistant error는 failed, aborted는 cancelled로 해석한다.",
+        "toolUse만 있는 외부 completed는 unknown이다.",
+        "retry, pause, maintenance와 queued work는 done이 아니다.",
+        "retry가 소진되고 outstanding tool이 끝나도 기존 최종 failed를 잘못 지우지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "final assistant outcome, retry, late failures, pause and queued work",
+          "layer": "unit",
+          "note": "제조한 native event 순서로 주요 outcome과 중간 상태를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "cancelled ask followed by completed toolUse is never green",
+          "layer": "unit",
+          "note": "cancel 이후 toolUse completed가 done을 만들지 않는 negative case다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "exhausted retry remains failed when an outstanding tool ends late",
+          "layer": "unit",
+          "note": "retry 소진 뒤 늦은 tool 종료의 상태 회귀를 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4와 loopback provider로 success, failure, cancellation을 실행한다; provider는 deterministic이고 실제 모델은 아니다."
+        }
+      ],
+      "limitations": [
+        "모든 native maintenance·자동 retry event 순서를 열거한 검증은 아니다."
+      ]
+    },
+    {
+      "id": "R21",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "의사결정 도구",
+      "title": "opt-in worker와 root-only 지침",
+      "statement": "decision worker는 opt-in으로 배치되고 선언 도구를 read와 yield로 제한하며 parent 지침은 기존 prompt를 대체하지 않고 root에만 추가되어야 한다.",
+      "acceptance": [
+        "설치된 worker 선언에는 `read`와 `yield`만 있다.",
+        "decision payload는 bare JSON이 아니라 `yield.result.data` envelope를 사용한다.",
+        "parent guidance는 기존 system prompt를 보존해 append된다.",
+        "parent guidance는 child session에 중복 적용되지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/decision-parent.md",
+        "src/orca_keychron_gjc/assets/decision-worker.md",
+        "src/orca_keychron_gjc/gjc_install.py",
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "parent instructions append without replacing prompt and stay root-only",
+          "layer": "unit",
+          "note": "제조한 hook prompt context로 append와 root-only 적용을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_install.py",
+          "selector": "test_dry_run_is_read_only_and_describes_owned_files",
+          "layer": "integration",
+          "note": "decision worker와 parent asset이 설치 계획에 포함되면서 dry-run이 비변경임을 검증한다."
+        },
+        {
+          "kind": "document",
+          "target": "src/orca_keychron_gjc/assets/decision-worker.md",
+          "layer": "documentation",
+          "note": "배포되는 worker의 tool 선언과 result.data 계약 원문이다."
+        }
+      ],
+      "limitations": [
+        "prompt 선언은 모든 모델·host의 권한을 강제하는 permission broker가 아니다."
+      ]
+    },
+    {
+      "id": "R22",
+      "kinds": [
+        "functional"
+      ],
+      "area": "의사결정 재개",
+      "title": "실제 child와 답의 정확한 상관",
+      "statement": "parent는 실제 child 전체 결과와 request ID를 사용해 root에서 질문하고 실제 답이 있을 때만 그 child를 checkpoint와 함께 재개해야 한다.",
+      "acceptance": [
+        "parent가 축약하거나 추측한 ID가 아니라 실제 child ID를 읽는다.",
+        "root ask는 child가 보낸 원래 request ID를 사용한다.",
+        "선택 답, request ID, checkpoint가 모두 일치할 때만 실제 child를 resume한다.",
+        "취소나 다른 요청의 답을 승인으로 사용하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/decision-parent.md",
+        "src/orca_keychron_gjc/assets/decision-worker.md"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/e2e/test_gjc_e2e_audit.py",
+          "selector": "test_decision_oracle_rejects_cross_answer_and_duplicate_resume",
+          "layer": "unit",
+          "note": "보존 evidence용 독립 oracle이 cross-answer와 중복 resume를 거부한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_successor_fixture.py",
+          "selector": "test_successor_accepts_only_all_correlated_fields",
+          "layer": "unit",
+          "note": "request, checkpoint, answer, continuation의 전 필드 상관을 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4에서 실제 두 child ID를 읽고 loopback fixture answer로 각각 재개한다; 실제 모델 준수 검증은 아니다."
+        }
+      ],
+      "limitations": [
+        "fixture provider가 올바른 답을 공급하므로 실제 모델 instruction-following은 증명하지 않는다."
+      ]
+    },
+    {
+      "id": "R23",
+      "kinds": [
+        "functional"
+      ],
+      "area": "재시작 후 승계",
+      "title": "사라진 child의 successor 전환",
+      "statement": "GJC 프로세스 재시작 뒤 이전 in-memory child가 없으면 checkpoint와 답을 전달한 별도 successor를 시작하고 원래 child를 재개했다고 기록하지 않아야 한다.",
+      "acceptance": [
+        "이전 in-memory child를 재개할 수 없는 경우 checkpoint와 실제 답을 명시적으로 전달한 별도 successor를 시작한다.",
+        "successor는 원래 child와 구분되는 identity를 사용한다.",
+        "parent는 해당 요청의 checkpoint와 실제 답을 이어받을 작업에 전달한다. 임의로 답을 만들거나 원래 child가 재개됐다고 주장하지 않는다.",
+        "인계 결과에 successor 경로임을 명시한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/decision-parent.md",
+        "src/orca_keychron_gjc/assets/decision-worker.md"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_successor_fixture.py",
+          "selector": "test_actual_gjc_not_found_receipt_requires_successor_path",
+          "layer": "unit",
+          "note": "이 검증 harness는 이전 child의 부재를 실제 native not_found receipt로 확인한다. 이는 실험의 oracle이며 모든 제품 흐름에 실패한 resume 시도를 강제하는 요구사항은 아니다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_successor_fixture.py",
+          "selector": "test_launch_b_rejects_successor_identity_collision",
+          "layer": "unit",
+          "note": "predecessor와 동일한 successor identity를 거부한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_successor_fixture.py",
+          "selector": "test_successor_rejects_wrong_checkpoint_even_with_known_answer",
+          "layer": "unit",
+          "note": "답이 맞아도 checkpoint가 틀리면 승계를 거부한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-successor-audit/harness.py",
+          "layer": "runtime",
+          "note": "unmodified GJC 0.16.4와 Orca runtime, frozen-wheel payload, deterministic loopback provider가 필요하다; launch A 종료 뒤 launch B successor를 실제 실행하며 자동 persistence나 실제 모델은 증명하지 않는다. 이 fixture에서 request ID·checkpoint·answer·continuation 종류를 비교하지만, continuation 종류는 제품의 보편적인 payload 필드로 요구하지 않는다."
+        }
+      ],
+      "limitations": [
+        "답과 checkpoint는 harness가 명시적으로 프로세스 사이에 전달하며 자동 durable recovery는 제공하지 않는다."
+      ]
+    },
+    {
+      "id": "R24",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "wire protocol",
+      "title": "엄격한 full snapshot JSONL v1",
+      "statement": "wire는 version 1의 불변 full snapshot JSON Lines만 허용하고 정확한 schema, UTF-8 encoding, 고유 session과 허용 상태를 검증해야 한다.",
+      "acceptance": [
+        "각 heartbeat와 변경 frame이 현재 관찰 모델 전체를 담는다.",
+        "필수 필드·타입·상태가 다르거나 확장 필드·중복 JSON key가 있으면 거부한다.",
+        "session ID는 snapshot 안에서 고유하고 root session은 정확히 하나다.",
+        "UTF-8 JSON line만 허용하며 BOM과 UTF-16/32를 거부한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_protocol.py",
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_protocol.py",
+          "selector": "test_no_content_extensions_duplicate_keys_or_sessions",
+          "layer": "unit",
+          "note": "확장 필드, 중복 key와 session을 strict parser가 거부하는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_duplicate_sessions_and_nonunique_or_missing_root_are_rejected",
+          "layer": "unit",
+          "note": "root uniqueness와 duplicate session negative variants를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_snapshot_bytes_require_utf8_json_lines_encoding",
+          "layer": "unit",
+          "note": "UTF-8 JSONL byte encoding 경계를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "emitted snapshots satisfy the actual Python receiver schema, including closed pending child",
+          "layer": "integration",
+          "note": "Bun producer 출력이 Python parser subprocess의 실제 schema를 통과하는 cross-language test다."
+        }
+      ],
+      "limitations": [
+        "합성 event producer를 사용하므로 모든 실제 GJC native event를 포괄하지 않는다."
+      ]
+    },
+    {
+      "id": "R25",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "개인정보 보호",
+      "title": "content-free 상태 전송",
+      "statement": "wire, persisted registry와 status에는 prompt, 질문·답, option, checkpoint, tool argument/result, credential 또는 임의 error text를 저장하거나 표시하지 않아야 한다.",
+      "acceptance": [
+        "전송 schema는 식별자, 상태, count와 표시 metadata의 allowlist만 허용한다.",
+        "민감 필드 sentinel이 JSONL frame, registry와 human/JSON status에 나타나지 않는다.",
+        "알 수 없는 content 확장 필드는 parser가 거부한다.",
+        "actual GJC evidence도 metadata-only로 기록된다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts",
+        "src/orca_keychron_gjc/gjc_protocol.py",
+        "src/orca_keychron_gjc/gjc_tracker.py",
+        "src/orca_keychron_gjc/cli.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/e2e/test_gjc_e2e_audit.py",
+          "selector": "test_evidence_allowlist_drops_content_and_arbitrary_fields",
+          "layer": "unit",
+          "note": "합성 evidence에서 content와 임의 필드를 제거하는 독립 allowlist oracle이다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_distribution.py",
+          "selector": "test_installed_managed_loader_executes_and_streams_to_installed_receiver",
+          "layer": "integration",
+          "note": "설치 loader에 넣은 question/option sentinel이 registry와 status에 나타나지 않는지 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4와 loopback provider의 actual wire를 metadata-only allowlist로 보존한다; sanitizer 자체가 제품 보안 경계는 아니다."
+        }
+      ],
+      "limitations": [
+        "명시한 wire·registry·status 밖의 임의 외부 로그까지 비밀 부재를 보장하지 않는다."
+      ]
+    },
+    {
+      "id": "R26",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "전송 신뢰성",
+      "title": "변경 push와 정확한 2초 heartbeat",
+      "statement": "publisher는 상태 변경 시와 기본 2초마다 full snapshot을 보내고 bounded reconnect 뒤 현재 최신 상태만 즉시 전송해야 한다.",
+      "acceptance": [
+        "상태 변경은 다음 2초 heartbeat를 기다리지 않고 publish된다.",
+        "기본 heartbeat interval은 정확히 2초이며 test override도 2초 상한을 넘지 않는다.",
+        "재연결 backoff는 bounded하고 최대 2초다.",
+        "연결 직후 stale history가 아니라 최신 full snapshot 한 상태를 보낸다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "socket reconnect replaces lost history with latest complete snapshot and flushes closure",
+          "layer": "integration",
+          "note": "local socket 재연결에서 최신 full snapshot과 closure flush를 검증하며 heartbeat는 30ms로 override한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-TRANSPORT: event-synchronized Unix reconnect sends latest full state and closed flush",
+          "layer": "integration",
+          "note": "실제 Unix socket과 event synchronization으로 stale replay 부재를 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4를 receiver 부재 상태에서 시작한 뒤 reconnect하는 실제 runtime 경로다; loopback provider이며 정확한 2초 timer 계측은 아니다."
+        },
+        {
+          "kind": "document",
+          "target": "docs/gjc-bridge-contract.md",
+          "layer": "documentation",
+          "note": "2초 heartbeat와 bounded reconnect의 normative 계약이며 실행 증거가 아니다."
+        }
+      ],
+      "limitations": [
+        "runtime scenario는 정확한 2초 elapsed-time SLO를 측정하지 않는다.",
+        "상태 변경 push는 무지연 보장이 아니다."
+      ]
+    },
+    {
+      "id": "R27",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "전송 자원",
+      "title": "backpressure 병합과 bounded 종료",
+      "statement": "backpressure에서는 무제한 history를 쌓지 않고 최신 상태로 병합하며 timer와 socket이 GJC 종료를 막지 않고 정상 shutdown을 제한 시간 안에 flush해야 한다.",
+      "acceptance": [
+        "write backpressure 중 보류 frame 수와 buffer가 bounded하다.",
+        "drain 뒤 가장 최신 full snapshot만 전달된다.",
+        "receiver가 없어도 publisher process가 자연 종료한다.",
+        "stalled receiver에서도 shutdown이 bounded하게 끝난다.",
+        "명시적 close는 가능하면 마지막 closed snapshot을 flush한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts"
+      ],
+      "verification": [
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook.test.ts",
+          "selector": "backpressure coalesces to one latest frame and bounded shutdown completes without receiver",
+          "layer": "unit",
+          "note": "fake socket의 write(false)와 내부 drain으로 coalescing branch를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-LIVENESS: real Bun process exits with absent receiver without disposal",
+          "layer": "integration",
+          "note": "실제 Bun child process와 absent receiver에서 event-loop liveness를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-BACKPRESSURE: real paused receiver bounds buffered frames and shutdown exits",
+          "layer": "integration",
+          "note": "실제 paused Unix receiver에서 buffer bound와 child shutdown을 검증한다."
+        }
+      ],
+      "limitations": [
+        "모든 운영체제 kernel buffer 크기와 장기 stalled-reader 패턴을 포괄하지 않는다."
+      ]
+    },
+    {
+      "id": "R28",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "관찰 한도",
+      "title": "session·call·frame·ID cap",
+      "statement": "publisher와 receiver는 session 256개, session당 active call 128개, UTF-8 frame 512 KiB, identifier 512자의 정확한 한도를 적용하고 초과 시 `complete=false` 또는 명시적 거부로 false completeness를 막아야 한다.",
+      "acceptance": [
+        "최대 256 sessions와 session당 128 active calls까지 표현한다.",
+        "512 KiB 이하 UTF-8 frame은 허용하고 초과 frame은 해당 client에서 거부한다.",
+        "identifier는 512자까지 허용하고 제어문자나 초과 길이를 거부한다.",
+        "publisher가 관찰 항목을 더 담을 수 없으면 `complete=false`를 보낸다.",
+        "resolved receipt history 소진도 정상 complete로 가장하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/assets/gjc_hook.ts",
+        "src/orca_keychron_gjc/gjc_protocol.py",
+        "src/orca_keychron_gjc/gjc_source.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_identifier_and_collection_limits_are_exact",
+          "layer": "unit",
+          "note": "512자 ID와 256 session의 경계값·초과값을 독립적으로 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_request_counter_bounds_are_exact",
+          "layer": "unit",
+          "note": "pending counter의 정확한 128 단위 경계를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_exact_frame_cap_then_healthy_continuation",
+          "layer": "integration",
+          "note": "실제 socket에서 정확히 512 KiB frame 경계와 초과 client 격리 후 정상 continuation을 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-BOUNDS: independent session tool IDs deduplicate, overflow remains incomplete",
+          "layer": "unit",
+          "note": "session별 tool ID 분리와 publisher overflow의 incomplete 표시를 검증한다."
+        }
+      ],
+      "limitations": [
+        "관찰 cap은 모든 GJC UI를 볼 수 있다는 의미가 아니며 초과 시 일부 상태는 unknown이다."
+      ]
+    },
+    {
+      "id": "R29",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "endpoint 보안",
+      "title": "private socket과 안전한 stale 복구",
+      "statement": "socket, registry와 runtime path는 현재 사용자 소유의 private mode여야 하며 두 번째 receiver나 stale 복구가 live·foreign·교체된 경로를 unlink, chmod 또는 덮어쓰지 않아야 한다.",
+      "acceptance": [
+        "runtime 디렉터리는 0700, socket과 registry는 0600이다.",
+        "두 번째 receiver는 live socket을 보존하고 실패한다.",
+        "stale socket은 소유권이 증명될 때만 복구한다.",
+        "bind/stop 중 path가 교체되면 replacement를 변경하지 않는다.",
+        "symlink와 foreign inode는 거부한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_source.py",
+        "src/orca_keychron_gjc/gjc_tracker.py",
+        "src/orca_keychron_gjc/config.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_second_receiver_never_unlinks_live_socket",
+          "layer": "integration",
+          "note": "실제 AF_UNIX listener 두 개의 contention에서 첫 endpoint 보존을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_stale_socket_recovery_and_unowned_file_refusal",
+          "layer": "integration",
+          "note": "stale owned socket 복구와 foreign file 거부를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_bind_leaf_replacement_never_chmods_or_removes_replacement",
+          "layer": "integration",
+          "note": "bind race에 주입한 leaf replacement의 mode와 byte 보존을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_device_lock.py",
+          "selector": "test_rejects_symlink_lock_without_changing_target",
+          "layer": "integration",
+          "note": "공유 private-path 정책의 symlink target 비변경 경계를 검증한다."
+        }
+      ],
+      "limitations": [
+        "same-user hostile path replacement를 완전히 배제하는 보안 sandbox는 아니다."
+      ]
+    },
+    {
+      "id": "R30",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "수신기 자원",
+      "title": "client·buffer 제한과 격리",
+      "statement": "receiver는 최대 32 client와 client별 frame buffer를 제한하고 malformed·partial·idle client를 격리하며 stop 시 receiver thread를 종료해야 한다.",
+      "acceptance": [
+        "동시에 관리하는 client 수는 32를 넘지 않는다.",
+        "client buffer는 512 KiB frame 한도를 넘겨 자라지 않는다.",
+        "malformed 또는 non-UTF-8 client 하나가 다른 정상 publisher를 중단시키지 않는다.",
+        "partial stall과 idle client는 capacity를 영구 점유하지 않는다.",
+        "stop은 listener와 receiver thread를 bounded하게 정리한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_source.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_bad_frame_drops_only_offender_and_next_launch_works",
+          "layer": "integration",
+          "note": "실제 socket에서 malformed client 격리 뒤 새 정상 launch를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_non_utf8_snapshot_is_rejected_without_registry_write",
+          "layer": "integration",
+          "note": "non-UTF-8 client가 registry를 변경하지 않는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_client_cap_and_partial_stalls_release_capacity_with_injected_clock",
+          "layer": "integration",
+          "note": "실제 connections와 injected monotonic clock으로 client cap과 partial stall 회수를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_receiver_surfaces_storage_failure_and_marks_unknown",
+          "layer": "integration",
+          "note": "주입 storage failure가 receiver 전체를 묵살하지 않고 unknown과 typed failure로 드러나는지 검증한다."
+        }
+      ],
+      "limitations": [
+        "테스트는 cap과 timeout을 작게 주입한 조합도 포함하며 장기 부하 benchmark는 아니다."
+      ]
+    },
+    {
+      "id": "R31",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "lease",
+      "title": "정확한 8초 monotonic lease",
+      "statement": "receiver는 마지막 유효 frame의 local monotonic receive time부터 정확히 8초 lease를 적용하고 EOF나 만료 시 slot을 유지한 채 launch를 unknown으로 표시해야 한다.",
+      "acceptance": [
+        "8초 이전에는 마지막 live 상태가 유지되고 deadline부터 unknown이 된다.",
+        "socket EOF는 즉시 unknown으로 만들되 slot을 회수하지 않는다.",
+        "producer wall clock 값은 lease를 연장하지 않는다.",
+        "재연결한 동일 producer의 최신 frame은 preserved slot을 회복한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_tracker.py",
+        "src/orca_keychron_gjc/gjc_source.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_tracker.py",
+          "selector": "test_fractional_lease_deadline_uses_absolute_bounds",
+          "layer": "unit",
+          "note": "주입 monotonic 값으로 fractional 8초 deadline 전후를 정확히 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_lease_uses_local_receive_clock_and_retains_slot",
+          "layer": "integration",
+          "note": "실제 receiver와 injected local clock으로 producer timestamp 비신뢰와 slot 보존을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_fractional_lease_disconnect_and_reconnection_trace",
+          "layer": "unit",
+          "note": "disconnect, exact deadline, reconnect의 생성 trace를 독립 oracle로 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "actual GJC producer kill과 receiver restart/backfill을 loopback provider로 실행하지만 정확한 8초 timer 경계 측정은 unit/integration clock tests가 담당한다."
+        }
+      ],
+      "limitations": [
+        "8초 lease는 process death 증명이 아니므로 수동 clear 권한을 주지 않는다."
+      ]
+    },
+    {
+      "id": "R32",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "수신 일관성",
+      "title": "sequence·generation 회귀 방지",
+      "statement": "receiver는 같은 producer의 오래된 sequence를 거부하고 새 full frame으로 history를 교체하며 바뀐 identity나 obsolete connection이 live launch를 탈취·disconnect하지 못하게 해야 한다.",
+      "acceptance": [
+        "낮거나 같은 stale sequence가 최신 상태를 덮어쓰지 못한다.",
+        "새로운 complete frame은 sequence gap 뒤에도 전체 상태를 교체한다.",
+        "producer 또는 launch metadata가 바뀐 frame은 live launch를 탈취하지 못한다.",
+        "새 connection이 owner가 된 뒤 이전 connection close는 false disconnect를 만들지 않는다.",
+        "retired generation은 slot에 부활하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_tracker.py",
+        "src/orca_keychron_gjc/gjc_source.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_tracker.py",
+          "selector": "test_changed_producer_and_launch_metadata_cannot_seize",
+          "layer": "unit",
+          "note": "producer·launch metadata 변조의 takeover negative cases를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_duplicate_reconnect_cannot_disconnect_live_owner",
+          "layer": "integration",
+          "note": "실제 두 connection의 obsolete close ordering을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_complete_snapshot_recovers_an_incomplete_gap_but_replays_cannot_regress",
+          "layer": "unit",
+          "note": "complete frame의 gap recovery와 replay regression 방지를 함께 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_identity_change_disconnects_original_but_preserves_other_root",
+          "layer": "integration",
+          "note": "identity change가 관련 root만 격리하고 다른 root를 보존하는지 검증한다."
+        }
+      ],
+      "limitations": [
+        "모든 scheduler 수준 race interleaving을 완전 탐색한 것은 아니다."
+      ]
+    },
+    {
+      "id": "R33",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "registry·slot",
+      "title": "원자 registry와 안정적 slot",
+      "statement": "registry는 검증된 표시 상태를 private file에 원자 저장하고 재시작 시 fresh frame 전까지 unknown을 유지하며 기존 slot과 overflow 순서를 안정적으로 복원해야 한다.",
+      "acceptance": [
+        "registry replace는 partial JSON을 노출하지 않고 0600 mode를 유지한다.",
+        "재시작으로 복원한 record는 fresh complete frame 전까지 unknown이다.",
+        "동일 launch는 reconnect와 receiver restart 뒤 기존 slot을 유지한다.",
+        "overflow는 status에 보이며 유효한 vacancy가 생길 때만 승격한다.",
+        "registry의 손상·unsafe type·capacity mismatch는 보존적으로 거부한다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_tracker.py",
+        "src/orca_keychron_gjc/gjc_source.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_tracker.py",
+          "selector": "test_stable_slots_shared_session_id_overflow_clear_and_closure",
+          "layer": "unit",
+          "note": "stable slot, shared session ID, overflow와 explicit closure를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_stop_restart_restores_unknown_and_new_complete_snapshot",
+          "layer": "integration",
+          "note": "실제 source restart 뒤 unknown restore와 fresh frame recovery를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_failed_registry_replace_leaves_no_partial_file_and_next_frame_recovers",
+          "layer": "integration",
+          "note": "주입 replace 실패 뒤 partial file 부재와 다음 frame 복구를 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "actual GJC 두 launch의 stable slots와 receiver restart/backfill을 loopback provider로 실행한다."
+        }
+      ],
+      "limitations": [
+        "동시 reader가 모든 filesystem에서 항상 같은 atomicity를 보는지에 대한 formal proof는 아니다."
+      ]
+    },
+    {
+      "id": "R34",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "소유권 복구",
+      "title": "process crash와 endpoint 분리",
+      "statement": "registry와 receiver 소유권은 process crash 뒤 회수 가능해야 하고 서로 다른 endpoint가 같은 registry를 공유해 손상시키지 못하며 stop은 자기 자원만 해제해야 한다.",
+      "acceptance": [
+        "live owner가 있는 registry는 두 번째 endpoint가 변경하지 못한다.",
+        "서로 다른 registry를 쓰는 receiver는 독립적으로 실행된다.",
+        "SIGKILL된 owner의 lock은 후속 process가 회수할 수 있고 committed registry는 보존된다.",
+        "restore 또는 receiver start 실패 시 새 ownership을 누수하지 않는다.",
+        "stop은 replacement나 다른 receiver 자원을 제거하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_source.py",
+        "src/orca_keychron_gjc/gjc_tracker.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_process_crash_releases_lock_and_preserves_registry",
+          "layer": "integration",
+          "note": "실제 subprocess crash 뒤 lock 회수와 registry byte 보존을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_shared_registry_refuses_distinct_endpoint_without_mutation",
+          "layer": "integration",
+          "note": "서로 다른 live endpoint의 shared registry 접근을 변경 없이 거부한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_failed_restore_releases_registry_lock",
+          "layer": "integration",
+          "note": "손상 restore 실패가 registry lock을 누수하지 않는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_storage_failure_foreground_and_restart_recovers_committed_state",
+          "layer": "integration",
+          "note": "foreground storage failure와 restart에서 마지막 committed 상태 복구를 검증한다."
+        }
+      ],
+      "limitations": [
+        "모든 on-disk crash write interleaving과 전원 손실을 증명하지 않는다."
+      ]
+    },
+    {
+      "id": "R35",
+      "kinds": [
+        "functional"
+      ],
+      "area": "launch 종료",
+      "title": "명시적 close만 slot 반환",
+      "statement": "`closed=true`인 명시적 root shutdown만 launch와 slot을 자연 해제하고 EOF나 retired launch의 늦은 frame은 회수·부활을 일으키지 않아야 한다.",
+      "acceptance": [
+        "유효한 closed snapshot은 해당 launch와 slot을 제거한다.",
+        "socket EOF와 process kill은 unknown으로만 전환하고 slot을 유지한다.",
+        "closure 뒤 overflow가 vacancy에 승격될 수 있다.",
+        "retired launch의 지연·재전송 frame은 부활하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_protocol.py",
+        "src/orca_keychron_gjc/gjc_tracker.py",
+        "src/orca_keychron_gjc/gjc_source.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_explicit_close_releases_slot_without_resurrection",
+          "layer": "integration",
+          "note": "실제 socket frame으로 explicit close, vacancy와 늦은 resurrection 거부를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_explicit_root_closure_reclaims_slot_even_with_a_pending_child",
+          "layer": "unit",
+          "note": "pending child가 있어도 explicit root closure의 slot 회수를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_protocol.py",
+          "selector": "test_explicit_closed_empty_snapshot",
+          "layer": "unit",
+          "note": "closed empty snapshot의 정확한 protocol shape를 검증한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "actual GJC의 explicit `/exit` close와 별도 producer kill unknown을 loopback provider로 구분해 실행한다."
+        }
+      ],
+      "limitations": [
+        "비정상 종료는 명시적 close로 간주하지 않는다."
+      ]
+    },
+    {
+      "id": "R36",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "수동 회수",
+      "title": "OS로 종료가 증명된 launch만 clear",
+      "statement": "clear는 disconnected launch의 local PID가 ESRCH로 확인된 경우에만 허용하고 connected, live, ambiguous 또는 invalid PID는 상태를 바꾸지 않고 거부해야 한다.",
+      "acceptance": [
+        "connected producer는 lease가 만료되어도 clear를 거부한다.",
+        "disconnected PID가 살아 있거나 권한 거부 등으로 불명확하면 거부한다.",
+        "local PID의 `ProcessLookupError` 또는 ESRCH만 death proof로 인정한다.",
+        "거부 시 launch, slot, registry, tombstone과 후속 heartbeat 처리가 유지된다.",
+        "존재하지 않는 launch는 변경 없는 no-op이다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_tracker.py",
+        "src/orca_keychron_gjc/gjc_source.py",
+        "src/orca_keychron_gjc/cli.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_live_clear_refusal_preserves_heartbeat_even_after_lease_expiry",
+          "layer": "integration",
+          "note": "live connection의 lease 만료 뒤 clear 거부와 후속 heartbeat 처리를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_disconnected_owned_child_only_clears_after_exit",
+          "layer": "integration",
+          "note": "실제 child process가 살아 있을 때 거부하고 종료 뒤 ESRCH로 clear하는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_disconnected_ambiguous_pid_refuses_without_mutation",
+          "layer": "unit",
+          "note": "permission·ambiguous OS 오류 주입에서 registry 비변경을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_distribution.py",
+          "selector": "test_installed_cli_preserves_human_priority_and_rejects_live_clear",
+          "layer": "integration",
+          "note": "installed wheel CLI가 live clear를 거부하고 상태 우선순위를 보존한다."
+        }
+      ],
+      "limitations": [
+        "PID reuse를 완전히 방지하는 process identity 보장은 없고 force clear는 제공하지 않는다."
+      ]
+    },
+    {
+      "id": "R37",
+      "kinds": [
+        "functional",
+        "nonfunctional"
+      ],
+      "area": "control API",
+      "title": "엄격하고 직렬화된 control",
+      "statement": "control 요청은 canonical UUID와 정확한 response schema를 사용하고 producer frame과 직렬 처리하며 clear 거절, unreachable, absent no-op을 CLI exit와 JSON에서 구분해야 한다.",
+      "acceptance": [
+        "비canonical launch UUID는 receiver 접촉 전에 거부한다.",
+        "status 성공, clear 성공, clear 거절 응답은 각자 허용된 정확한 필드와 타입만 가진다.",
+        "clear 거절은 `clear_refused`와 allowed reason을 반환하고 CLI exit 1이 된다.",
+        "bridge unreachable은 clear 거절과 구분된다.",
+        "control과 reconnect frame이 직렬 처리되어 clear된 상태를 stale frame이 부활시키지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_source.py",
+        "src/orca_keychron_gjc/cli.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_control_client_strictly_rejects_malformed_clear_rejections",
+          "layer": "unit",
+          "note": "clear 거절 response의 필드·타입·error reason 변형을 거부한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_status_client_rejects_negative_or_clear_response_shapes",
+          "layer": "integration",
+          "note": "실제 socket client가 status에 잘못 온 negative·clear shape를 거부한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_transport_faults.py",
+          "selector": "test_clear_serializes_before_queued_reconnect_without_resurrection",
+          "layer": "integration",
+          "note": "event-gated socket race에서 clear가 queued reconnect보다 먼저 직렬화되고 부활하지 않음을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_cli.py",
+          "selector": "test_clear_live_producer_reports_rejection_not_unreachable",
+          "layer": "unit",
+          "note": "CLI가 clear refusal과 unreachable을 다른 메시지와 exit로 처리하는지 검증한다."
+        }
+      ],
+      "limitations": [
+        "control protocol은 local private socket의 cooperative same-user boundary다."
+      ]
+    },
+    {
+      "id": "R38",
+      "kinds": [
+        "functional"
+      ],
+      "area": "상태 조회",
+      "title": "live·offline 상태의 명확한 구분",
+      "statement": "status는 live receiver 응답을 우선하고 연결 실패 시 private registry를 offline source로 읽어 stale record를 unknown으로 표시하며 count, overflow와 incomplete coverage를 content 없이 보여줘야 한다.",
+      "acceptance": [
+        "live bridge가 있으면 정확한 control status를 표시한다.",
+        "bridge가 없으면 registry 출처와 offline/stale임을 명시한다.",
+        "offline record의 과거 working·waiting·done을 live 상태처럼 표시하지 않고 unknown으로 강등한다.",
+        "agent count, pending count, overflow와 incomplete coverage를 노출한다.",
+        "Python 3.9에서도 transport timeout이 bounded error로 끝난다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/cli.py",
+        "src/orca_keychron_gjc/gjc_source.py",
+        "src/orca_keychron_gjc/gjc_tracker.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_cli.py",
+          "selector": "test_status_falls_back_to_registry_and_labels_it_offline",
+          "layer": "unit",
+          "note": "주입 offline status에서 registry source label을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_cli_process.py",
+          "selector": "test_cli_crash_restart_preserves_slots_then_reclaims_only_dead_launch",
+          "layer": "integration",
+          "note": "실제 CLI subprocess, SIGKILL, registry restore와 dead-only clear를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/integration/test_gjc_cli_process.py",
+          "selector": "test_plain_live_status_marks_incomplete_coverage_until_complete_followup",
+          "layer": "integration",
+          "note": "plain live status가 incomplete marker를 표시하고 fresh complete frame 뒤 제거하는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_source.py",
+          "selector": "test_control_timeout_is_bounded",
+          "layer": "integration",
+          "note": "응답하지 않는 local socket의 bounded timeout을 검증한다."
+        }
+      ],
+      "limitations": [
+        "상태 조회는 prompt나 답변 내용 자체를 제공하지 않는다."
+      ]
+    },
+    {
+      "id": "R39",
+      "kinds": [
+        "functional"
+      ],
+      "area": "상태 우선순위",
+      "title": "사람 요청 우선 집계",
+      "statement": "launch 상태는 `waiting > failed > working > unknown > done > idle` 순으로 집계하고 disconnect는 stale 상태를 unknown으로 덮으며 incomplete snapshot도 확인된 waiting·failed·working을 숨기지 않아야 한다.",
+      "acceptance": [
+        "모든 상태 subset과 session 순서에서 동일한 우선순위를 적용한다.",
+        "unresolved human request는 failure나 working보다 우선한다.",
+        "연결 끊김과 lease 만료는 stale waiting·done 대신 unknown이다.",
+        "`complete=false`여도 확인된 waiting·failed·working은 유지한다.",
+        "incomplete 상태에 상위 세 상태가 없으면 done/idle이 아니라 unknown이다."
+      ],
+      "implementation": [
+        "src/orca_keychron_gjc/gjc_tracker.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_all_priority_subsets_and_order_permutations_match_independent_oracle",
+          "layer": "unit",
+          "note": "1,956개 subset/order permutation을 생산 코드와 독립 oracle로 비교한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_state_invariants.py",
+          "selector": "test_incomplete_and_uncertain_states_obey_the_same_priority_boundary",
+          "layer": "unit",
+          "note": "incomplete·paused·cancelled·unknown 조합의 priority와 false success 방지를 검증한다."
+        },
+        {
+          "kind": "bun",
+          "target": "tests/gjc_hook_faults.test.ts",
+          "selector": "H-PRIORITY: pending ask remains waiting over failure, cancellation and retry",
+          "layer": "unit",
+          "note": "native-shaped event에서 ask가 failure/cancel/retry보다 우선함을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/e2e/test_gjc_e2e_audit.py",
+          "selector": "test_mass_oracle_rejects_later_orange_frame_with_different_count",
+          "layer": "unit",
+          "note": "다른 시점의 orange frame을 동일 snapshot 증거로 오인하는 oracle을 거부한다."
+        },
+        {
+          "kind": "scenario",
+          "target": "experiments/gjc-e2e-audit/run_audit.py",
+          "layer": "runtime",
+          "note": "GJC 0.16.4에서 캡처한 exact sequence 117을 installed tracker/renderer로 replay한다; live same-frame LED 관측이나 optical 검증은 아니다."
+        }
+      ],
+      "limitations": [
+        "actual mass color 증거는 exact captured snapshot replay이며 그 순간의 live renderer 관측이 아니다."
+      ]
+    },
+    {
+      "id": "R40",
+      "kinds": [
+        "functional"
+      ],
+      "area": "LED 표시",
+      "title": "상태별 색상과 빈 slot 표시",
+      "statement": "waiting, failed, working, unknown, done, idle은 각각 주황, 빨강, 노랑, 흰색, 초록, 하늘색으로 표시하고 빈 zone key도 하늘색으로 렌더링하되 idle launch로 집계하지 않아야 한다.",
+      "acceptance": [
+        "여섯 상태가 서로 구별되는 지정 palette로 변환된다.",
+        "waiting은 orange, failed는 red, working은 yellow, unknown은 white, done은 green, idle은 sky-blue다.",
+        "할당되지 않은 표시 키는 sky-blue지만 status에 idle launch를 추가하지 않는다.",
+        "overflow나 음수 slot이 다른 키를 색칠하지 않는다.",
+        "done은 현재 turn 종료만 뜻하고 전체 목표 완료를 뜻하지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron/rendering.py",
+        "src/orca_keychron_gjc/gjc_tracker.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_rendering.py",
+          "selector": "test_gjc_additional_states_are_distinct_from_orca_and_success",
+          "layer": "unit",
+          "note": "GJC 추가 상태 색이 기존 Orca와 success 색에서 구별되는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_rendering.py",
+          "selector": "test_render_zone_uses_sky_blue_for_unassigned_number_slots",
+          "layer": "unit",
+          "note": "빈 number row slot의 sky-blue 기본 렌더링을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_gjc_runtime_integration.py",
+          "selector": "test_actual_receiver_snapshot_drives_palette_fake_hid_and_navigation",
+          "layer": "integration",
+          "note": "실제 AF_UNIX receiver에서 fake HID까지 push된 palette를 검증하며 물리 HID는 아니다."
+        },
+        {
+          "kind": "manual",
+          "target": "docs/gjc-hardware-validation.md",
+          "layer": "hardware",
+          "note": "과거 Q65 Max의 다섯 RGB frame firmware ACK와 조명 복구 기록이다; 육안 색상과 실제 키 입력은 수행하지 않았다."
+        }
+      ],
+      "limitations": [
+        "빨강 포함 전체 palette의 optical color 검증은 수행하지 않았다.",
+        "hardware 기록은 현재 audit의 새 실행이 아니다."
+      ]
+    },
+    {
+      "id": "R41",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "렌더러 자원",
+      "title": "push-only 표시와 실패 복구",
+      "statement": "renderer는 receiver가 push한 공통 상태만 소비하고 GJC를 polling하지 않으며 receiver나 HID 실패와 정상 종료 모두에서 조명을 복원하고 자원을 해제해야 한다.",
+      "acceptance": [
+        "렌더 tick은 GJC 또는 원격 Orca를 직접 조회하지 않는다.",
+        "source가 push한 model과 local lease expiry만 사용한다.",
+        "source start·read 실패와 HID write 실패에서 이전 조명을 복원한다.",
+        "실패 뒤 source, HID handle과 cooperative lock을 모두 해제한다."
+      ],
+      "implementation": [
+        "src/orca_keychron/indicator.py",
+        "src/orca_keychron/rendering.py",
+        "src/orca_keychron_gjc/gjc_source.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_indicator.py",
+          "selector": "test_gjc_consumes_pushed_model_and_expires_lease_without_orca_polling",
+          "layer": "unit",
+          "note": "fake source/model로 GJC mode가 Orca poll 없이 push 상태를 소비하는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_indicator.py",
+          "selector": "test_gjc_runtime_failure_always_closes_source_and_device",
+          "layer": "unit",
+          "note": "주입 runtime fault에서 source와 device close를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_keychron_hid_faults.py",
+          "selector": "test_indicator_short_usb_write_restores_lighting_stops_source_and_releases_lock",
+          "layer": "integration",
+          "note": "fake HID short-write fault에서 restoration, source stop과 lock release를 검증한다."
+        },
+        {
+          "kind": "manual",
+          "target": "docs/gjc-hardware-validation.md",
+          "layer": "hardware",
+          "note": "과거 실제 Q65 Max firmware ACK와 조명 restore 기록이며 unplug·실제 GJC key input 검증은 아니다."
+        }
+      ],
+      "limitations": [
+        "실제 USB unplug 및 모든 펌웨어 오류 경로는 미검증이다."
+      ]
+    },
+    {
+      "id": "R42",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "HID 상호 배제",
+      "title": "공유 cooperative device lock",
+      "statement": "Orca 모드와 GJC 모드는 HID open 전에 같은 account-scoped cooperative lock을 획득해 협력 프로세스의 동시 소유를 막고 정상 종료와 SIGKILL 뒤 후속 owner를 허용해야 한다.",
+      "acceptance": [
+        "lock은 account-scoped private 경로를 사용한다.",
+        "lock 획득 전에는 HID enumeration이나 open을 수행하지 않는다.",
+        "동시 두 협력 process 중 하나만 ownership을 얻는다.",
+        "정상 release와 owner SIGKILL 뒤 다른 process가 lock을 얻는다.",
+        "symlink, hardlink, FIFO와 public mode lock path를 거부한다."
+      ],
+      "implementation": [
+        "src/orca_keychron/device_lock.py",
+        "src/orca_keychron/keychron_hid.py",
+        "src/orca_keychron/indicator.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_device_lock.py",
+          "selector": "test_two_actual_processes_contend_then_release_allows_new_owner",
+          "layer": "integration",
+          "note": "실제 두 Python process의 lock contention과 release 후 새 owner를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_device_lock.py",
+          "selector": "test_sigkill_owner_releases_lock_without_removing_file",
+          "layer": "integration",
+          "note": "실제 subprocess SIGKILL 뒤 inode 보존과 lock 회수를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_keychron_hid.py",
+          "selector": "test_contender_is_rejected_before_hid_enumeration_or_open",
+          "layer": "unit",
+          "note": "fake HID로 contender가 enumeration/open 전에 거부되는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_device_lock.py",
+          "selector": "test_rejects_fifo_without_blocking",
+          "layer": "integration",
+          "note": "FIFO lock path를 block 없이 거부한다."
+        }
+      ],
+      "limitations": [
+        "Keychron Launcher나 동일 lock을 사용하지 않는 임의 HID writer는 배제하지 못한다.",
+        "두 실제 HID-owning mode의 동시 물리 실행은 하지 않았다."
+      ]
+    },
+    {
+      "id": "R43",
+      "kinds": [
+        "functional"
+      ],
+      "area": "Orca 이동",
+      "title": "launch의 부모 pane으로 이동",
+      "statement": "Option과 표시 키를 선택하면 child나 launch ID가 아니라 해당 launch가 등록한 Orca 부모 pane으로 이동하고 stale·불일치 target에는 dispatch하지 않아야 한다.",
+      "acceptance": [
+        "GJC indicator는 worktree identity 없이 terminal handle과 pane key로 선택 가능하다.",
+        "선택 직전에 target이 사라지거나 slot이 재배정되면 이동을 취소한다.",
+        "navigator는 최신 terminal handle을 조회하고 정확한 worktree tab·pane 일치를 확인한다.",
+        "wrong tab 응답이나 stale target에는 switch 명령을 보내지 않는다."
+      ],
+      "implementation": [
+        "src/orca_keychron/digit_hold.py",
+        "src/orca_keychron/orca_navigation.py",
+        "src/orca_keychron_gjc/gjc_tracker.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_digit_hold.py",
+          "selector": "test_selection_accepts_gjc_without_worktree_identity",
+          "layer": "unit",
+          "note": "GJC launch target이 별도 worktree ID 없이 부모 pane metadata로 선택되는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_digit_hold.py",
+          "selector": "test_immediate_selection_cancels_when_target_disappears_before_dispatch",
+          "layer": "unit",
+          "note": "선택 후 dispatch 전 target disappearance을 취소하는 race를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_orca_navigation.py",
+          "selector": "test_navigator_refreshes_handle_and_switches_worktree_tab",
+          "layer": "unit",
+          "note": "가짜 Orca CLI 응답으로 handle refresh와 정확한 tab switch를 검증한다."
+        },
+        {
+          "kind": "manual",
+          "target": "docs/gjc-hardware-validation.md",
+          "layer": "hardware",
+          "note": "과거 실제 Orca target pane 이동과 원래 pane 복귀 기록이며 physical Option key path는 아니다."
+        }
+      ],
+      "limitations": [
+        "실제 Option key event tap부터 pane 이동까지의 물리 E2E는 수행하지 않았다."
+      ]
+    },
+    {
+      "id": "R44",
+      "kinds": [
+        "functional"
+      ],
+      "area": "키보드 단축키",
+      "title": "1~0,-,= 단축키와 입력 보존",
+      "statement": "macOS에서 Orca가 frontmost일 때만 Option+`1`~`0`,`-`,`=`을 12개 slot으로 즉시 매핑하고 key release·repeat·재배정을 안전하게 처리하며 다른 앱과 추가 modifier 입력은 통과시켜야 한다.",
+      "acceptance": [
+        "숫자열 1~0,-,=의 physical keycode가 slot 1~12에 대응한다.",
+        "Orca가 frontmost이고 유효 target이 있을 때 keydown에서 즉시 선택한다.",
+        "같은 키 repeat는 keyup 전 target을 추가 이동하지 않는다.",
+        "다른 앱이 frontmost이거나 Shift, Control, Command가 추가되면 입력을 가로채지 않는다.",
+        "slot 재배정 또는 listener startup failure에서 stale 이동과 native listener 누수를 막는다."
+      ],
+      "implementation": [
+        "src/orca_keychron/digit_hold.py"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_digit_hold.py",
+          "selector": "test_option_minus_and_equal_use_mac_physical_keycodes",
+          "layer": "unit",
+          "note": "macOS physical keycode의 -와 = slot 매핑을 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_digit_hold.py",
+          "selector": "test_option_digit_passes_through_when_orca_is_not_frontmost",
+          "layer": "unit",
+          "note": "fake Quartz event에서 다른 앱 frontmost 입력 통과를 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_digit_hold.py",
+          "selector": "test_mac_filter_passes_unmapped_and_extra_modifier_events_through",
+          "layer": "unit",
+          "note": "unmapped key와 Shift/Control/Command 조합을 통과시키는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_digit_hold.py",
+          "selector": "test_mac_repeat_does_not_advance_target_until_keyup",
+          "layer": "unit",
+          "note": "keydown repeat가 keyup 전 추가 이동하지 않는지 검증한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_digit_hold.py",
+          "selector": "test_listener_wait_failure_stops_started_native_listener",
+          "layer": "unit",
+          "note": "listener wait 실패 뒤 시작한 native listener 정리를 검증한다."
+        }
+      ],
+      "limitations": [
+        "실제 keyboard layout, Accessibility/Input Monitoring 권한과 물리 key 입력은 미검증이다."
+      ]
+    },
+    {
+      "id": "R45",
+      "kinds": [
+        "nonfunctional"
+      ],
+      "area": "증거·문서",
+      "title": "검증 층과 미검증 경계의 분리",
+      "statement": "문서는 source/unit/package/runtime/model/hardware 증거를 구분하고 테스트 통과를 모든 approval UI, 보편적 모델 준수, 임의 HID 배제, global service 활성화나 release 완료로 과장하지 않아야 한다.",
+      "acceptance": [
+        "최종 감사 문서는 실행한 software/package/runtime gate와 수행하지 않은 경계를 별도 기술한다.",
+        "actual GJC scenario가 deterministic loopback provider이고 실제 모델 검증이 아님을 명시한다.",
+        "hardware 기록은 firmware ACK·복구·pane 이동과 미실행 physical input·optical color를 구분한다.",
+        "global service, provider account, 실제 Ubuntu, commit·PR·release 미수행을 명시한다.",
+        "historical audit 기록을 현재 새 실행으로 표현하지 않는다."
+      ],
+      "implementation": [
+        "docs/gjc-keychron-development-ticket.md",
+        "docs/gjc-bridge-contract.md",
+        "docs/gjc-guide.md",
+        "docs/testing/gjc-second-audit.md"
+      ],
+      "verification": [
+        {
+          "kind": "pytest",
+          "target": "tests/test_requirements_traceability.py",
+          "selector": "test_registry_refuses_lost_history_broken_links_and_overclaimed_proof",
+          "layer": "unit",
+          "note": "자동 테스트를 runtime/hardware 증거로 잘못 분류하거나 요구사항·결정 연결을 잃는 구조적 오류를 거부한다. 모든 지원 범위 문구의 진실성은 문서 검토로 별도 확인한다."
+        },
+        {
+          "kind": "pytest",
+          "target": "tests/test_requirements_traceability.py",
+          "selector": "test_generated_text_must_follow_the_single_registry",
+          "layer": "unit",
+          "note": "JSON 원본과 생성 문서의 불일치를 거부한다. 원본 자체의 의미가 옳은지는 독립 리뷰가 필요하다."
+        },
+        {
+          "kind": "document",
+          "target": "docs/testing/gjc-second-audit.md",
+          "layer": "documentation",
+          "note": "동결된 2026-09-06 감사 결과와 남은 proof boundary를 기록한 역사 문서이며 이 registry 작성 중 행동 검증을 재실행하지 않았다."
+        },
+        {
+          "kind": "document",
+          "target": "docs/testing/gjc-requirements-matrix.md",
+          "layer": "documentation",
+          "note": "R01-R45의 원래 audit row와 final addendum를 함께 보존한 근거 문서다."
+        },
+        {
+          "kind": "document",
+          "target": "docs/gjc-hardware-validation.md",
+          "layer": "documentation",
+          "note": "과거 bounded hardware/navigation 증거와 physical·optical 미검증 경계를 명시한다."
+        },
+        {
+          "kind": "document",
+          "target": "experiments/gjc-e2e-audit/FINAL_REPORT.md",
+          "layer": "documentation",
+          "note": "frozen actual-GJC loopback scenario의 결과와 replay 한계를 기록하며 현재 새 실행이 아니다."
+        },
+        {
+          "kind": "document",
+          "target": "experiments/gjc-successor-audit/REPORT.md",
+          "layer": "documentation",
+          "note": "restart/successor actual-GJC fixture 결과와 자동 persistence·실제 모델 한계를 기록한 역사 증거다."
+        }
+      ],
+      "limitations": [
+        "R45는 문서 정확성 요구이며 직접 행동 자동화 테스트로 가장하지 않는다.",
+        "실제 키 입력·optical color·실제 모델·global service·actual Ubuntu는 미실행이다."
+      ]
+    }
+  ]
+}

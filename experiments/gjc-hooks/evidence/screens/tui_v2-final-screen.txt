@@ -1,0 +1,51 @@
+source=screen
+╭─── gjc v0.16.4 · release build · GJC Forge ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │ What's New                                                                                            │
+│                                                                                                       │ ▸ Added selectable astra-lite, astra-default, and astra-heavy CODEX presets with ASTRA- labels, plus …│
+│                                                                                                       │ ▸ An interactive gjc now shows up inside Paseo by itself, controllable from the desktop and mobile ap…│
+│                                                                                                       │ ▸ Corrected a stale claim in docs/external-control-readiness.md: interactive gjc sessions are broker-…│
+│                                                                                                       │ ▸ An externally submitted prompt against a session on the SDK-only host runtime no longer hangs forev…│
+│                                                                                                       │ ▸ An ACP client attached to a live interactive session now receives the turn it submitted: assistant …│
+│                                                                                                       │ ▸ gjc no longer reports an error at every interactive launch when the Paseo daemon requires a passwor…│
+│                                                                                                       │ ▸ Status-line settings now include a draft-local spatial custom editor with exact-slot keyboard reord…│
+│                                                                                                       │ ▸ Added opt-in reasoningLanguage: english guidance for technical work while preserving the user's req…│
+│                                                                                                       │ ▸ Interactive assistant textdelta presentation now coalesces eligible updates into the latest message…│
+│                                                                                                       │ ▸ Credential replacement lookups now propagate the owning request's cancellation through scoped and a…│
+│                                                                                                       │ ▸ Removing the committed status-line command segment or clearing its trusted command now cancels the …│
+│                                               GJC Forge                                               │ … /changelog for full notes                                                                           │
+│                                          shape · act · prove                                          │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                                                                                       │ Flow keys                                                                                             │
+│                                 ╭────────────────╮        ╭────────╮                                  │ / commands · # actions · ! shell · $ python · ? keymap · ⌃L model · ⇧⇥ reasoning · ⇥ complete         │
+│                                 ╰──────╮      ╭──╯     ╭──╯  ╭─────╯                                  │ ⌃J newline · ⌃C clear                                                                                 │
+│                                        ╰──────╯    ╭───╯  ╭──╯                                        │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                        ╭──────╮    ╰───╮  ╰──╮                                        │ Project pulse                                                                                         │
+│                                 ╭──────╯      ╰──╮     ╰──╮  ╰─────╮                                  │ No LSP servers                                                                                        │
+│                                 ╰────────────────╯        ╰────────╯                                  │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                                                                                       │ Session trail                                                                                         │
+│                                                ⣾ ready                                                │ No saved trails                                                                                       │
+│                                            [ ⬢ Local ask ]                                            │                                                                                                       │
+│                                          [ 📦 keychron-lab ]                                          │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ ✔ New session started
+ user
+ [GJC_CASE:success]
+ gajae
+ LOCAL_EXPERIMENT_COMPLETE success
+ ⬢ lab-ask · 0.0% / 🗑 …eriments/cases/tui_v2/workspace ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── v0.16.4
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ > Type your message... ⌥Q: Queue (busy) · ⇧⇥: Thinking · ⌃L: Model · ⌃R: History · ⇧↩/⌃J: New line · ⌃C: Clear                                                                                                │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

@@ -1,0 +1,2 @@
+COMMAND ['/tmp/gjc-test-audit/final-py313/bin/python', '-m', 'ruff', 'check', '.']
+All checks passed!

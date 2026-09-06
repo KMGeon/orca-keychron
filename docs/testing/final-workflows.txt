@@ -1,0 +1,1 @@
+COMMAND ['/tmp/gjc-linux-ci-audit/bin/actionlint', '.github/workflows/tests.yml', '.github/workflows/publish.yml']

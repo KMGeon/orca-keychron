@@ -1,0 +1,84 @@
+MUTANT: orange-priority EXIT: 1
+bun test v1.4.0 (34cbb9a40)
+
+../../../../../../private/var/folders/2k/mc6hm2hs6rq726jxg7134yb00000gn/T/gjc-hook-mutation-leiie6i9/faults.test.ts:
+119 | 
+120 | test("H-PRIORITY: pending ask remains waiting over failure, cancellation and retry", () => {
+121 |   const f = fixture(); ask(f.root, "pending", "r");
+122 |   for (const [type, payload] of [["agent_failed", { error: secret }], ["agent_end", { stopReason: "aborted" }], ["auto_retry_start", { errorMessage: secret }]] as const) {
+123 |     f.root.send(type, payload);
+124 |     expect(f.state()).toMatchObject({ state: "waiting", pendingAsks: 1 });
+                            ^
+error: expect(received).toMatchObject(expected)
+
+  {
+    "pendingAsks": 1,
+-   "state": "waiting",
++   "pendingDecisions": 0,
++   "role": "root",
++   "sessionId": "root",
++   "state": "unknown",
+  }
+
+- Expected  - 1
++ Received  + 4
+
+      at <anonymous> (/private/var/folders/2k/mc6hm2hs6rq726jxg7134yb00000gn/T/gjc-hook-mutation-leiie6i9/faults.test.ts:124:23)
+(fail) H-PRIORITY: pending ask remains waiting over failure, cancellation and retry [0.93ms]
+
+ 0 pass
+ 22 filtered out
+ 1 fail
+ 1 expect() calls
+Ran 1 test across 1 file. [17.00ms]
+
+MUTANT: deep-pending-retention EXIT: 1
+bun test v1.4.0 (34cbb9a40)
+
+../../../../../../private/var/folders/2k/mc6hm2hs6rq726jxg7134yb00000gn/T/gjc-hook-mutation-25va56nm/faults.test.ts:
+106 |     child.send("agent_end", { messages: [{ role: "assistant", stopReason: "stop" }] });
+107 |     child.send("session_shutdown");
+108 |   }
+109 |   f.root.send("agent_end", { messages: [{ role: "assistant", stopReason: "stop" }] });
+110 |   f.root.switch("new", "new"); f.root.switch("root");
+111 |   expect(f.publisher.snapshot()!.sessions.filter(row => row.state === "waiting")).toHaveLength(3);
+                                                                                        ^
+error: expect(received).toHaveLength(expected)
+
+Expected length: 3
+Received length: 0
+
+      at <anonymous> (/private/var/folders/2k/mc6hm2hs6rq726jxg7134yb00000gn/T/gjc-hook-mutation-25va56nm/faults.test.ts:111:83)
+(fail) H-PENDING: root completion and nested terminal events retain every deep request [1.26ms]
+297 |   const f = fixture(); const original = f.loader("child");
+298 |   yieldDecision(original, "y", "r");
+299 |   const reopened = f.loader("child"); reopened.send("session_start"); reopened.send("agent_start");
+300 |   original.send("agent_end", { messages: [{ role: "assistant", stopReason: "stop" }] });
+301 |   original.send("session_shutdown");
+302 |   expect(f.state("child")).toMatchObject({ state: "waiting", pendingDecisions: 1 });
+                                 ^
+error: expect(received).toMatchObject(expected)
+
+  {
+-   "pendingDecisions": 1,
+-   "state": "waiting",
++   "pendingAsks": 0,
++   "pendingDecisions": 0,
++   "role": "child",
++   "sessionId": "child",
++   "state": "unknown",
+  }
+
+- Expected  - 2
++ Received  + 5
+
+      at <anonymous> (/private/var/folders/2k/mc6hm2hs6rq726jxg7134yb00000gn/T/gjc-hook-mutation-25va56nm/faults.test.ts:302:28)
+(fail) H-PENDING: reopening a child ID and late terminal events retain unresolved decision [0.23ms]
+
+ 0 pass
+ 21 filtered out
+ 2 fail
+ 2 expect() calls
+Ran 2 tests across 1 file. [16.00ms]
+
+Both semantic mutants killed; shared source was never altered.

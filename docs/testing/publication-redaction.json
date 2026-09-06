@@ -1,0 +1,182 @@
+{
+  "recordedAtUtc": "2026-09-06T05:36:12.758705+00:00",
+  "purpose": "Sanitized public copies of historical evidence; no new test execution is claimed.",
+  "originals": "Preserved privately outside the repository and excluded from branch history.",
+  "placeholders": {
+    "<workspace>": "repository checkout root",
+    "<home>": "local user home directory",
+    "<redacted ambient environment>": "entire process environment mapping removed"
+  },
+  "historicalHashes": "Earlier receipts still describe their original execution inputs. Use this mapping to verify published copies; do not treat a redaction as a fresh run.",
+  "files": [
+    {
+      "path": "docs/reviews/gjc-astra-final.md",
+      "originalSha256": "8e02ac087b440c2f44c7f4f36a205c90a4e9834a71311d85f1349d174ab5af55",
+      "publishedSha256": "287e27a09e300683c22e1b9b04885f88005a5bb7e8e30bdfbbaf0b654b3f7f15",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/reviews/gjc-astra-release.md",
+      "originalSha256": "e0e23ad3ec25d716d31e76d9e1dafa8d3358287c77663b4f3945f98c7d8fc0e6",
+      "publishedSha256": "92c4a7fc6ef045ee632ca2ae10cd03d05adce3705634e557e67bdfd92e5bba02",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/reviews/gjc-fable-release.md",
+      "originalSha256": "ae109af7ebf2bfd260bd9d81fc8a2a3411b9180154b965eeb362d598b902fbbd",
+      "publishedSha256": "27f6eb6a19976d1efd93b493560d4b8f951a5b61a5fd62f8ef2d437a148b5dff",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/testing/final-coverage-json.txt",
+      "originalSha256": "0a9ce198dd7b81a7a8ebed89188b45096c8d0924e176f3f08974038fd0e4f586",
+      "publishedSha256": "8b181533d0acc55240e1366751fef74307a42bb3d4d71fb2ed660ac0eb54a9ee",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/testing/final-gate-initial-results.json",
+      "originalSha256": "ea2e8162220b3614043420f44b034f1a2c8efa2a02c253b86d88f88ba7c2cbe4",
+      "publishedSha256": "3fa731506c992ab6fac06baaba3ce29adfb86d3a9ab2095f6e3bff3958538fcd",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/testing/final-gate-results.json",
+      "originalSha256": "579958af07910df4f86dcd2b1a66b928a3f9fd30a90a5d91a6432aec1cac696c",
+      "publishedSha256": "cf1ba30264022b814a2de187cef1ea21ffe048049c566b2e2887351209c686cf",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/testing/gjc-cap-priority-red.txt",
+      "originalSha256": "da7e2599792c296f3d3171efcd743934c885245d33f1390374d441dbafdfbcaa",
+      "publishedSha256": "5df6aaf66b6743eae0fc6bfa5347a5e933deaccc9dddc544d6ce5237722b7b80",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/testing/gjc-fable-second-review.md",
+      "originalSha256": "4d082665847218e9ceb0682f79d7554b9e6772550c9bd3f8c9bc2180c037b021",
+      "publishedSha256": "581d8eea6a2989c2b22e6a176954f65474edaab5f49e62ad0f9079b3ce8b768f",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/testing/gjc-hook-second-audit-red.txt",
+      "originalSha256": "fe2fb02eb85b7d22cd99db1544bd752ce7c34a2e6a13962504331aea893ab20b",
+      "publishedSha256": "709aa89702ed24dd304c0b655ba6c421b2cd7fe013140ec544953c123599aa67",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/testing/gjc-linux-ci-validation.md",
+      "originalSha256": "3f2c618711b181c3ab0f024547e160cef8d72d1784e5bcd9d5253e4e5963d7dd",
+      "publishedSha256": "374527fd5f817e325a696864ac3679d36d73e8226ed8ba5c997b5ca3f038ccc6",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "docs/testing/gjc-status-coverage-interpreter-race.txt",
+      "originalSha256": "045a2a60b093da7ab77540b219243a11abc1e483c355aa5b54a09592ea3b3639",
+      "publishedSha256": "1e3db0a5dd56b737f02634ac450880596ae25a8f62fc4673ebbdec7669146dbd",
+      "transformations": [
+        "absolute home/workspace prefixes normalized",
+        "complete ambient environment mappings removed"
+      ]
+    },
+    {
+      "path": "experiments/gjc-e2e-audit/evidence/final-a7-oracle-rejected.json",
+      "originalSha256": "e6ca1baf6cc17aafcc7199fe87ab8a11b2fe92f1da01a53abe71dc1d12664c70",
+      "publishedSha256": "b839bf0e2431053fadd07e07653619ff13fd8a710773f1e02454b6e8f28a648d",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-e2e-audit/evidence/final.json",
+      "originalSha256": "0c376f80a542feb12d212a187c1f4750b87a526b23e5c0e470370de5e0cb2b69",
+      "publishedSha256": "b13e9832ced2053de9aba50ab8a743eb962982b8bfcfb3a478ffde7b9b22fcf3",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-hooks/evidence/cases/matrix_isolation_cwd_committed/events.jsonl",
+      "originalSha256": "567c99bf89b8a1fdd492e87c9c08dad393637811179d641e54fd8ea91bbe8f0a",
+      "publishedSha256": "3394f8a82b835a29b9883bd8b988316185e39b8cb838463c3ba07c59ee5679b9",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-hooks/evidence/cases/matrix_isolation_cwd_uncommitted/events.jsonl",
+      "originalSha256": "afdf8510d5dddf1727d5c75287ccd68f0a3614c5d0648ff47fa7eaea094fd1f5",
+      "publishedSha256": "7faff4255f41863fd24683f253d599745c0a396c32809e78a1f12f0290cbf7e6",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-hooks/evidence/cleanup-verification.json",
+      "originalSha256": "7168e7e88cd3a03fe520ad9064383bd15091fcb71a88c55c853e410ce04ac828",
+      "publishedSha256": "4720218bb4e9d8709d09233360d7ed43ef8af3e6d285a4b8e7c5c7ea25098af4",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-hooks/evidence/matrix-cleanup.json",
+      "originalSha256": "42177fe71bf2216e23b508105a919987d3093df63031b9e56a63ce1c4d87be48",
+      "publishedSha256": "2a55075e8abd0ddcf57bcfa238273f924a9ea610978ed8eab650f8bb0e710f98",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-hooks/evidence/matrix-runtime-results.json",
+      "originalSha256": "92be78c3310a4f2634f246d28626c6a48c0548f8fbd05b71fd9f2774057711fa",
+      "publishedSha256": "e8b4da2d3a11878fb0917c7ea08fbcda9aa4a261af9c553f66caeeee5e763d2f",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-hooks/evidence/server-cleanup.json",
+      "originalSha256": "e9f675972921c9e8159734b827ecb707095565f7a53034738e55589b38b069db",
+      "publishedSha256": "5826812f934097299fdaabdedd248fbb7f946b4f6fed0ad56fc0b2bc1c5452a7",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-product-qa/evidence/verdicts.json",
+      "originalSha256": "d1aa742714697185debfcfaa9c427eab350ef8a74087c1171f47ffbf470dbffd",
+      "publishedSha256": "0dc91a431fd6a1183d70246e2257b81a146d318f5832994242fefa5f4d83f150",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    },
+    {
+      "path": "experiments/gjc-successor-audit/evidence/final.json",
+      "originalSha256": "68593bd56a5bd2a5380dc2cc1f94057d582ec25e923084251fed2bbb364b6d97",
+      "publishedSha256": "998764f37640bd133b9d368a8b598b0505b2b08b39b548223c5240feb29d6e0f",
+      "transformations": [
+        "absolute home/workspace prefixes normalized"
+      ]
+    }
+  ]
+}

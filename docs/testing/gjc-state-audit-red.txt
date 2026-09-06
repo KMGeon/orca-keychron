@@ -1,0 +1,39 @@
+GJC protocol/tracker second audit - RED evidence
+Date: 2026-09-06 Asia/Seoul
+
+Command:
+  uv run pytest -q tests/test_gjc_state_invariants.py
+
+Initial challenge result:
+  3 failed, 38 passed in 2.17s
+
+Rejected oracle (no product change retained):
+  STATE-3 test_closed_sessions_do_not_keep_stale_pending_requests_alive
+    Expected: (state, agent_count, pending_requests) == ("done", 1, 0)
+    Actual:   ("waiting", 1, 2)
+    Resolution: coordinator/native-owner review confirmed child shutdown does
+                not prove an unresolved human request is answered. The final
+                invariant preserves waiting priority and pending counters while
+                excluding the closed child from agent_count.
+
+Proven product failure:
+  REG-2 test_registry_fifo_is_rejected_without_blocking_startup
+    Expected: subprocess rejects a mode-0600 FIFO registry with PermissionError.
+    Actual:   subprocess.TimeoutExpired after the bounded 2-second guard.
+    Cause: gjc_tracker._restore opened the path in blocking read mode before
+           fstat could enforce the regular-file requirement.
+
+Additional cross-layer protocol RED:
+  Command:
+    uv run pytest -q tests/test_gjc_state_invariants.py \
+      -k 'snapshot_bytes_require or snapshot_bytes_reject'
+  Result:
+    3 failed, 41 deselected in 0.05s
+  WIRE-5 failures:
+    parse_snapshot(bytes) accepted UTF-16LE, UTF-32LE, and a UTF-8 BOM because
+    json.loads(bytes) performs encoding autodetection. JSON Lines requires
+    strict UTF-8 and forbids a BOM.
+
+Test-authoring failure (not a product defect):
+  MUT-1 initially replaced a staticmethod with a binding lambda and raised
+  TypeError. The mutation probe was corrected before green verification.

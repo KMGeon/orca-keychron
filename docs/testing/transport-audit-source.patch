@@ -1,0 +1,23 @@
+--- docs/testing/transport-audit-source-before.txt	2026-09-06 04:22:01
++++ src/orca_keychron_gjc/gjc_source.py	2026-09-06 04:20:38
+@@ -53,7 +53,7 @@
+ 
+ def _decode(data: bytes) -> Any:
+     try:
+-        return json.loads(data, object_pairs_hook=_unique_json_object)
++        return json.loads(data.decode("utf-8"), object_pairs_hook=_unique_json_object)
+     except (ValueError, UnicodeError, RecursionError) as exc:
+         raise GjcProtocolError("Invalid control JSON") from exc
+ 
+@@ -216,8 +216,10 @@
+                 self._listener = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+                 self._listener.bind(str(self.socket_path))
+                 info = self.socket_path.lstat()
++                if not stat.S_ISSOCK(info.st_mode) or info.st_uid != os.getuid():
++                    raise PermissionError("Socket path changed while binding")
+                 self._inode = info.st_dev, info.st_ino
+-                os.chmod(self.socket_path, 0o600)
++                os.chmod(self.socket_path, 0o600, follow_symlinks=False)
+                 self._listener.listen(MAX_CLIENTS)
+                 self._listener.setblocking(False)
+                 self._selector = selectors.DefaultSelector()

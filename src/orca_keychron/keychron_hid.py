@@ -6,6 +6,8 @@ from contextlib import suppress
 from dataclasses import dataclass
 from typing import Any
 
+from .device_lock import DeviceLockError, DeviceOwnershipLock
+
 VID_KEYCHRON = 0x3434
 RAW_USAGE_PAGE = 0xFF60
 RAW_USAGE = 0x61
@@ -64,32 +66,46 @@ def enumerate_keychron_interfaces(hid_module: Any = None) -> list[KeychronInterf
 
 class KeychronDevice:
     def __init__(self, product: str | None = None, hid_module: Any = None) -> None:
-        self._hid = hid_module or load_hid()
-        candidates = enumerate_keychron_interfaces(self._hid)
         self._device = None
         self.product = ""
-        for candidate in candidates:
-            if product and product.lower() not in candidate.product.lower():
-                continue
-            device = self._hid.device()
-            try:
-                device.open_path(candidate.path)
+        self._ownership = DeviceOwnershipLock()
+        try:
+            self._ownership.acquire()
+        except DeviceLockError as exc:
+            raise KeychronError(str(exc)) from exc
+        try:
+            self._hid = hid_module or load_hid()
+            candidates = enumerate_keychron_interfaces(self._hid)
+            for candidate in candidates:
+                if product and product.lower() not in candidate.product.lower():
+                    continue
+                device = self._hid.device()
                 self._device = device
-                self.product = candidate.product
-                if self.protocol_version() is not None:
-                    return
-            except OSError:
-                pass
-            with suppress(OSError):
+                try:
+                    device.open_path(candidate.path)
+                    self.product = candidate.product
+                    if self.protocol_version() is not None:
+                        return
+                except OSError:
+                    pass
+                # A failing close must not leave this instance with a handle
+                # that is later reused or prevent the ownership lock releasing.
+                self._device = None
                 device.close()
-            self._device = None
-        suffix = f" matching {product!r}" if product else ""
-        raise KeychronError(f"No responding Keychron raw HID interface found{suffix}")
+            suffix = f" matching {product!r}" if product else ""
+            raise KeychronError(f"No responding Keychron raw HID interface found{suffix}")
+        except BaseException:
+            with suppress(Exception):
+                self.close()
+            raise
 
     def close(self) -> None:
-        if self._device is not None:
-            self._device.close()
-            self._device = None
+        device, self._device = self._device, None
+        try:
+            if device is not None:
+                device.close()
+        finally:
+            self._ownership.release()
 
     def _write(self, payload: Sequence[int]) -> None:
         if self._device is None:
@@ -97,7 +113,14 @@ class KeychronDevice:
         if len(payload) > REPORT_LENGTH:
             raise ValueError("HID payload exceeds 32 bytes")
         report = bytes([0]) + bytes(payload).ljust(REPORT_LENGTH, b"\x00")
-        self._device.write(report)
+        written = self._device.write(report)
+        # hidapi returns the transferred byte count. Some test/dummy backends
+        # return None, but a reported short write must never be treated as a
+        # successfully rendered frame because the caller then suppresses retry.
+        if written is not None and written != len(report):
+            raise KeychronError(
+                f"Keychron did not accept the complete HID report ({written}/{len(report)} bytes)"
+            )
 
     def _xfer(self, payload: Sequence[int], timeout_ms: int = 1000) -> bytes:
         self._write(payload)

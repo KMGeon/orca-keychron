@@ -1,0 +1,37 @@
+GJC installer/config/autostart second audit - GREEN evidence
+Date: 2026-09-06 Asia/Seoul
+Task: task_6d650a53ac47 / ctx_fb75e13996de
+
+Python 3.13 focused command:
+
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/gjc-test-audit/final-py313/bin/python -m pytest -q tests/test_gjc_install.py tests/test_gjc_install_faults.py tests/test_gjc_config.py tests/test_gjc_autostart.py tests/test_gjc_autostart_faults.py
+
+Result:
+
+  95 passed in 0.55s
+
+Python 3.9.6 focused command:
+
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src uv run --no-project --no-sync --python /Library/Developer/CommandLineTools/usr/bin/python3 --with 'pytest>=8,<9' python -m pytest -q tests/test_gjc_install.py tests/test_gjc_install_faults.py tests/test_gjc_config.py tests/test_gjc_autostart.py tests/test_gjc_autostart_faults.py
+
+Result:
+
+  95 passed in 1.09s
+
+Python 3.9 import boundary:
+
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /Library/Developer/CommandLineTools/usr/bin/python3 -c 'import orca_keychron_gjc.gjc_install, orca_keychron_gjc.config, orca_keychron_gjc.autostart; print("python39-import-ok")'
+
+Result:
+
+  python39-import-ok
+
+Focused lint command:
+
+  /tmp/gjc-test-audit/final-py313/bin/python -m ruff check src/orca_keychron_gjc/gjc_install.py src/orca_keychron_gjc/config.py src/orca_keychron_gjc/autostart.py tests/test_gjc_install.py tests/test_gjc_install_faults.py tests/test_gjc_config.py tests/test_gjc_autostart.py tests/test_gjc_autostart_faults.py
+
+Result:
+
+  All checks passed!
+
+These are source/temp-filesystem/fake-launchctl tests only. No real launchctl mutation, global installation, model/provider account, HID open, or physical keyboard action was performed.

@@ -1,0 +1,471 @@
+[
+  {
+    "case": "read_doc",
+    "scenario": "read",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.438,
+    "hookEvents": 11,
+    "streamEvents": 11,
+    "types": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "tool_call",
+      "tool_result",
+      "turn_end",
+      "turn_start",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b0-e310-77fe-be7a-9f3a2e3d6eda"
+    ],
+    "terminal": [
+      {
+        "schemaVersion": 1,
+        "producerId": "ffc81d05-246b-4715-be38-7405eea74a5d",
+        "sequence": 10,
+        "eventId": "ffc81d05-246b-4715-be38-7405eea74a5d:10",
+        "observedAt": "2026-09-05T17:49:50.803Z",
+        "pid": 90929,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b0-e310-77fe-be7a-9f3a2e3d6eda",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "read_runtime",
+    "scenario": "read",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.453,
+    "hookEvents": 18,
+    "streamEvents": 18,
+    "types": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "tool_call",
+      "tool_execution_start",
+      "tool_result",
+      "tool_execution_end",
+      "message_end",
+      "turn_end",
+      "turn_start",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b0-e30f-71d1-b172-ad19b1237dec"
+    ],
+    "terminal": [
+      {
+        "schemaVersion": 1,
+        "producerId": "7d62d312-85e3-4d5a-be2c-bf648e708b7c",
+        "sequence": 17,
+        "eventId": "7d62d312-85e3-4d5a-be2c-bf648e708b7c:17",
+        "observedAt": "2026-09-05T17:49:50.823Z",
+        "pid": 90930,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b0-e30f-71d1-b172-ad19b1237dec",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "read_named",
+    "scenario": "read",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.44,
+    "hookEvents": 10,
+    "streamEvents": 10,
+    "types": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "tool_result",
+      "turn_end",
+      "turn_start",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b0-e310-7210-99c5-fbdca8324afd"
+    ],
+    "terminal": [
+      {
+        "schemaVersion": 1,
+        "producerId": "9963fae0-b9bf-4b53-81a5-d6f4c685f2a5",
+        "sequence": 9,
+        "eventId": "9963fae0-b9bf-4b53-81a5-d6f4c685f2a5:9",
+        "observedAt": "2026-09-05T17:49:50.817Z",
+        "pid": 90931,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b0-e310-7210-99c5-fbdca8324afd",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "bash",
+    "scenario": "bash",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.384,
+    "hookEvents": 18,
+    "streamEvents": 18,
+    "types": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "tool_execution_start",
+      "tool_call",
+      "tool_result",
+      "tool_execution_end",
+      "message_end",
+      "turn_end",
+      "turn_start",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b0-e9fc-704d-ab7e-ff72c46e45bc"
+    ],
+    "terminal": [
+      {
+        "schemaVersion": 1,
+        "producerId": "cfe11978-5549-436c-93d7-e9fd27a9df25",
+        "sequence": 17,
+        "eventId": "cfe11978-5549-436c-93d7-e9fd27a9df25:17",
+        "observedAt": "2026-09-05T17:49:52.505Z",
+        "pid": 91008,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b0-e9fc-704d-ab7e-ff72c46e45bc",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "tool_failure",
+    "scenario": "tool_failure",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.361,
+    "hookEvents": 18,
+    "streamEvents": 18,
+    "types": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "tool_call",
+      "tool_execution_start",
+      "tool_result",
+      "tool_execution_end",
+      "message_end",
+      "turn_end",
+      "turn_start",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b0-e9fc-74c2-b524-46ac27b193e1"
+    ],
+    "terminal": [
+      {
+        "schemaVersion": 1,
+        "producerId": "73d6b21b-094d-423d-88ab-f7d4f1e76146",
+        "sequence": 17,
+        "eventId": "73d6b21b-094d-423d-88ab-f7d4f1e76146:17",
+        "observedAt": "2026-09-05T17:49:52.483Z",
+        "pid": 91009,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b0-e9fc-74c2-b524-46ac27b193e1",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "tool_retry",
+    "scenario": "retry",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.369,
+    "hookEvents": 26,
+    "streamEvents": 26,
+    "types": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "tool_call",
+      "tool_execution_start",
+      "tool_result",
+      "tool_execution_end",
+      "message_end",
+      "turn_end",
+      "turn_start",
+      "message_end",
+      "tool_call",
+      "tool_execution_start",
+      "tool_result",
+      "tool_execution_end",
+      "message_end",
+      "turn_end",
+      "turn_start",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b0-e9fc-7153-8500-a4fcacfca581"
+    ],
+    "terminal": [
+      {
+        "schemaVersion": 1,
+        "producerId": "9f35e0e6-6f37-4832-8ddd-86c2649a5e3b",
+        "sequence": 25,
+        "eventId": "9f35e0e6-6f37-4832-8ddd-86c2649a5e3b:25",
+        "observedAt": "2026-09-05T17:49:52.506Z",
+        "pid": 91010,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b0-e9fc-7153-8500-a4fcacfca581",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "http_error",
+    "scenario": "http_error",
+    "returncode": 1,
+    "timedOut": false,
+    "seconds": 1.439,
+    "hookEvents": 10,
+    "streamEvents": 10,
+    "types": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b0-f119-73b5-b0ca-124fb045b569"
+    ],
+    "terminal": [
+      {
+        "schemaVersion": 1,
+        "producerId": "65b278d8-d38d-4682-8f0c-28cf1e8a4186",
+        "sequence": 9,
+        "eventId": "65b278d8-d38d-4682-8f0c-28cf1e8a4186:9",
+        "observedAt": "2026-09-05T17:49:54.243Z",
+        "pid": 91068,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b0-f119-73b5-b0ca-124fb045b569",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "error",
+            "hasError": true
+          }
+        ]
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "stream_error",
+    "scenario": "stream_error",
+    "returncode": 1,
+    "timedOut": false,
+    "seconds": 1.439,
+    "hookEvents": 10,
+    "streamEvents": 10,
+    "types": [
+      "session_start",
+      "before_agent_start",
+      "agent_start",
+      "turn_start",
+      "message_end",
+      "message_end",
+      "message_end",
+      "turn_end",
+      "agent_end",
+      "session_shutdown"
+    ],
+    "sessionIds": [
+      "01a072b0-f118-713f-94ce-0f21c2b36104"
+    ],
+    "terminal": [
+      {
+        "schemaVersion": 1,
+        "producerId": "b1fd0689-a3c1-4332-b699-f2cf30dd2b60",
+        "sequence": 9,
+        "eventId": "b1fd0689-a3c1-4332-b699-f2cf30dd2b60:9",
+        "observedAt": "2026-09-05T17:49:54.222Z",
+        "pid": 91069,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b0-f118-713f-94ce-0f21c2b36104",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "error",
+            "hasError": true
+          }
+        ]
+      }
+    ],
+    "stderrTail": ""
+  }
+]

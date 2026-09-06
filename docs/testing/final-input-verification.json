@@ -1,0 +1,8 @@
+{
+  "productInputs": 29,
+  "testInputs": 43,
+  "productManifestSha256": "108f8180c65bcec81e8c89a0f8b5f2d8ae1e5731e55ac0f21b2759013b015126",
+  "testManifestSha256": "0cac6a6cf04d4241b47f5f03b5b8d2e48ac259295c3e1c7abeb4c92890155b87",
+  "wheelSha256": "134977ddf53a54903f9af9471cac8b511605539529193bb049f5c6a1cb56e48d",
+  "beforeAfterMatch": true
+}

@@ -1,0 +1,40 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_human_status_exposes_incomplete_coverage_without_hiding_work_or_waiting _
+
+capsys = <_pytest.capture.CaptureFixture object at 0x10233af90>
+
+    def test_human_status_exposes_incomplete_coverage_without_hiding_work_or_waiting(capsys):
+        for state in ("working", "waiting"):
+            row = {"slot": 0, "state": state, "connected": True, "agentCount": 256,
+                   "pendingRequests": int(state == "waiting"), "launchId": "launch",
+                   "complete": False}
+            cli._print_status({"launches": [row]})
+            output = capsys.readouterr().out
+            assert f"1: {state} (live)" in output
+>           assert "incomplete coverage" in output
+E           AssertionError: assert 'incomplete coverage' in '1: working (live) | 256 sessions | 0 pending | launch\n'
+
+tests/test_gjc_cli_faults.py:17: AssertionError
+___ test_plain_live_status_marks_incomplete_coverage_until_complete_followup ___
+
+cli_rig = <conftest.CliRig object at 0x10784d7f0>
+
+    def test_plain_live_status_marks_incomplete_coverage_until_complete_followup(cli_rig):
+        rig = cli_rig
+        rig.start()
+        client = rig.connect()
+        frame = rig.frame(os.getpid())
+        frame["complete"] = False
+        rig.send(client, frame)
+        rig.wait_status(lambda r: bool(r["status"]["launches"]))
+        incomplete = rig.run("status", "--socket", rig.endpoint).stdout
+        assert "working (live)" in incomplete
+>       assert "incomplete coverage" in incomplete
+E       AssertionError: assert 'incomplete coverage' in '1: working (live) | 1 sessions | 0 pending | e2468d25-8414-48ea-bf30-d0c1f2f6e982\n'
+
+tests/integration/test_gjc_cli_process.py:132: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_gjc_cli_faults.py::test_human_status_exposes_incomplete_coverage_without_hiding_work_or_waiting
+FAILED tests/integration/test_gjc_cli_process.py::test_plain_live_status_marks_incomplete_coverage_until_complete_followup
+2 failed in 0.32s

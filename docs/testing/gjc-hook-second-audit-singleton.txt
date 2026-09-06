@@ -1,0 +1,10 @@
+bun test v1.4.0 (34cbb9a40)
+
+tests/gjc_hook.test.ts:
+(pass) separate installed loaders share a publisher and duplicate events [5.60ms]
+
+ 1 pass
+ 20 filtered out
+ 0 fail
+ 4 expect() calls
+Ran 1 test across 1 file. [25.00ms]

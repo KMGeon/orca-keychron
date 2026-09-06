@@ -1,0 +1,37 @@
+{
+  "status": "complete within documented software and deterministic actual-GJC scope",
+  "pythonCases": 456,
+  "pythonVersions": [
+    "3.9.6",
+    "3.13.5"
+  ],
+  "pythonSkips": 0,
+  "bunCases": 44,
+  "addedPythonCases": 158,
+  "addedBunCases": 23,
+  "actualGjcVersion": "0.16.4",
+  "mainE2e": "pass",
+  "successorE2e": "pass",
+  "openFinalReviewFindings": 0,
+  "astraManifestEntriesVerified": 102,
+  "fableManifestEntriesVerified": 82,
+  "productInputs": 29,
+  "testInputs": 43,
+  "wheelSha256": "134977ddf53a54903f9af9471cac8b511605539529193bb049f5c6a1cb56e48d",
+  "reports": {
+    "docs/testing/gjc-second-audit.md": "afe3ae73625a00957b8c3d0a3743aa02c9751eca4fcd5e92330cf2aab9b74c86",
+    "docs/testing/gjc-requirements-matrix.md": "38c4ccca83403b30bba7eae7f069799b6b6b629d24a0f9be93f10fa137826276",
+    "docs/testing/gjc-astra-second-review.md": "a96fe06e5b4312bc831b721cf0b66ebe4675d63779f0aef5aec6786bcdc8bcb5",
+    "docs/testing/gjc-fable-second-review.md": "4d082665847218e9ceb0682f79d7554b9e6772550c9bd3f8c9bc2180c037b021",
+    "experiments/gjc-e2e-audit/FINAL_REPORT.md": "265e710a86129b40b3e4087fb9d1394db1f8428e97a1545fe9726cba1d2aa8ae",
+    "experiments/gjc-successor-audit/REPORT.md": "9634408708240053165e83d40e38fe85b5f358f2f1e087c8d5ee2d6bb15fc3e6"
+  },
+  "notExecuted": [
+    "physical keyboard and optical LED verification",
+    "real provider/model behavior",
+    "global service activation",
+    "actual Ubuntu runner execution"
+  ],
+  "massColorProof": "actual captured native snapshot plus exact-sequence installed-product tracker and renderer replay",
+  "commitPrReleasePerformed": false
+}

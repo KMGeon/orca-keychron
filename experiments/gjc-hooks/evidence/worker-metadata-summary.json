@@ -1,0 +1,2922 @@
+[
+  {
+    "case": "worker_task_fail",
+    "scenario": "task_fail",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.555,
+    "hookEvents": 26,
+    "streamEvents": 26,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b4-cbb8-73fe-9085-4aa8248bcf39",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_755544d3b3dd_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_755544d3b3dd_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_755544d3b3dd_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_755544d3b3dd_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_e2e3d40e9f7e_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_e2e3d40e9f7e_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_e2e3d40e9f7e_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_e2e3d40e9f7e_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "failed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_fail_configured",
+    "scenario": "task_fail",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.824,
+    "hookEvents": 37,
+    "streamEvents": 37,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b5-694a-7012-a6dc-6f34455ad444",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_23b01a70b0eb_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_23b01a70b0eb_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_23b01a70b0eb_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_23b01a70b0eb_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_4946702f12e5_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_4946702f12e5_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_4946702f12e5_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_4946702f12e5_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b5-6b3e-7266-bbf9-79aba0a9d967",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 4,
+          "turn_end": 1,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "error",
+                "hasError": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "failed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_nested",
+    "scenario": "task_nested",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.562,
+    "hookEvents": 26,
+    "streamEvents": 26,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b4-c526-718c-abc9-a1d33add082a",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_86d86fb62f03_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_86d86fb62f03_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_86d86fb62f03_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_86d86fb62f03_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_d9da428300da_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_d9da428300da_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_d9da428300da_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_d9da428300da_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "failed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_nested_clean",
+    "scenario": "task_nested",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.985,
+    "hookEvents": 60,
+    "streamEvents": 60,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b8-f70c-736f-9b48-42d4f5c68619",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_f38692ead04c_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_f38692ead04c_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_f38692ead04c_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_f38692ead04c_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_4b49230e5eeb_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_4b49230e5eeb_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_4b49230e5eeb_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_4b49230e5eeb_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b8-f915-717f-9824-123d9851d2ad",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 2,
+          "message_end": 6,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_24931f7d63d6_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_24931f7d63d6_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_24931f7d63d6_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_24931f7d63d6_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "yield",
+            "toolCallId": "call_a4e33b618575_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "yield",
+            "toolCallId": "call_a4e33b618575_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "yield",
+            "toolCallId": "call_a4e33b618575_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "yield",
+            "toolCallId": "call_a4e33b618575_0",
+            "isError": false
+          }
+        ],
+        "terminal": []
+      },
+      {
+        "id": "01a072b8-fa57-75f7-b23e-7d1ce92dd767",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 4,
+          "tool_call": 1,
+          "tool_execution_start": 1,
+          "tool_result": 1,
+          "tool_execution_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "yield",
+            "toolCallId": "call_b589fafb4f30_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "yield",
+            "toolCallId": "call_b589fafb4f30_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "yield",
+            "toolCallId": "call_b589fafb4f30_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "yield",
+            "toolCallId": "call_b589fafb4f30_0",
+            "isError": false
+          }
+        ],
+        "terminal": []
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "completed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_nested_configured",
+    "scenario": "task_nested",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 2.179,
+    "hookEvents": 73,
+    "streamEvents": 73,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b5-60fc-7417-823f-26a2cfd0188e",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_ee18924d4c91_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_ee18924d4c91_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_ee18924d4c91_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_ee18924d4c91_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_da95c8cc587b_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_da95c8cc587b_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_da95c8cc587b_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_da95c8cc587b_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b5-6313-710e-b469-8c19a6ca930b",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 4,
+          "agent_start": 4,
+          "turn_start": 6,
+          "message_end": 17,
+          "tool_execution_start": 2,
+          "tool_execution_end": 2,
+          "turn_end": 6,
+          "agent_end": 4,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_d30d8fa952d7_0"
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_d30d8fa952d7_0",
+            "isError": true
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_c3f4a42b4157_0"
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_c3f4a42b4157_0",
+            "isError": true
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "completed"
+      }
+    ],
+    "toolErrors": [
+      {
+        "file": "sessions/2026-09-05T17-54-44-604Z_01a072b5-60fc-7417-823f-26a2cfd0188e/0-lab_child_0.jsonl",
+        "tool": "task",
+        "text": "Tool task not found. If you are unsure whether this tool exists or how to use it, call `search_tool_bm25` to discover and activate the matching tool, then retry."
+      },
+      {
+        "file": "sessions/2026-09-05T17-54-44-604Z_01a072b5-60fc-7417-823f-26a2cfd0188e/0-lab_child_0.jsonl",
+        "tool": "subagent",
+        "text": "Tool subagent not found. If you are unsure whether this tool exists or how to use it, call `search_tool_bm25` to discover and activate the matching tool, then retry."
+      }
+    ],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_nested_custom",
+    "scenario": "task_nested",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.966,
+    "hookEvents": 60,
+    "streamEvents": 60,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b7-3f16-7447-8363-0d93946b4039",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_baafc84b35e1_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_baafc84b35e1_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_baafc84b35e1_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_baafc84b35e1_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_31163931fc9b_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_31163931fc9b_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_31163931fc9b_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_31163931fc9b_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b7-40dc-744a-9221-2e03d2690038",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 2,
+          "message_end": 6,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_9c87122030f9_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_9c87122030f9_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_9c87122030f9_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_9c87122030f9_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "yield",
+            "toolCallId": "call_f17d981bc495_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "yield",
+            "toolCallId": "call_f17d981bc495_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "yield",
+            "toolCallId": "call_f17d981bc495_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "yield",
+            "toolCallId": "call_f17d981bc495_0",
+            "isError": false
+          }
+        ],
+        "terminal": []
+      },
+      {
+        "id": "01a072b7-425d-73e4-8f66-803a49c2d856",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 4,
+          "tool_call": 1,
+          "tool_execution_start": 1,
+          "tool_result": 1,
+          "tool_execution_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "yield",
+            "toolCallId": "call_7ee807640cde_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "yield",
+            "toolCallId": "call_7ee807640cde_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "yield",
+            "toolCallId": "call_7ee807640cde_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "yield",
+            "toolCallId": "call_7ee807640cde_0",
+            "isError": false
+          }
+        ],
+        "terminal": []
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "completed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_pair",
+    "scenario": "task_pair",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.574,
+    "hookEvents": 26,
+    "streamEvents": 26,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b4-c538-76e7-ad21-b1d047b6071a",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_c5e8139c8e66_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_c5e8139c8e66_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_c5e8139c8e66_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_c5e8139c8e66_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_d7e086646262_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_d7e086646262_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_d7e086646262_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_d7e086646262_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "failed"
+      },
+      {
+        "id": "1-lab_child_1",
+        "status": "failed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_pair_configured",
+    "scenario": "task_pair",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 2.569,
+    "hookEvents": 96,
+    "streamEvents": 96,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b5-60f6-7024-aaa5-a433df7f9db1",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_cf508f24bc14_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_cf508f24bc14_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_cf508f24bc14_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_cf508f24bc14_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_cedea07fd707_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_cedea07fd707_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_cedea07fd707_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_cedea07fd707_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b5-6322-7654-b800-6423c2561d0e",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 4,
+          "agent_start": 4,
+          "turn_start": 4,
+          "message_end": 13,
+          "turn_end": 4,
+          "agent_end": 4,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b5-631e-7088-b353-14bdf252a75c",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 4,
+          "agent_start": 4,
+          "turn_start": 4,
+          "message_end": 13,
+          "turn_end": 4,
+          "agent_end": 4,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "completed"
+      },
+      {
+        "id": "1-lab_child_1",
+        "status": "completed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_wait",
+    "scenario": "task_wait",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.559,
+    "hookEvents": 26,
+    "streamEvents": 26,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b4-c527-71d4-82c8-67dfe1461fde",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_35ac09ad9119_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_35ac09ad9119_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_35ac09ad9119_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_35ac09ad9119_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_3df7c21f93b1_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_3df7c21f93b1_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_3df7c21f93b1_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_3df7c21f93b1_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "failed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_wait_ask",
+    "scenario": "task_wait_ask",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.55,
+    "hookEvents": 26,
+    "streamEvents": 26,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b4-cbcc-733c-b387-54eb5553df92",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_8fe56cfa64f1_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_8fe56cfa64f1_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_8fe56cfa64f1_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_8fe56cfa64f1_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_b1fcdf95d550_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_b1fcdf95d550_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_b1fcdf95d550_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_b1fcdf95d550_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "failed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_wait_ask_clean",
+    "scenario": "task_wait_ask",
+    "returncode": 1,
+    "timedOut": false,
+    "seconds": 16.379,
+    "hookEvents": 36,
+    "streamEvents": 36,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b8-f70c-7620-bc73-621092e4f1fa",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_bda8c5d135c9_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_bda8c5d135c9_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_bda8c5d135c9_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_bda8c5d135c9_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_f143a03ac3da_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_f143a03ac3da_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_f143a03ac3da_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_f143a03ac3da_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b8-f91a-71fd-8f86-30bc43f8ba3c",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 4,
+          "tool_execution_start": 1,
+          "tool_call": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_execution_start",
+            "toolName": "ask",
+            "toolCallId": "call_c744d929a06f_0"
+          },
+          {
+            "type": "tool_call",
+            "toolName": "ask",
+            "toolCallId": "call_c744d929a06f_0"
+          }
+        ],
+        "terminal": []
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "running"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": true
+  },
+  {
+    "case": "worker_task_wait_ask_configured",
+    "scenario": "task_wait_ask",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 2.044,
+    "hookEvents": 67,
+    "streamEvents": 67,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b5-695e-73cd-b74d-7091519c24db",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_dceeba029f42_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_dceeba029f42_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_dceeba029f42_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_dceeba029f42_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_acb066be7563_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_acb066be7563_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_acb066be7563_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_acb066be7563_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b5-6b4e-76a5-b10d-3100a1f233cd",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 4,
+          "agent_start": 4,
+          "turn_start": 5,
+          "message_end": 15,
+          "tool_execution_start": 1,
+          "tool_execution_end": 1,
+          "turn_end": 5,
+          "agent_end": 4,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_execution_start",
+            "toolName": "ask",
+            "toolCallId": "call_c14f64fd0579_0"
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "ask",
+            "toolCallId": "call_c14f64fd0579_0",
+            "isError": true
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "completed"
+      }
+    ],
+    "toolErrors": [
+      {
+        "file": "sessions/2026-09-05T17-54-46-750Z_01a072b5-695e-73cd-b74d-7091519c24db/0-lab_child_0.jsonl",
+        "tool": "ask",
+        "text": "Tool ask not found. If you are unsure whether this tool exists or how to use it, call `search_tool_bm25` to discover and activate the matching tool, then retry."
+      }
+    ],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_wait_ask_custom",
+    "scenario": "task_wait_ask",
+    "returncode": 1,
+    "timedOut": false,
+    "seconds": 16.253,
+    "hookEvents": 36,
+    "streamEvents": 36,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b7-3f1b-70e5-8a0f-04d50aaa8bcd",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_20f8149bde99_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_20f8149bde99_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_20f8149bde99_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_20f8149bde99_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_8d25ba064f65_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_8d25ba064f65_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_8d25ba064f65_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_8d25ba064f65_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b7-40d3-70e7-839a-1f9126787dbb",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 4,
+          "tool_execution_start": 1,
+          "tool_call": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_execution_start",
+            "toolName": "ask",
+            "toolCallId": "call_ca778b8c563e_0"
+          },
+          {
+            "type": "tool_call",
+            "toolName": "ask",
+            "toolCallId": "call_ca778b8c563e_0"
+          }
+        ],
+        "terminal": []
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "running"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": true
+  },
+  {
+    "case": "worker_task_wait_configured",
+    "scenario": "task_wait",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 2.163,
+    "hookEvents": 61,
+    "streamEvents": 61,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b5-60ed-7696-8654-594e47a251a5",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_6456b52780a9_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_6456b52780a9_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_6456b52780a9_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_6456b52780a9_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_1e6f2bcbe94a_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_1e6f2bcbe94a_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_1e6f2bcbe94a_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_1e6f2bcbe94a_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b5-631f-7754-a33a-73bc29375296",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 4,
+          "agent_start": 4,
+          "turn_start": 4,
+          "message_end": 13,
+          "turn_end": 4,
+          "agent_end": 4,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "completed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_wait_mixed",
+    "scenario": "task_wait_mixed",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.542,
+    "hookEvents": 26,
+    "streamEvents": 26,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b4-cc9c-754e-b145-1527b72f5413",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 3,
+          "message_end": 7,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 3,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_c47bfbac2f80_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_c47bfbac2f80_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_c47bfbac2f80_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_c47bfbac2f80_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_748e3c3f760e_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_748e3c3f760e_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_748e3c3f760e_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_748e3c3f760e_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "failed"
+      },
+      {
+        "id": "1-lab_child_1",
+        "status": "failed"
+      },
+      {
+        "id": "2-lab_child_2",
+        "status": "failed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_wait_mixed_configured",
+    "scenario": "task_wait_mixed",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 11.436,
+    "hookEvents": 114,
+    "streamEvents": 114,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b5-6cc5-7556-92a8-50ced66600ca",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 4,
+          "message_end": 9,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 4,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_78512e3d193e_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_78512e3d193e_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_78512e3d193e_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_78512e3d193e_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_e9fbf7f0059a_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_e9fbf7f0059a_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_e9fbf7f0059a_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_e9fbf7f0059a_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b5-6ef8-7094-bf11-eeb3e0d72da6",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 3,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": []
+      },
+      {
+        "id": "01a072b5-6ef3-7299-94c1-05c8f65d1c5e",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 4,
+          "agent_start": 4,
+          "turn_start": 4,
+          "message_end": 13,
+          "turn_end": 4,
+          "agent_end": 4,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b5-6efb-72ee-9edf-c12655604048",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 4,
+          "agent_start": 4,
+          "turn_start": 5,
+          "message_end": 15,
+          "tool_execution_start": 1,
+          "tool_execution_end": 1,
+          "turn_end": 5,
+          "agent_end": 4,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_execution_start",
+            "toolName": "ask",
+            "toolCallId": "call_9acdabf865e2_0"
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "ask",
+            "toolCallId": "call_9acdabf865e2_0",
+            "isError": true
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          },
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "completed"
+      },
+      {
+        "id": "1-lab_child_1",
+        "status": "running"
+      },
+      {
+        "id": "2-lab_child_2",
+        "status": "completed"
+      }
+    ],
+    "toolErrors": [
+      {
+        "file": "sessions/2026-09-05T17-54-47-621Z_01a072b5-6cc5-7556-92a8-50ced66600ca/0-lab_child_0.jsonl",
+        "tool": "ask",
+        "text": "Tool ask not found. If you are unsure whether this tool exists or how to use it, call `search_tool_bm25` to discover and activate the matching tool, then retry."
+      }
+    ],
+    "disposalError": false
+  },
+  {
+    "case": "worker_task_wait_mixed_custom",
+    "scenario": "task_wait_mixed",
+    "returncode": 1,
+    "timedOut": false,
+    "seconds": 16.27,
+    "hookEvents": 61,
+    "streamEvents": 61,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b7-3f14-7303-bf59-2b9a99dc87b8",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 4,
+          "message_end": 9,
+          "tool_call": 2,
+          "tool_execution_start": 2,
+          "tool_result": 2,
+          "tool_execution_end": 2,
+          "turn_end": 4,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "task",
+            "toolCallId": "call_267c172bd92a_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "task",
+            "toolCallId": "call_267c172bd92a_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "task",
+            "toolCallId": "call_267c172bd92a_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "task",
+            "toolCallId": "call_267c172bd92a_0",
+            "isError": false
+          },
+          {
+            "type": "tool_call",
+            "toolName": "subagent",
+            "toolCallId": "call_89d78aff9e66_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "subagent",
+            "toolCallId": "call_89d78aff9e66_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "subagent",
+            "toolCallId": "call_89d78aff9e66_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "subagent",
+            "toolCallId": "call_89d78aff9e66_0",
+            "isError": false
+          }
+        ],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "toolUse",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              },
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01a072b7-40ed-75da-afa6-c6bb5864237b",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 4,
+          "tool_call": 1,
+          "tool_execution_start": 1,
+          "tool_result": 1,
+          "tool_execution_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_call",
+            "toolName": "yield",
+            "toolCallId": "call_f80c35ef2ac5_0"
+          },
+          {
+            "type": "tool_execution_start",
+            "toolName": "yield",
+            "toolCallId": "call_f80c35ef2ac5_0"
+          },
+          {
+            "type": "tool_result",
+            "toolName": "yield",
+            "toolCallId": "call_f80c35ef2ac5_0",
+            "isError": false
+          },
+          {
+            "type": "tool_execution_end",
+            "toolName": "yield",
+            "toolCallId": "call_f80c35ef2ac5_0",
+            "isError": false
+          }
+        ],
+        "terminal": []
+      },
+      {
+        "id": "01a072b7-40f6-7573-85d4-b39237b9bcfd",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 3,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": []
+      },
+      {
+        "id": "01a072b7-40f3-75d5-a476-ba9cd32043c5",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 4,
+          "tool_execution_start": 1,
+          "tool_call": 1
+        },
+        "toolEvents": [
+          {
+            "type": "tool_execution_start",
+            "toolName": "ask",
+            "toolCallId": "call_4c9bbf7d0562_0"
+          },
+          {
+            "type": "tool_call",
+            "toolName": "ask",
+            "toolCallId": "call_4c9bbf7d0562_0"
+          }
+        ],
+        "terminal": []
+      }
+    ],
+    "subagentStatus": [
+      {
+        "id": "0-lab_child_0",
+        "status": "running"
+      },
+      {
+        "id": "1-lab_child_1",
+        "status": "running"
+      },
+      {
+        "id": "2-lab_child_2",
+        "status": "completed"
+      }
+    ],
+    "toolErrors": [],
+    "disposalError": true
+  },
+  {
+    "case": "worker_transient_error_clean",
+    "scenario": "transient_error",
+    "returncode": 1,
+    "timedOut": false,
+    "seconds": 1.333,
+    "hookEvents": 10,
+    "streamEvents": 10,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b8-f711-72c5-8089-ad4ffd77ae2d",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 3,
+          "turn_end": 1,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "error",
+                "hasError": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_transient_error_configured",
+    "scenario": "transient_error",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.674,
+    "hookEvents": 10,
+    "streamEvents": 10,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b5-7184-75bb-bd21-593e67b5c206",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 3,
+          "turn_end": 1,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "stop",
+                "hasError": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_transient_error_custom",
+    "scenario": "transient_error",
+    "returncode": 1,
+    "timedOut": false,
+    "seconds": 1.062,
+    "hookEvents": 10,
+    "streamEvents": 10,
+    "eventIdsMatch": true,
+    "sessions": [
+      {
+        "id": "01a072b7-47ec-7758-b886-039de98d66b6",
+        "parentSessionPresent": false,
+        "types": {
+          "session_start": 1,
+          "before_agent_start": 1,
+          "agent_start": 1,
+          "turn_start": 1,
+          "message_end": 3,
+          "turn_end": 1,
+          "agent_end": 1,
+          "session_shutdown": 1
+        },
+        "toolEvents": [],
+        "terminal": [
+          {
+            "type": "agent_end",
+            "stopReason": "completed",
+            "hasError": false,
+            "assistantOutcomes": [
+              {
+                "stopReason": "error",
+                "hasError": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subagentStatus": [],
+    "toolErrors": [],
+    "disposalError": false
+  },
+  {
+    "case": "worker_transient_error_fallback",
+    "scenario": "transient_error",
+    "returncode": 0,
+    "timedOut": false,
+    "seconds": 1.068,
+    "hookEvents": 12,
+    "streamEvents": 12,
+    "eventIdsMatch": true,
+    "eventCounts": {
+      "session_start": 1,
+      "before_agent_start": 1,
+      "agent_start": 1,
+      "message_end": 3,
+      "auto_retry_start": 1,
+      "turn_start": 1,
+      "turn_end": 1,
+      "auto_retry_end": 1,
+      "agent_end": 1,
+      "session_shutdown": 1
+    },
+    "retryEvents": [
+      {
+        "schemaVersion": 1,
+        "producerId": "7b90de37-91eb-41f5-8bcc-5d5bcf235112",
+        "sequence": 6,
+        "eventId": "7b90de37-91eb-41f5-8bcc-5d5bcf235112:6",
+        "observedAt": "2026-09-05T17:59:58.170Z",
+        "pid": 12252,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "auto_retry_start",
+        "sessionId": "01a072ba-286e-7786-b454-c170626fb3aa",
+        "hasUI": false,
+        "unbounded": false,
+        "attempt": 1,
+        "maxAttempts": 2,
+        "delayMs": 9,
+        "hasError": true,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7b90de37-91eb-41f5-8bcc-5d5bcf235112",
+        "sequence": 10,
+        "eventId": "7b90de37-91eb-41f5-8bcc-5d5bcf235112:10",
+        "observedAt": "2026-09-05T17:59:58.212Z",
+        "pid": 12252,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "auto_retry_end",
+        "sessionId": "01a072ba-286e-7786-b454-c170626fb3aa",
+        "hasUI": false,
+        "success": false,
+        "attempt": 1,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+source=screen
+╭─── gjc v0.16.4 · release build · GJC Forge ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │ What's New                                                                                            │
+│                                                                                                       │ ▸ Added selectable astra-lite, astra-default, and astra-heavy CODEX presets with ASTRA- labels, plus …│
+│                                                                                                       │ ▸ An interactive gjc now shows up inside Paseo by itself, controllable from the desktop and mobile ap…│
+│                                                                                                       │ ▸ Corrected a stale claim in docs/external-control-readiness.md: interactive gjc sessions are broker-…│
+│                                               GJC Forge                                               │ ▸ An externally submitted prompt against a session on the SDK-only host runtime no longer hangs forev…│
+│                                          shape · act · prove                                          │ ▸ An ACP client attached to a live interactive session now receives the turn it submitted: assistant …│
+│                                                                                                       │ ▸ gjc no longer reports an error at every interactive launch when the Paseo daemon requires a passwor…│
+│                                 ╭────────────────╮        ╭────────╮                                  │ … /changelog for full notes                                                                           │
+│                                 ╰──────╮      ╭──╯     ╭──╯  ╭─────╯                                  │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                        ╰──────╯    ╭───╯  ╭──╯                                        │ Flow keys                                                                                             │
+│                                        ╭──────╮    ╰───╮  ╰──╮                                        │ / commands · # actions · ! shell · $ python · ? keymap · ⌃L model · ⇧⇥ reasoning · ⇥ complete         │
+│                                 ╭──────╯      ╰──╮     ╰──╮  ╰─────╮                                  │ ⌃J newline · ⌃C clear                                                                                 │
+│                                 ╰────────────────╯        ╰────────╯                                  │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                                                                                       │ Project pulse                                                                                         │
+│                                                ⣾ ready                                                │ No LSP servers                                                                                        │
+│                                       [ ⬢ Local task_wait_ask ]                                       │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                          [ 📦 keychron-lab ]                                          │ Session trail                                                                                         │
+│                                                                                                       │ No saved trails                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ user
+ [GJC_CASE:task_wait_ask]
+ ⏳ Task: executor
+ Tasks: 1 agents
+    └─ ⏳ lab_child_0: child_ask
+ ⓘ Subagent: awaiting 1 of 1
+   (ctrl+s to observe sessions)
+ ⓘ 0-lab_child_0 running 10.0s
+   Agent: executor (project)
+   Model: keychron-lab/lab-success
+   Description: child_ask
+   └─ ⓘ 0-lab_child_0
+      └ ask
+   Still running after the await timeout; timeout only bounded this wait and is no…
+ gajae
+ LOCAL_EXPERIMENT_COMPLETE task_wait_ask
+ ⠸ Background: 1 subagent…
+ ⬢ lab-task_wait_ask · 0.0% / 🗑 …ments/cases/tui_child/workspace ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 🦞 1 job running / v0.16.4
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ > Type your message... ⌥Q: Queue (busy) · ⇧⇥: Thinking · ⌃L: Model · ⌃R: History · ⇧↩/⌃J: New line · ⌃C: Clear                                                                                                │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

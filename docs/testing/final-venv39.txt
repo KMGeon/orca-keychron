@@ -1,0 +1,3 @@
+COMMAND ['uv', 'venv', '--python', '/tmp/gjc-validation.K3OypM/py39-gate/bin/python', '/tmp/gjc-test-audit/final-install-py39']
+Using CPython 3.9.6 interpreter at: /private/tmp/gjc-validation.K3OypM/py39-gate/bin/python
+Creating virtual environment at: /tmp/gjc-test-audit/final-install-py39

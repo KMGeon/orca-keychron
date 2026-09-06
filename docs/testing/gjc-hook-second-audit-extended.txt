@@ -1,0 +1,28 @@
+bun test v1.4.0 (34cbb9a40)
+
+tests/gjc_hook_faults.test.ts:
+(pass) H-ID: capacity /new tracks the actual root and its explicit shutdown [258.93ms]
+(pass) H-CORR: an ask predating a decision cannot resolve that later decision [0.41ms]
+(pass) H-CORR: concurrent old answers cannot resolve a reused request ID [0.21ms]
+(pass) H-PENDING: root completion and nested terminal events retain every deep request [0.23ms]
+(pass) H-PRIORITY: pending ask remains waiting over failure, cancellation and retry [0.14ms]
+(pass) H-YIELD: malformed yield receipt stays unknown 0 [0.07ms]
+(pass) H-YIELD: malformed yield receipt stays unknown 1 [0.06ms]
+(pass) H-YIELD: malformed yield receipt stays unknown 2 [0.05ms]
+(pass) H-YIELD: malformed yield receipt stays unknown 3 [0.07ms]
+(pass) H-YIELD: malformed yield receipt stays unknown 4 [0.05ms]
+(pass) H-YIELD: malformed yield receipt stays unknown 5 [0.05ms]
+(pass) H-YIELD: malformed yield receipt stays unknown 6 [0.06ms]
+(pass) H-BOUNDS: independent session tool IDs deduplicate, overflow remains incomplete [0.39ms]
+(pass) H-LOADER: original payloads establish duplicate root provenance in both delivery orders [0.18ms]
+(pass) H-ID: child reopening current root never takes authority even after resume [0.08ms]
+(pass) H-BOUNDS: exhausted receipt history never claims complete recovery [1.69ms]
+(pass) H-TRANSPORT: event-synchronized Unix reconnect sends latest full state and closed flush [107.59ms]
+(pass) H-LIVENESS: real Bun process exits with absent receiver without disposal [27.24ms]
+(pass) H-LINEAGE: real nested process inherits owner marker and cannot claim a root [29.40ms]
+(pass) H-BACKPRESSURE: real paused receiver bounds buffered frames and shutdown exits [337.12ms]
+
+ 20 pass
+ 0 fail
+ 58 expect() calls
+Ran 20 tests across 1 file. [783.00ms]

@@ -21,7 +21,9 @@ per-key RGB. See which agents are working, waiting, blocked, or done—and press
 to jump directly to the worktree that needs you.
 
 Any coding agent reported by Orca works automatically, including Codex, Claude Code, Grok,
-local sessions, and agents running on paired hosts. No agent-specific hooks are installed.
+local sessions, and agents running on paired hosts. In Orca mode, no agent-specific hooks are
+installed because Orca provides a unified status surface via CLI. (For per-session tracking of
+GJC inside Orca terminals via native hooks, see [GJC mode](#gjc-mode-orca-keychron-gjc).)
 
 > [!IMPORTANT]
 > This project requires a Keychron keyboard whose firmware implements the per-key `KC_RGB`
@@ -117,6 +119,44 @@ uv tool uninstall orca-keychron
 The saved configuration and logs remain under
 `~/Library/Application Support/orca-keychron/` so an uninstall does not unexpectedly
 delete user data. Remove that directory separately only if you no longer need it.
+
+## GJC mode (`orca-keychron-gjc`)
+
+The distribution also includes an integration for [GJC (가재코드)](https://github.com/Yeachan-Heo/gajae-code)
+running in Orca terminals. A managed GJC 0.16.4 native hook pushes the lifecycle events it
+can observe to a private local receiver; it does not poll or modify GJC core.
+
+- Each tracked launch uses at most one key; extra launches remain in overflow. In-process
+  child sessions are aggregated into their launch.
+- A receiver restart or transport reconnect can restore the saved slot. Starting a new `gjc`
+  process creates a new launch and does not inherit the previous process's slot identity.
+- `waiting` has the highest display priority, followed by `failed`, `working`, `unknown`,
+  `done`, and `idle`. `done` means the current turn ended, not that the user's goal is met.
+- The two commands cooperate through a shared process lock. This prevents two
+  orca-keychron processes from owning HID together, but cannot exclude unrelated software
+  that writes to the same raw HID interface.
+
+Configure the socket before installing the hook so the hook and receiver use the same
+endpoint:
+
+```bash
+orca-keychron-gjc setup
+orca-keychron-gjc install --dry-run
+orca-keychron-gjc install
+orca-keychron-gjc run
+```
+
+Stop the foreground `run` process before starting the login service with
+`orca-keychron-gjc autostart install`. The Q65 Max accepted five GJC-rendered RGB frames
+and restored its original lighting. A separate Orca check observed target-pane navigation
+and restoration. Visual color confirmation and a physical Option-number keypress remain
+unverified; see the [hardware evidence](docs/gjc-hardware-validation.md). See the
+[GJC guide (한국어)](docs/gjc-guide.md) for operation and diagnostics.
+
+For the decisions, functional/nonfunctional requirements, and executable test links,
+start with the [product documentation (한국어)](docs/product/README.md).
+The [maintenance guide](docs/product/maintenance.md) explains how CI checks those links
+against fresh Python and Bun test results when behavior changes.
 
 ## Keyboard navigation
 
@@ -288,10 +328,12 @@ be rerun without creating another version.
 Project structure:
 
 ```text
-src/orca_keychron/   CLI, Orca integration, navigation, tracking, and HID rendering
-tests/               Unit and behavior tests
-assets/img1.png      Architecture and interaction overview used in this README
-assets/img2.png      Keychron Q65 Max hardware photo used in this README
+src/orca_keychron/       Orca mode CLI, worktree tracking, HID rendering, and navigation
+src/orca_keychron_gjc/   GJC mode CLI, native hook installer, protocol, bridge receiver, and tracker
+tests/                   Unit and behavior tests
+docs/gjc-guide.md        GJC mode user and operation guide (한국어)
+assets/img1.png          Architecture and interaction overview used in this README
+assets/img2.png          Keychron Q65 Max hardware photo used in this README
 ```
 
 ## Contributing

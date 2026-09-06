@@ -1,0 +1,13 @@
+source=screen
+╰──────────────────────────────────────────────────────────┴────────────────────
+──────────────────────────────────────╯
+ user
+ [GJC_CASE:transient_error] tui-20260906-v1
+ Error: 503 LOCAL_EXPERIMENT_TRANSIENT_FAILURE
+ LOCAL_EXPERIMENT_TRANSIENT_FAILURE (type=server_error param=lab_transient)
+ ⬢ lab-transient_error · 9.0% / 🗑 …ments/cases/tui_retry/workspace ─────────────
+─────────────────────────────── v0.16.4
+╭───────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────╮
+│ > Type your message... ⌥Q: Queue (busy) · ⇧⇥: Thinking · ⌃L: Model · ⌃R: Histo
+ry · ⇧↩/⌃J: New line · ⌃C: Clear      │

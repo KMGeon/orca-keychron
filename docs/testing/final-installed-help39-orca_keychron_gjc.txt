@@ -1,0 +1,20 @@
+COMMAND ['/tmp/gjc-test-audit/final-install-py39/bin/python', '-I', '-m', 'orca_keychron_gjc', '--help']
+usage: orca-keychron-gjc [-h] [--version]
+                         {setup,run,serve,status,clear,install,uninstall,doctor,autostart}
+                         ...
+
+positional arguments:
+  {setup,run,serve,status,clear,install,uninstall,doctor,autostart}
+    setup               Verify and save GJC keyboard settings
+    run                 Receive GJC snapshots and render the keyboard
+    serve               Run only the private GJC bridge receiver
+    status              Show live or persisted GJC launch status
+    clear               Clear one disconnected, positively dead launch
+    install             Install the owned GJC native hook
+    uninstall           Reversibly remove the owned GJC hook
+    doctor              Inspect GJC, hook, config, and bridge health
+    autostart           Manage the GJC keyboard login service
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit

@@ -1,0 +1,89 @@
+{
+  "recordedAtUtc": "2026-09-05T21:11:00.444096+00:00",
+  "scope": "product documentation and fresh requirement/test traceability gate",
+  "requirements": 45,
+  "decisions": 25,
+  "functionalView": 29,
+  "nonfunctionalView": 28,
+  "requirementsWithAutomaticLinks": 45,
+  "newTraceabilityTests": 16,
+  "runs": {
+    "final-py313": {
+      "python": "3.13.5",
+      "testCases": {
+        "pytest": {
+          "total": 472,
+          "passed": 472,
+          "failed": 0,
+          "skipped": 0,
+          "originalReportSha256": "f8068b642b7228da631279bdbd504fb5d31e0df4987ace9ed1a86632d3061ce4"
+        },
+        "bun": {
+          "total": 44,
+          "passed": 44,
+          "failed": 0,
+          "skipped": 0,
+          "originalReportSha256": "e2476838768b7271530d505d220e4eb5d23a48cb028c564d238cb3fd283e0ed3"
+        }
+      },
+      "linkedChecks": {
+        "pytest": 116,
+        "bun": 26
+      },
+      "inputFileCount": 92,
+      "currentInputsMatch": true
+    },
+    "final-py39": {
+      "python": "3.9.6",
+      "testCases": {
+        "pytest": {
+          "total": 472,
+          "passed": 472,
+          "failed": 0,
+          "skipped": 0,
+          "originalReportSha256": "4ddcfba4abc696e556f6847218c325d7f7d1250c3c1791ab309c14c4d3e6ba81"
+        },
+        "bun": {
+          "total": 44,
+          "passed": 44,
+          "failed": 0,
+          "skipped": 0,
+          "originalReportSha256": "a0e4197222d93a915c17f299d22ea79d388393b5cca1acf82a16d8f1847137d0"
+        }
+      },
+      "linkedChecks": {
+        "pytest": 116,
+        "bun": 26
+      },
+      "inputFileCount": 92,
+      "currentInputsMatch": true
+    }
+  },
+  "artifacts": {
+    "docs/testing/product-documentation-evidence/final-py313/bun.xml": "6609c2338e93937fc7be0bb966d884dcf27e6e48a16d15b89e9e823345d3655c",
+    "docs/testing/product-documentation-evidence/final-py313/pytest.xml": "b8e2d9014709442a0cc644bcbff6943a29012f318f8a9527017155a979cb7183",
+    "docs/testing/product-documentation-evidence/final-py313/result.json": "8a51f998c5cd265b311cf40921b5ba81d9acce589f8d8182d4427856c285d19b",
+    "docs/testing/product-documentation-evidence/final-py39/bun.xml": "0fb900ea22490e0c038f95e5ee54ea5356315e5e8a8b02bb29693858aacf98db",
+    "docs/testing/product-documentation-evidence/final-py39/pytest.xml": "fcc54572487b100488d3787d602c08b8aa1a6ec647b873ff0768384dab536b24",
+    "docs/testing/product-documentation-evidence/final-py39/result.json": "ee1a58feaa4f0c53276dad57179d24f162c98faa3c2555d42e834a0602984655",
+    "docs/testing/product-documentation-evidence/gate-review-red.txt": "2365b8cc65036a2b4e88f216624e4ef191e46f369b7e65fb99cfbd11741a1f38"
+  },
+  "unperformed": [
+    "actual GJC scenario rerun",
+    "physical keyboard or LED",
+    "real model",
+    "global hook/service install",
+    "Ubuntu/GitHub Actions runtime",
+    "commit/PR/release"
+  ],
+  "priorProductSnapshot": {
+    "file": "docs/testing/final-product-hashes.json",
+    "files": 29,
+    "allUnchanged": true
+  },
+  "wheel": {
+    "filename": "orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl",
+    "sha256": "355af255406b71b7404fb68ae6f4892aa65d8a259ba8a328be119136395337d0"
+  },
+  "xmlPreservation": "Executed testcase attributes and outcomes preserved; only hostname attributes removed from archived JUnit reports."
+}

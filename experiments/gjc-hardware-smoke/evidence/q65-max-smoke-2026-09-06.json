@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-09-05T18:49:40.544579+00:00",
+  "command": "execute-hid",
+  "productTarget": "Q65 Max",
+  "responseBoundary": "Firmware HID acknowledgements; no optical observation",
+  "physicalKeypressE2E": false,
+  "navigationExecuted": false,
+  "orchestrationLaunch": {
+    "agent": "codex",
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "dispatchId": "ctx_0062818b256b"
+  },
+  "preflight": {
+    "ok": true,
+    "temporaryStorage": {
+      "directoryMode": "0700",
+      "snapshotsFileMode": "0600",
+      "registryFileMode": "0600",
+      "snapshotCount": 3,
+      "snapshotFields": [
+        "closed",
+        "complete",
+        "launchId",
+        "pid",
+        "producerId",
+        "root",
+        "sequence",
+        "sessions",
+        "startedAt",
+        "type",
+        "version"
+      ],
+      "sessionFields": [
+        "pendingAsks",
+        "pendingDecisions",
+        "role",
+        "sessionId",
+        "state"
+      ],
+      "containedUserContent": false,
+      "path": "/var/folders/2k/mc6hm2hs6rq726jxg7134yb00000gn/T/gjc-hid-smoke-ut162ert",
+      "removedAfterPreflight": true
+    },
+    "stages": [
+      {
+        "name": "waiting_priority",
+        "state": "waiting",
+        "agentCount": 11,
+        "pendingRequests": 1,
+        "zone": {
+          "1": [
+            21,
+            255,
+            255
+          ],
+          "2": [
+            145,
+            150,
+            255
+          ],
+          "3": [
+            145,
+            150,
+            255
+          ],
+          "4": [
+            145,
+            150,
+            255
+          ],
+          "5": [
+            145,
+            150,
+            255
+          ],
+          "6": [
+            145,
+            150,
+            255
+          ],
+          "7": [
+            145,
+            150,
+            255
+          ],
+          "8": [
+            145,
+            150,
+            255
+          ],
+          "9": [
+            145,
+            150,
+            255
+          ],
+          "10": [
+            145,
+            150,
+            255
+          ],
+          "11": [
+            145,
+            150,
+            255
+          ],
+          "12": [
+            145,
+            150,
+            255
+          ]
+        }
+      },
+      {
+        "name": "waiting_cleared",
+        "state": "working",
+        "agentCount": 11,
+        "pendingRequests": 0,
+        "zone": {
+          "1": [
+            43,
+            255,
+            255
+          ],
+          "2": [
+            145,
+            150,
+            255
+          ],
+          "3": [
+            145,
+            150,
+            255
+          ],
+          "4": [
+            145,
+            150,
+            255
+          ],
+          "5": [
+            145,
+            150,
+            255
+          ],
+          "6": [
+            145,
+            150,
+            255
+          ],
+          "7": [
+            145,
+            150,
+            255
+          ],
+          "8": [
+            145,
+            150,
+            255
+          ],
+          "9": [
+            145,
+            150,
+            255
+          ],
+          "10": [
+            145,
+            150,
+            255
+          ],
+          "11": [
+            145,
+            150,
+            255
+          ],
+          "12": [
+            145,
+            150,
+            255
+          ]
+        }
+      },
+      {
+        "name": "all_done",
+        "state": "done",
+        "agentCount": 11,
+        "pendingRequests": 0,
+        "zone": {
+          "1": [
+            85,
+            255,
+            255
+          ],
+          "2": [
+            145,
+            150,
+            255
+          ],
+          "3": [
+            145,
+            150,
+            255
+          ],
+          "4": [
+            145,
+            150,
+            255
+          ],
+          "5": [
+            145,
+            150,
+            255
+          ],
+          "6": [
+            145,
+            150,
+            255
+          ],
+          "7": [
+            145,
+            150,
+            255
+          ],
+          "8": [
+            145,
+            150,
+            255
+          ],
+          "9": [
+            145,
+            150,
+            255
+          ],
+          "10": [
+            145,
+            150,
+            255
+          ],
+          "11": [
+            145,
+            150,
+            255
+          ],
+          "12": [
+            145,
+            150,
+            255
+          ]
+        }
+      },
+      {
+        "name": "disconnect",
+        "state": "unknown",
+        "agentCount": 11,
+        "pendingRequests": 0,
+        "zone": {
+          "1": [
+            0,
+            0,
+            255
+          ],
+          "2": [
+            145,
+            150,
+            255
+          ],
+          "3": [
+            145,
+            150,
+            255
+          ],
+          "4": [
+            145,
+            150,
+            255
+          ],
+          "5": [
+            145,
+            150,
+            255
+          ],
+          "6": [
+            145,
+            150,
+            255
+          ],
+          "7": [
+            145,
+            150,
+            255
+          ],
+          "8": [
+            145,
+            150,
+            255
+          ],
+          "9": [
+            145,
+            150,
+            255
+          ],
+          "10": [
+            145,
+            150,
+            255
+          ],
+          "11": [
+            145,
+            150,
+            255
+          ],
+          "12": [
+            145,
+            150,
+            255
+          ]
+        }
+      },
+      {
+        "name": "vacant",
+        "state": "vacant",
+        "agentCount": 0,
+        "pendingRequests": 0,
+        "zone": {
+          "1": [
+            145,
+            150,
+            255
+          ],
+          "2": [
+            145,
+            150,
+            255
+          ],
+          "3": [
+            145,
+            150,
+            255
+          ],
+          "4": [
+            145,
+            150,
+            255
+          ],
+          "5": [
+            145,
+            150,
+            255
+          ],
+          "6": [
+            145,
+            150,
+            255
+          ],
+          "7": [
+            145,
+            150,
+            255
+          ],
+          "8": [
+            145,
+            150,
+            255
+          ],
+          "9": [
+            145,
+            150,
+            255
+          ],
+          "10": [
+            145,
+            150,
+            255
+          ],
+          "11": [
+            145,
+            150,
+            255
+          ],
+          "12": [
+            145,
+            150,
+            255
+          ]
+        }
+      }
+    ],
+    "assertions": [
+      "one waiting child overrides ten working sessions",
+      "cleared waiting child transitions the launch to working",
+      "all done sessions transition the launch to done",
+      "producer disconnect transitions the occupied launch to unknown",
+      "vacant configured slots preserve render_zone SKY_BLUE",
+      "LEDs outside the configured zone are written OFF in the full device frame"
+    ]
+  },
+  "outcome": "failed",
+  "error": "KeychronError: hidapi is not installed; run: python -m pip install hidapi",
+  "finishedAt": "2026-09-05T18:49:40.550423+00:00"
+}

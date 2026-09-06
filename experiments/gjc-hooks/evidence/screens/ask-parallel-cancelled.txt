@@ -1,0 +1,44 @@
+source=screen
+  └─ ☑ Continue
+ gajae
+ LOCAL_EXPERIMENT_COMPLETE ask
+ user
+ [GJC_CASE:ask_two]
+ Ask 2 questions
+  ├─ [lab_q1] · options:2
+    Local Keychron experiment: select Continue or Stop.
+  │   ├─ ☐ Continue
+  │   └─ ☐ Stop
+  └─ [lab_q2] · options:2
+    Local Keychron experiment: select Continue or Stop.
+      ├─ ☐ Continue
+      └─ ☐ Stop
+ ✔ Ask 2 questions
+  ├─ ✔ [lab_q1]
+    Local Keychron experiment: select Continue or Stop.
+ │  └─ ☑ Continue
+  └─ ✔ [lab_q2]
+    Local Keychron experiment: select Continue or Stop.
+    └─ ☑ Continue
+ gajae
+ LOCAL_EXPERIMENT_COMPLETE ask_two
+ user
+ [GJC_CASE:ask_parallel]
+ Ask 1 questions
+  └─ [lab_q1] · options:2
+    Local Keychron experiment: select Continue or Stop.
+      ├─ ☐ Continue
+      └─ ☐ Stop
+ ✔ Ask
+  Local Keychron experiment: select Continue or Stop.
+  └─ ☑ Continue
+ Ask 1 questions
+  └─ [lab_q2] · options:2
+    Local Keychron experiment: select Continue or Stop.
+      ├─ ☐ Continue
+      └─ ☐ Stop
+ Tool execution was aborted.
+ ⬢ lab-ask · 0.0% / 🗑 …eriments/cases/tui_v2/workspace ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── v0.16.4
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ > Type your message... ⌥Q: Queue (busy) · ⇧⇥: Thinking · ⌃L: Model · ⌃R: History · ⇧↩/⌃J: New line · ⌃C: Clear                                                                                                │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

@@ -1,0 +1,40 @@
+source=stream
+│           ╭────────────────╮        ╭────────╮           │ ──────────────────────────────────────────────────────── │
+│           ╰──────╮      ╭──╯     ╭──╯  ╭─────╯           │ Flow keys                                                │
+│                  ╰──────╯    ╭───╯  ╭──╯                 │ / commands · # actions · ! shell · $ python · ? keymap   │
+│                  ╭──────╮    ╰───╮  ╰──╮                 │ ⌃L model · ⇧⇥ reasoning · ⇥ complete · ⌃J newline        │
+│           ╭──────╯      ╰──╮     ╰──╮  ╰─────╮           │ ⌃C clear                                                 │
+
+│                                               GJC Forge                                               │ ▸ An ACP client attached to a live interactive session now receives the turn it submitted: assistant …│
+│                                          shape · act · prove                                          │ ▸ gjc no longer reports an error at every interactive launch when the Paseo daemon requires a passwor…│
+│                                                                                                       │ … /changelog for full notes                                                                           │
+│                                 ╭────────────────╮        ╭────────╮                                  │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                 ╰──────╮      ╭──╯     ╭──╯  ╭─────╯                                  │ Flow keys                                                                                             │
+│                                        ╰──────╯    ╭───╯  ╭──╯                                        │ / commands · # actions · ! shell · $ python · ? keymap · ⌃L model · ⇧⇥ reasoning · ⇥ complete         │
+│                                        ╭──────╮    ╰───╮  ╰──╮                                        │ ⌃J newline · ⌃C clear                                                                                 │
+│                                 ╭──────╯      ╰──╮     ╰──╮  ╰─────╮                                  │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                 ╰────────────────╯        ╰────────╯                                  │ Project pulse                                                                                         │
+│                                                                                                       │ No LSP servers                                                                                        │
+│                                                ⣾ ready                                                │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                            [ ⬢ Local ask ]                                            │ Session trail                                                                                         │
+│                                          [ 📦 keychron-lab ]                                          │ No saved trails                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ⠦ Working… ⟦esc⟧

@@ -5,3 +5,7 @@ __pycache__/
 *.egg-info/
 build/
 dist/
+
+# Local GJC runtime state; project hooks and agent definitions may be versioned.
+/.gjc/_session-*/
+/.gjc/state/

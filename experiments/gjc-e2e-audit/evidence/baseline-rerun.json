@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "verdict": "fail",
+  "failureType": "AuditFailure",
+  "failure": "timed out after 45.0s waiting for original root resumed; last=None",
+  "provenance": {
+    "productSourceBefore": "3a3449896cff1080491f577693f01aaaeb5ced3e6b05b647b0d4060f35929172",
+    "productSourceAfter": "502e883db85ab436bb6384acc1172da73676f71a0d33e2e4949095e98554106f",
+    "wheelSha256": null
+  },
+  "limitations": {
+    "realModelCompliance": "unproven",
+    "physicalKeyboardAndHid": "unproven and not exercised"
+  },
+  "cleanup": {
+    "ownedTerminalHandles": [
+      "term_5e800644-33f1-4078-948e-a3f225fe9455",
+      "term_d2400697-dfcb-40d7-8623-fd9aa3d0ae87",
+      "term_5fd1693a-7d27-4a4b-be3f-9273fe2f5b22",
+      "term_957d06bb-78be-485d-80e5-2d9040a65dbb",
+      "term_6b6a0724-05c6-40ed-b27b-94b23c8dd46e",
+      "term_9814899a-77c0-4085-b0d2-331577d59d34",
+      "term_fe81eff4-1d3a-4100-97fb-2b098c570952",
+      "term_3ed114d9-62e2-4ebc-a786-827a16dca697",
+      "term_e910e711-2f49-4990-902e-07f6ec0a35b3",
+      "term_ffe29858-33d1-409b-b3fb-c0ac45ee86c2",
+      "term_dd7af3ee-4747-490b-af5b-bc2f2c8f131c"
+    ],
+    "allOwnedTerminalsClosed": true,
+    "errors": []
+  },
+  "elapsedSeconds": 82.369
+}

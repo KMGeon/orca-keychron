@@ -1,0 +1,14 @@
+COMMAND ['uv', 'pip', 'install', '--python', '/tmp/gjc-test-audit/final-install-py39/bin/python', '/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl']
+Using Python 3.9.6 environment at: /private/tmp/gjc-test-audit/final-install-py39
+Resolved 9 packages in 290ms
+Prepared 9 packages in 143ms
+Installed 9 packages in 14ms
+ + hidapi==0.15.0
+ + orca-keychron==0.1.2.dev1+ga1e844f34.d20260905 (from file:///tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl)
+ + pynput==1.7.8
+ + pyobjc-core==11.1
+ + pyobjc-framework-applicationservices==11.1
+ + pyobjc-framework-cocoa==11.1
+ + pyobjc-framework-coretext==11.1
+ + pyobjc-framework-quartz==11.1
+ + six==1.17.0
