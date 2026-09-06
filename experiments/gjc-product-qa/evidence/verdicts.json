@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "runtime": "/tmp/gjc-product-qa-final-c30205c0352c",
+  "runtimeBoundary": {
+    "gjcVersion": "0.16.4",
+    "provider": "loopback synthetic openai-completions fixture",
+    "receiver": "src/orca_keychron_gjc/gjc_source.py:GjcStatusSource",
+    "producer": "installed src/orca_keychron_gjc/assets/gjc_hook.ts",
+    "launcher": "unmodified <home>/.local/bin/gjc in Orca-owned terminals",
+    "realModelCalls": false,
+    "hidWrites": false,
+    "globalInstall": false
+  },
+  "sourceHashesStableAcrossFinalRun": {
+    "gjc_protocol.py": "c9cdd55e4f23525338af5fafb4adfb021c1f6ab11bfa03ab16780370e3ab3542",
+    "gjc_source.py": "43d6aa2e321d137b0fe2f0939eddc2fa09b566ceb25c60191c14e9db04d9c530",
+    "gjc_tracker.py": "30ee0d94db8f2f34af7a56683222acef9fffbca110cfa9bbcd293ad892a758f8",
+    "gjc_install.py": "dd6eaf9d60467a316f81d5866f1929e1794c47b3e322bbdfbdd22a3016699bd5",
+    "cli.py": "290d3f14c607b932423e702599ee73bb63f6e4ecdc3c825c6433d8f97bc793b0",
+    "gjc_hook.ts": "d1f41261a9e669deb6cb9bb578bbd1eb07d5b540d6b50d1311b6b2eb8796211b",
+    "rendering.py": "f1ee96beaf5c105e92e7b526ae97344eec61a17f46716f2f2d8fc8a0d94e77d5"
+  },
+  "checks": {
+    "isolatedInstall": {
+      "passed": true,
+      "scope": "explicit temporary agent_dir",
+      "installedHookSha256": "d1f41261a9e669deb6cb9bb578bbd1eb07d5b540d6b50d1311b6b2eb8796211b",
+      "matchesProductSource": true
+    },
+    "ordinaryAutoRegistration": {
+      "passed": true,
+      "launches": [
+        {"launchId": "5aa5803c-92b7-4238-8cdb-0efc46237cc0", "slot": 0, "state": "done"},
+        {"launchId": "02c2cca1-b8cd-4e2a-84a6-c988b467fecd", "slot": 1, "state": "done"}
+      ],
+      "distinctStableSlots": true,
+      "wrapperUsed": false
+    },
+    "receiverRestart": {
+      "passed": true,
+      "offline": {"source": "registry", "slots": [0, 1], "states": ["unknown", "unknown"], "connected": [false, false]},
+      "generation2": {"slots": [0, 1], "states": ["done", "done"], "connected": [true, true]},
+      "renumbered": false
+    },
+    "producerDisconnect": {
+      "passed": true,
+      "launchId": "5aa5803c-92b7-4238-8cdb-0efc46237cc0",
+      "slot": 0,
+      "state": "unknown",
+      "connected": false,
+      "otherLaunchStillDone": true
+    },
+    "rootOutcomes": {
+      "passed": true,
+      "successful": {"launchId": "02c2cca1-b8cd-4e2a-84a6-c988b467fecd", "wireState": "done"},
+      "failed": {"launchId": "b102a72c-f768-452e-ba06-4b97e1878cdb", "wireState": "failed"},
+      "cancelled": {"launchId": "44fe6279-e63f-4984-ba61-3e2730715c49", "wireState": "cancelled", "aggregateState": "unknown"}
+    },
+    "massWaitingRenderer": {
+      "passed": true,
+      "launchId": "f8923a9d-381d-4076-972a-8c5d8ece38f4",
+      "slot": 5,
+      "wireSequence": 123,
+      "sessionCounts": {"working": 10, "waiting": 1, "done": 1},
+      "agentCount": 12,
+      "pendingRequests": 1,
+      "aggregateState": "waiting",
+      "rendererColor": [21, 255, 255],
+      "isOrange": true,
+      "childrenConsumedAdditionalSlots": false
+    },
+    "twoParentDecisions": {
+      "passed": true,
+      "launchId": "9638c50c-0d45-496c-9905-751874db9d69",
+      "slot": 6,
+      "beforeFirstAnswer": {"state": "waiting", "pendingRequests": 3},
+      "afterFirstAnswer": {"state": "waiting", "pendingRequests": 2},
+      "complete": {"state": "done", "pendingRequests": 0},
+      "req_1": {"actualChildIdUsed": true, "correlationValid": true, "answerValid": true, "checkpointValid": true, "consumed": true},
+      "req_2": {"actualChildIdUsed": true, "correlationValid": true, "answerValid": true, "checkpointValid": true, "consumed": true},
+      "experimentCompleteConsumed": true
+    },
+    "duplicateDiscovery": {
+      "passed": true,
+      "userHookInstalled": true,
+      "projectHookInstalled": true,
+      "launchId": "535c2cc9-88f3-4a35-a840-9ffbef303642",
+      "launchGroupCount": 1
+    },
+    "contentFreeObservation": {
+      "passed": true,
+      "wireRecordCount": 662,
+      "receiverGenerations": [1, 2],
+      "wireTopLevelKeys": ["closed", "complete", "launchId", "observedAt", "pid", "producerId", "receiverGeneration", "root", "sequence", "sessions", "startedAt", "type", "version"],
+      "wireSessionKeys": ["pendingAsks", "pendingDecisions", "role", "sessionId", "state"],
+      "promptOrMessageContentCaptured": false,
+      "providerModelsFixtureOnly": true
+    },
+    "cleanup": {
+      "passed": true,
+      "ownedTerminalsClosed": true,
+      "ownedBrokersStopped": true,
+      "ownedSocketListenersStopped": true,
+      "ownedProviderListenersStopped": true
+    }
+  },
+  "productDefectsFound": []
+}

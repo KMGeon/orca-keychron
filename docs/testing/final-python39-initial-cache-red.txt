@@ -1,0 +1,104 @@
+COMMAND ['/tmp/gjc-validation.K3OypM/py39-gate/bin/python', '-m', 'pytest', '-q']
+...............FFF...................................................... [ 15%]
+........................................................................ [ 31%]
+........................................................................ [ 47%]
+........................................................................ [ 63%]
+........................................................................ [ 79%]
+........................................................................ [ 95%]
+.....................                                                    [100%]
+=================================== FAILURES ===================================
+_ test_doctor_reports_exact_version_and_missing_components_without_mutation[gjc/0.16.4-0-True] _
+
+cli_rig = <conftest.CliRig object at 0x1060f74f0>, version = 'gjc/0.16.4'
+code = 0, supported = True
+
+    @pytest.mark.parametrize("version,code,supported", [
+        ("gjc/0.16.4", 0, True), ("gjc/0.16.5", 0, False), ("gjc/0.16.4", 1, False),
+    ])
+    def test_doctor_reports_exact_version_and_missing_components_without_mutation(
+        cli_rig, version, code, supported,
+    ):
+        rig = cli_rig
+        prepare_commands(rig, version, code)
+        agent = rig.root / "agent"
+        result = json.loads(rig.run("doctor", "--agent-dir", agent,
+                                    "--socket", rig.endpoint).stdout)
+        assert result["gjc"]["supported"] is supported
+        assert result["config"]["configured"] is False
+        assert result["installation"]["installed"] is False
+        assert result["installation"]["healthy"] is False
+        assert result["bridge"]["ok"] is False
+        assert not agent.exists()
+        assert not rig.endpoint.exists()
+>       assert not Path(rig.env["HOME"]).exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = PosixPath('/private/tmp/g-int-nj97c8pw/home').exists
+E        +      where PosixPath('/private/tmp/g-int-nj97c8pw/home') = Path('/private/tmp/g-int-nj97c8pw/home')
+
+tests/integration/test_gjc_doctor_process.py:56: AssertionError
+_ test_doctor_reports_exact_version_and_missing_components_without_mutation[gjc/0.16.5-0-False] _
+
+cli_rig = <conftest.CliRig object at 0x1062fbee0>, version = 'gjc/0.16.5'
+code = 0, supported = False
+
+    @pytest.mark.parametrize("version,code,supported", [
+        ("gjc/0.16.4", 0, True), ("gjc/0.16.5", 0, False), ("gjc/0.16.4", 1, False),
+    ])
+    def test_doctor_reports_exact_version_and_missing_components_without_mutation(
+        cli_rig, version, code, supported,
+    ):
+        rig = cli_rig
+        prepare_commands(rig, version, code)
+        agent = rig.root / "agent"
+        result = json.loads(rig.run("doctor", "--agent-dir", agent,
+                                    "--socket", rig.endpoint).stdout)
+        assert result["gjc"]["supported"] is supported
+        assert result["config"]["configured"] is False
+        assert result["installation"]["installed"] is False
+        assert result["installation"]["healthy"] is False
+        assert result["bridge"]["ok"] is False
+        assert not agent.exists()
+        assert not rig.endpoint.exists()
+>       assert not Path(rig.env["HOME"]).exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = PosixPath('/private/tmp/g-int-vn7at20a/home').exists
+E        +      where PosixPath('/private/tmp/g-int-vn7at20a/home') = Path('/private/tmp/g-int-vn7at20a/home')
+
+tests/integration/test_gjc_doctor_process.py:56: AssertionError
+_ test_doctor_reports_exact_version_and_missing_components_without_mutation[gjc/0.16.4-1-False] _
+
+cli_rig = <conftest.CliRig object at 0x105f83460>, version = 'gjc/0.16.4'
+code = 1, supported = False
+
+    @pytest.mark.parametrize("version,code,supported", [
+        ("gjc/0.16.4", 0, True), ("gjc/0.16.5", 0, False), ("gjc/0.16.4", 1, False),
+    ])
+    def test_doctor_reports_exact_version_and_missing_components_without_mutation(
+        cli_rig, version, code, supported,
+    ):
+        rig = cli_rig
+        prepare_commands(rig, version, code)
+        agent = rig.root / "agent"
+        result = json.loads(rig.run("doctor", "--agent-dir", agent,
+                                    "--socket", rig.endpoint).stdout)
+        assert result["gjc"]["supported"] is supported
+        assert result["config"]["configured"] is False
+        assert result["installation"]["installed"] is False
+        assert result["installation"]["healthy"] is False
+        assert result["bridge"]["ok"] is False
+        assert not agent.exists()
+        assert not rig.endpoint.exists()
+>       assert not Path(rig.env["HOME"]).exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = PosixPath('/private/tmp/g-int-m_6vnay9/home').exists
+E        +      where PosixPath('/private/tmp/g-int-m_6vnay9/home') = Path('/private/tmp/g-int-m_6vnay9/home')
+
+tests/integration/test_gjc_doctor_process.py:56: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_gjc_doctor_process.py::test_doctor_reports_exact_version_and_missing_components_without_mutation[gjc/0.16.4-0-True]
+FAILED tests/integration/test_gjc_doctor_process.py::test_doctor_reports_exact_version_and_missing_components_without_mutation[gjc/0.16.5-0-False]
+FAILED tests/integration/test_gjc_doctor_process.py::test_doctor_reports_exact_version_and_missing_components_without_mutation[gjc/0.16.4-1-False]
+3 failed, 450 passed in 25.17s

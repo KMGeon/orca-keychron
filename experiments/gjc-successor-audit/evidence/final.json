@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "verdict": "pass",
+  "runtime": "/private/tmp/gjc-successor-final-07b38aff",
+  "gjcVersion": "gjc/0.16.4",
+  "product": {
+    "kind": "wheel-extracted-import",
+    "path": "/private/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl",
+    "sha256": "134977ddf53a54903f9af9471cac8b511605539529193bb049f5c6a1cb56e48d",
+    "expectedSha256": "134977ddf53a54903f9af9471cac8b511605539529193bb049f5c6a1cb56e48d"
+  },
+  "requirements": [
+    "GJC-DECISION-RESTART",
+    "GJC-LAUNCH-LIFECYCLE",
+    "GJC-0.16.4"
+  ],
+  "auditInputs": {
+    "harnessSha256": "7b31beb15defa03c6a72879d92d9a87283a2e636a2655136f89a798b57419eb2",
+    "testSha256": "a4fb8fa3a19922c22d3cc9e58e1b0e88aa9139add5ec631a3b0b3c1263d9029f",
+    "workspaceHookSha256Before": "e29cad5aa8749bff21c1f4c213df96cbe4e6019fa19a22162aac8bf3f822cea1",
+    "workspaceHookSha256After": "e29cad5aa8749bff21c1f4c213df96cbe4e6019fa19a22162aac8bf3f822cea1",
+    "workspaceHookUnchanged": true
+  },
+  "fixtureData": {
+    "requestId": "req_restart",
+    "question": "Continue the restart-safe synthetic operation?",
+    "options": [
+      "Continue with A",
+      "Continue with B"
+    ],
+    "checkpoint": "checkpoint-restart-v1",
+    "actualAnswer": "Continue with A",
+    "predecessorChildId": "0-predecessor"
+  },
+  "install": {
+    "sourceHookSha256": "e29cad5aa8749bff21c1f4c213df96cbe4e6019fa19a22162aac8bf3f822cea1",
+    "installedHookSha256": "e29cad5aa8749bff21c1f4c213df96cbe4e6019fa19a22162aac8bf3f822cea1",
+    "isolated": true
+  },
+  "launchA": {
+    "terminalHandle": "term_558fc713-2285-4e4e-9442-738d392f7081",
+    "launchId": "3f210a4a-9e18-4de4-9286-6b1ec1f9a3f6",
+    "pid": 27831,
+    "preAnswer": {
+      "launchId": "3f210a4a-9e18-4de4-9286-6b1ec1f9a3f6",
+      "producerId": "8d0e1ad7-be95-4f43-a3c3-a4dfe024707c",
+      "sequence": 33,
+      "slot": 0,
+      "state": "waiting",
+      "connected": true,
+      "agentCount": 2,
+      "pendingRequests": 2,
+      "targetPaneKeys": [
+        "6408c40f-b74e-4b6f-8b65-bd9032f2d1b6:7fcc597b-761d-4d02-b97b-b790dffa41fd"
+      ],
+      "root": {
+        "sessionId": "01a07320-e064-74b7-8ab9-baf1d79286ee",
+        "terminalHandle": "term_558fc713-2285-4e4e-9442-738d392f7081",
+        "paneKey": "6408c40f-b74e-4b6f-8b65-bd9032f2d1b6:7fcc597b-761d-4d02-b97b-b790dffa41fd",
+        "worktreeId": "a62964da-d82f-410b-9511-8ac1ee64cead::<workspace>"
+      },
+      "complete": true,
+      "pid": 27831,
+      "startedAt": 1788637929645
+    },
+    "postAnswer": {
+      "launchId": "3f210a4a-9e18-4de4-9286-6b1ec1f9a3f6",
+      "producerId": "8d0e1ad7-be95-4f43-a3c3-a4dfe024707c",
+      "sequence": 38,
+      "slot": 0,
+      "state": "unknown",
+      "connected": true,
+      "agentCount": 2,
+      "pendingRequests": 0,
+      "targetPaneKeys": [
+        "6408c40f-b74e-4b6f-8b65-bd9032f2d1b6:7fcc597b-761d-4d02-b97b-b790dffa41fd"
+      ],
+      "root": {
+        "sessionId": "01a07320-e064-74b7-8ab9-baf1d79286ee",
+        "terminalHandle": "term_558fc713-2285-4e4e-9442-738d392f7081",
+        "paneKey": "6408c40f-b74e-4b6f-8b65-bd9032f2d1b6:7fcc597b-761d-4d02-b97b-b790dffa41fd",
+        "worktreeId": "a62964da-d82f-410b-9511-8ac1ee64cead::<workspace>"
+      },
+      "complete": true,
+      "pid": 27831,
+      "startedAt": 1788637929645
+    },
+    "answerCapture": {
+      "time": 1788637931.1718888,
+      "event": "launch_a_answer_captured",
+      "requestId": "req_restart",
+      "actualChildId": "0-predecessor",
+      "answerValid": true,
+      "checkpointPreserved": true,
+      "originalResumed": false
+    },
+    "closed": {
+      "sequence": 39,
+      "closed": true
+    }
+  },
+  "launchB": {
+    "terminalHandle": "term_3bf57327-8ab6-420a-a68f-7b24ce6bfd8c",
+    "launchId": "83535edf-0725-4d02-b111-1b6e0a972229",
+    "pid": 28139,
+    "predecessorResume": {
+      "time": 1788637934.571811,
+      "event": "old_resume_rejected",
+      "actualChildId": "0-predecessor",
+      "reproducibleFailure": true,
+      "resultSha256": "7705536175b23269dcc861a120eaa4e85813d2b10626afb1cb0ce4cfcbd49fcd"
+    },
+    "successor": {
+      "time": 1788637934.9990258,
+      "event": "successor_completed",
+      "predecessorChildId": "0-predecessor",
+      "successorChildId": "0-successor",
+      "identityDiffers": true,
+      "requestIdPreserved": true,
+      "checkpointPreserved": true,
+      "answerConsumed": true,
+      "outcome": "successor",
+      "originalResumed": false
+    },
+    "finalStatus": {
+      "launchId": "83535edf-0725-4d02-b111-1b6e0a972229",
+      "producerId": "98341178-7277-49df-9999-31237a916465",
+      "sequence": 38,
+      "slot": 0,
+      "state": "done",
+      "connected": true,
+      "agentCount": 2,
+      "pendingRequests": 0,
+      "targetPaneKeys": [
+        "c660a3db-0ff7-47bc-abed-ab5286c9c776:b61b45ef-1281-4830-ae11-2287a41644a6"
+      ],
+      "root": {
+        "sessionId": "01a07320-f259-7019-8eda-6d0dba24fcd8",
+        "terminalHandle": "term_3bf57327-8ab6-420a-a68f-7b24ce6bfd8c",
+        "paneKey": "c660a3db-0ff7-47bc-abed-ab5286c9c776:b61b45ef-1281-4830-ae11-2287a41644a6",
+        "worktreeId": "a62964da-d82f-410b-9511-8ac1ee64cead::<workspace>"
+      },
+      "complete": true,
+      "pid": 28139,
+      "startedAt": 1788637934242
+    },
+    "closed": {
+      "sequence": 39,
+      "closed": true
+    }
+  },
+  "assertions": {
+    "actualPredecessorYieldedPendingDecision": true,
+    "unresolvedUntilValidActualAnswer": true,
+    "predecessorNotResumableAfterRestart": true,
+    "successorIdentityDiffers": true,
+    "requestCheckpointAnswerValidated": true,
+    "finalOutcomeExplicitSuccessor": true,
+    "launchIdsAndPidsDistinct": true,
+    "productStatusLifecycleValidated": true,
+    "realModelUsed": false,
+    "physicalHidUsed": false
+  },
+  "cleanup": {
+    "terminals": [
+      {
+        "handle": "term_3bf57327-8ab6-420a-a68f-7b24ce6bfd8c",
+        "ptyKilled": true
+      },
+      {
+        "handle": "term_558fc713-2285-4e4e-9442-738d392f7081",
+        "ptyKilled": true
+      }
+    ],
+    "processes": [
+      {
+        "pid": 27680,
+        "terminated": true,
+        "killed": false,
+        "returncode": 0
+      },
+      {
+        "pid": 27679,
+        "terminated": true,
+        "killed": false,
+        "returncode": -15
+      },
+      {
+        "pid": 27883,
+        "terminated": true,
+        "killed": false,
+        "kind": "gjc-broker"
+      }
+    ],
+    "ownedBrokerPidsRemaining": [],
+    "socketRemoved": true
+  }
+}

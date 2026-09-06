@@ -1,0 +1,50 @@
+{
+  "case": "packaged_success",
+  "scenario": "success",
+  "returncode": 0,
+  "timedOut": false,
+  "seconds": 1.107,
+  "hookEvents": 10,
+  "streamEvents": 10,
+  "types": [
+    "session_start",
+    "before_agent_start",
+    "agent_start",
+    "turn_start",
+    "message_end",
+    "message_end",
+    "message_end",
+    "turn_end",
+    "agent_end",
+    "session_shutdown"
+  ],
+  "sessionIds": [
+    "01a072bb-e4f5-718d-ba1b-e77064de3599"
+  ],
+  "terminal": [
+    {
+      "schemaVersion": 1,
+      "producerId": "8b697283-98b9-4eb4-b644-163e2c404064",
+      "sequence": 9,
+      "eventId": "8b697283-98b9-4eb4-b644-163e2c404064:9",
+      "observedAt": "2026-09-05T18:01:51.971Z",
+      "pid": 15516,
+      "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+      "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+      "type": "agent_end",
+      "sessionId": "01a072bb-e4f5-718d-ba1b-e77064de3599",
+      "hasUI": false,
+      "stopReason": "completed",
+      "hasError": false,
+      "isIdle": true,
+      "hasQueuedMessages": false,
+      "assistantOutcomes": [
+        {
+          "stopReason": "stop",
+          "hasError": false
+        }
+      ]
+    }
+  ],
+  "stderrTail": ""
+}

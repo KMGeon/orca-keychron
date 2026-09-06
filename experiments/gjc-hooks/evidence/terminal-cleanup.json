@@ -1,0 +1,22 @@
+[
+  {
+    "case": "tui_v2",
+    "terminal": "term_262a5f10-56c9-4a49-a1b3-332babf007ac",
+    "closed": true
+  },
+  {
+    "case": "ui_fixture",
+    "terminal": "term_39d30edf-392f-4b9f-9cce-aa2b02f53f13",
+    "closed": true
+  },
+  {
+    "case": "tui_child",
+    "terminal": "term_3620657f-39a9-4026-a75b-e41480ab6b40",
+    "closed": true
+  },
+  {
+    "case": "tui_retry",
+    "terminal": "term_588c4489-64d6-4b52-b74c-c38c9a387ab2",
+    "closed": true
+  }
+]

@@ -1,0 +1,37 @@
+bun test v1.4.0 (34cbb9a40)
+
+tests/gjc_hook_faults.test.ts:
+79 |     f.root.switch("new-root", "new");
+80 |     const snapshot = f.publisher.snapshot()!;
+81 |     expect(snapshot.root.sessionId).toBe("new-root");
+82 |     expect(snapshot.complete).toBe(false);
+83 |     expect(snapshot.sessions).toHaveLength(256);
+84 |     expect(snapshot.sessions.reduce((sum, row) => sum + row.pendingAsks + row.pendingDecisions, 0)).toBe(1);
+                                                                                                         ^
+error: expect(received).toBe(expected)
+
+Expected: 1
+Received: 0
+
+      at <anonymous> (<workspace>/tests/gjc_hook_faults.test.ts:84:101)
+(fail) H-ID: capacity /new preserves sole ask before nonpending active sessions [1.94ms]
+79 |     f.root.switch("new-root", "new");
+80 |     const snapshot = f.publisher.snapshot()!;
+81 |     expect(snapshot.root.sessionId).toBe("new-root");
+82 |     expect(snapshot.complete).toBe(false);
+83 |     expect(snapshot.sessions).toHaveLength(256);
+84 |     expect(snapshot.sessions.reduce((sum, row) => sum + row.pendingAsks + row.pendingDecisions, 0)).toBe(1);
+                                                                                                         ^
+error: expect(received).toBe(expected)
+
+Expected: 1
+Received: 0
+
+      at <anonymous> (<workspace>/tests/gjc_hook_faults.test.ts:84:101)
+(fail) H-ID: capacity /new preserves sole decision before nonpending active sessions [0.56ms]
+
+ 0 pass
+ 21 filtered out
+ 2 fail
+ 8 expect() calls
+Ran 2 tests across 1 file. [19.00ms]

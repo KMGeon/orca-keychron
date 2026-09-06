@@ -1,0 +1,7 @@
+{
+  "productDrift": [],
+  "test-inputDrift": [],
+  "mainCleanup": true,
+  "successorCleanup": true,
+  "actualRuntimeProcessesRemaining": []
+}

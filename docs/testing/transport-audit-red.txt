@@ -1,0 +1,159 @@
+......FFF...FFFF..                                                       [100%]
+=================================== FAILURES ===================================
+_____ test_non_utf8_snapshot_is_rejected_without_registry_write[utf-16-le] _____
+
+source = <orca_keychron_gjc.gjc_source.GjcStatusSource object at 0x1071f3df0>
+observed = <queue.Queue object at 0x1072908d0>, encoding = 'utf-16-le'
+
+    @pytest.mark.parametrize("encoding", ["utf-16-le", "utf-32-le"])
+    def test_non_utf8_snapshot_is_rejected_without_registry_write(source, observed, encoding):
+        with connect(source) as offender:
+            offender.sendall(json.dumps(frame()).encode(encoding) + b"\n")
+            observed.get(timeout=3)
+            offender.shutdown(socket.SHUT_WR)
+            assert offender.recv(1) == b""
+>       assert source.status()["launches"] == []
+E       AssertionError: assert [{'launchId':...lot': 0, ...}] == []
+E         
+E         Left contains one more item: {'launchId': 'a4c7ab46-4b52-417c-8cb2-7195c17dea13', 'producerId': '6ae3fc1c-7a8a-42a5-bd42-31b60766b730', 'sequence': 1, 'slot': 0, ...}
+E         Use -v to get more diff
+
+tests/test_gjc_transport_faults.py:71: AssertionError
+_____ test_non_utf8_snapshot_is_rejected_without_registry_write[utf-32-le] _____
+
+source = <orca_keychron_gjc.gjc_source.GjcStatusSource object at 0x1071f3ce0>
+observed = <queue.Queue object at 0x107290380>, encoding = 'utf-32-le'
+
+    @pytest.mark.parametrize("encoding", ["utf-16-le", "utf-32-le"])
+    def test_non_utf8_snapshot_is_rejected_without_registry_write(source, observed, encoding):
+        with connect(source) as offender:
+            offender.sendall(json.dumps(frame()).encode(encoding) + b"\n")
+            observed.get(timeout=3)
+            offender.shutdown(socket.SHUT_WR)
+            assert offender.recv(1) == b""
+>       assert source.status()["launches"] == []
+E       AssertionError: assert [{'launchId':...lot': 0, ...}] == []
+E         
+E         Left contains one more item: {'launchId': '72e19b63-6bee-4fdc-844a-ac4e45f41863', 'producerId': '70881676-318a-410d-ad00-0d0864088dc8', 'sequence': 1, 'slot': 0, ...}
+E         Use -v to get more diff
+
+tests/test_gjc_transport_faults.py:71: AssertionError
+______ test_identity_change_disconnects_original_but_preserves_other_root ______
+
+source = <orca_keychron_gjc.gjc_source.GjcStatusSource object at 0x107280b50>
+observed = <queue.Queue object at 0x107281250>
+
+    def test_identity_change_disconnects_original_but_preserves_other_root(source, observed):
+        first, second = frame(), frame("waiting")
+        with connect(source) as offender, connect(source) as independent:
+            emit(offender, first, observed)
+            emit(independent, second, observed)
+            before = source.tracker.registry_path.read_bytes()
+            emit(offender, frame("done"), observed)
+            assert offender.recv(1) == b""
+            rows = {r["launchId"]: r for r in source.status()["launches"]}
+            assert len(rows) == 2
+>           assert rows[first["launchId"]]["state"] == "unknown"
+E           AssertionError: assert 'working' == 'unknown'
+E             
+E             - unknown
+E             + working
+
+tests/test_gjc_transport_faults.py:86: AssertionError
+___ test_bind_leaf_replacement_never_chmods_or_removes_replacement[symlink] ____
+
+endpoint = PosixPath('/tmp/gjc-qauor4li/bridge.sock')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107126450>
+kind = 'symlink'
+
+    @pytest.mark.parametrize("kind", ["symlink", "regular"])
+    def test_bind_leaf_replacement_never_chmods_or_removes_replacement(endpoint, monkeypatch, kind):
+        target = endpoint.parent / "preserve"
+        target.write_text("user file")
+        target.chmod(0o644)
+        original = socket.socket.bind
+    
+        def replace_after_bind(sock, address):
+            original(sock, address)
+            endpoint.unlink()
+            if kind == "symlink":
+                endpoint.symlink_to(target)
+            else:
+                endpoint.write_text("replacement")
+                endpoint.chmod(0o644)
+    
+        monkeypatch.setattr(socket.socket, "bind", replace_after_bind)
+        receiver = GjcStatusSource(endpoint, [])
+        try:
+>           with pytest.raises(PermissionError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE PermissionError
+
+tests/test_gjc_transport_faults.py:152: Failed
+___ test_bind_leaf_replacement_never_chmods_or_removes_replacement[regular] ____
+
+endpoint = PosixPath('/tmp/gjc-swubgrw0/bridge.sock')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107125f10>
+kind = 'regular'
+
+    @pytest.mark.parametrize("kind", ["symlink", "regular"])
+    def test_bind_leaf_replacement_never_chmods_or_removes_replacement(endpoint, monkeypatch, kind):
+        target = endpoint.parent / "preserve"
+        target.write_text("user file")
+        target.chmod(0o644)
+        original = socket.socket.bind
+    
+        def replace_after_bind(sock, address):
+            original(sock, address)
+            endpoint.unlink()
+            if kind == "symlink":
+                endpoint.symlink_to(target)
+            else:
+                endpoint.write_text("replacement")
+                endpoint.chmod(0o644)
+    
+        monkeypatch.setattr(socket.socket, "bind", replace_after_bind)
+        receiver = GjcStatusSource(endpoint, [])
+        try:
+>           with pytest.raises(PermissionError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE PermissionError
+
+tests/test_gjc_transport_faults.py:152: Failed
+______________ test_non_utf8_control_response_rejected[utf-16-le] ______________
+
+endpoint = PosixPath('/tmp/gjc-pwy39xdp/bridge.sock'), encoding = 'utf-16-le'
+
+    @pytest.mark.parametrize("encoding", ["utf-16-le", "utf-32-le"])
+    def test_non_utf8_control_response_rejected(endpoint, encoding):
+        row = {"version": 1, "type": "response", "ok": True,
+               "status": {"version": 1, "maxSlots": 2, "launches": [], "overflow": []}}
+        with reply_server(endpoint, json.dumps(row).encode(encoding) + b"\n"):
+>           with pytest.raises(GjcProtocolError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE GjcProtocolError
+
+tests/test_gjc_transport_faults.py:198: Failed
+______________ test_non_utf8_control_response_rejected[utf-32-le] ______________
+
+endpoint = PosixPath('/tmp/gjc-p092i_6a/bridge.sock'), encoding = 'utf-32-le'
+
+    @pytest.mark.parametrize("encoding", ["utf-16-le", "utf-32-le"])
+    def test_non_utf8_control_response_rejected(endpoint, encoding):
+        row = {"version": 1, "type": "response", "ok": True,
+               "status": {"version": 1, "maxSlots": 2, "launches": [], "overflow": []}}
+        with reply_server(endpoint, json.dumps(row).encode(encoding) + b"\n"):
+>           with pytest.raises(GjcProtocolError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE GjcProtocolError
+
+tests/test_gjc_transport_faults.py:198: Failed
+=========================== short test summary info ============================
+FAILED tests/test_gjc_transport_faults.py::test_non_utf8_snapshot_is_rejected_without_registry_write[utf-16-le]
+FAILED tests/test_gjc_transport_faults.py::test_non_utf8_snapshot_is_rejected_without_registry_write[utf-32-le]
+FAILED tests/test_gjc_transport_faults.py::test_identity_change_disconnects_original_but_preserves_other_root
+FAILED tests/test_gjc_transport_faults.py::test_bind_leaf_replacement_never_chmods_or_removes_replacement[symlink]
+FAILED tests/test_gjc_transport_faults.py::test_bind_leaf_replacement_never_chmods_or_removes_replacement[regular]
+FAILED tests/test_gjc_transport_faults.py::test_non_utf8_control_response_rejected[utf-16-le]
+FAILED tests/test_gjc_transport_faults.py::test_non_utf8_control_response_rejected[utf-32-le]
+7 failed, 11 passed in 1.08s

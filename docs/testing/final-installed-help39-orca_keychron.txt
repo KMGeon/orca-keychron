@@ -1,0 +1,16 @@
+COMMAND ['/tmp/gjc-test-audit/final-install-py39/bin/python', '-I', '-m', 'orca_keychron', '--help']
+usage: orca-keychron [-h] [--version]
+                     {status,probe,run,setup,autostart,preview} ...
+
+positional arguments:
+  {status,probe,run,setup,autostart,preview}
+    status              Print Orca's current normalized agents
+    probe               Read the connected Keychron LED layout
+    run                 Render Orca agent states on the keyboard
+    setup               Detect, verify, preview, and save a keyboard
+    autostart           Manage macOS login autostart
+    preview             Temporarily preview one status color
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit

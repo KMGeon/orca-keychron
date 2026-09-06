@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "verdict": "pass",
+  "runtime": "/private/tmp/gjc-rs-final-8e0c253c",
+  "gjcVersion": "0.16.4",
+  "fixture": {
+    "provider": "product-qa",
+    "model": "fixture",
+    "loopbackOnly": true,
+    "requestCount": 3,
+    "responseCount": 3,
+    "allRequestsUsedFixtureModel": true
+  },
+  "productHook": {
+    "sourceSha256": "d1f41261a9e669deb6cb9bb578bbd1eb07d5b540d6b50d1311b6b2eb8796211b",
+    "installedSha256": "d1f41261a9e669deb6cb9bb578bbd1eb07d5b540d6b50d1311b6b2eb8796211b",
+    "installScope": "isolated-user",
+    "installed": true
+  },
+  "identity": {
+    "launchId": "e6c8baba-1f7a-474b-8e0f-021187f3da72",
+    "producerId": "84426498-8fe8-468f-846c-e8e39a410195",
+    "pid": 33693,
+    "startedAt": 1788634320112,
+    "slot": 0,
+    "terminalHandle": "term_c413c850-4648-4263-810e-e08071d58e59",
+    "paneKey": "61376d58-ce44-409b-ba66-c5f68d6545e6:32bf62ae-7707-49aa-a660-53907b24e026"
+  },
+  "snapshots": [
+    {
+      "checkpoint": "initial-turn-done",
+      "sequence": 23,
+      "rootSessionId": "01a072e9-ccae-740b-946f-0ec57c48a171",
+      "state": "done",
+      "connected": true,
+      "agentCount": 1,
+      "slot": 0
+    },
+    {
+      "checkpoint": "after-new-before-turn",
+      "sequence": 32,
+      "rootSessionId": "01a072ea-7ec2-7631-ad5a-cb9a7d234d2f",
+      "state": "done",
+      "connected": true,
+      "agentCount": 2,
+      "slot": 0
+    },
+    {
+      "checkpoint": "after-resume-turn-done",
+      "sequence": 65,
+      "rootSessionId": "01a072e9-ccae-740b-946f-0ec57c48a171",
+      "state": "done",
+      "connected": true,
+      "agentCount": 2,
+      "slot": 0
+    },
+    {
+      "checkpoint": "graceful-shutdown-wire",
+      "sequence": 69,
+      "rootSessionId": "01a072e9-ccae-740b-946f-0ec57c48a171",
+      "rootState": "closed",
+      "closed": true,
+      "complete": true,
+      "sessionCount": 2
+    },
+    {
+      "checkpoint": "after-graceful-shutdown-live-status",
+      "launchCount": 0,
+      "overflowCount": 0
+    }
+  ],
+  "wireTransitions": {
+    "afterNew": {
+      "sequenceRange": [30, 51],
+      "rootSessionId": "01a072ea-7ec2-7631-ad5a-cb9a7d234d2f",
+      "states": ["idle", "working", "done"]
+    },
+    "afterResume": {
+      "sequenceRange": [52, 69],
+      "rootSessionId": "01a072e9-ccae-740b-946f-0ec57c48a171",
+      "states": ["done", "working", "closed"]
+    }
+  },
+  "wireFrameCount": 69,
+  "observedElapsedSeconds": 95.7154278755188,
+  "contentRecorded": false
+}

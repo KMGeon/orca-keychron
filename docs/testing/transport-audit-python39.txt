@@ -1,0 +1,1 @@
+Python 3.9.6: AF_UNIX strict UTF-8, healthy continuation, status, private socket chmod, stop/restart registry restore passed

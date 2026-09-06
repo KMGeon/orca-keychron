@@ -1,0 +1,2 @@
+TypeScript 5.4.5; cached @types/node 22.19.8 and bun-types 1.3.9; strict noEmit skipLibCheck ES2022 bundler
+Exit: 0

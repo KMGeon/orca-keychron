@@ -1,0 +1,15 @@
+retry: 
+  enabled: false
+  maxRetries: 0
+notifications: 
+  enabled: false
+telemetry: 
+  enabled: false
+marketplace: 
+  autoUpdate: false
+task: 
+  isolation: 
+    mode: auto
+  enableLsp: false
+  maxRecursionDepth: 3
+configSchemaVersion: 2

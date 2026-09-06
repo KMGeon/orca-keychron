@@ -1,0 +1,240 @@
+COMMAND ['uv', 'build', '--out-dir', '/tmp/gjc-test-audit/final-dist']
+Building source distribution...
+running egg_info
+writing src/orca_keychron.egg-info/PKG-INFO
+writing dependency_links to src/orca_keychron.egg-info/dependency_links.txt
+writing entry points to src/orca_keychron.egg-info/entry_points.txt
+writing requirements to src/orca_keychron.egg-info/requires.txt
+writing top-level names to src/orca_keychron.egg-info/top_level.txt
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/orca_keychron.egg-info/SOURCES.txt'
+running sdist
+running egg_info
+writing src/orca_keychron.egg-info/PKG-INFO
+writing dependency_links to src/orca_keychron.egg-info/dependency_links.txt
+writing entry points to src/orca_keychron.egg-info/entry_points.txt
+writing requirements to src/orca_keychron.egg-info/requires.txt
+writing top-level names to src/orca_keychron.egg-info/top_level.txt
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/orca_keychron.egg-info/SOURCES.txt'
+running check
+creating orca_keychron-0.1.2.dev1+ga1e844f34.d20260905
+creating orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/.github/workflows
+creating orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/assets
+creating orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+creating orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+creating orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+creating orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc/assets
+creating orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying files to orca_keychron-0.1.2.dev1+ga1e844f34.d20260905...
+copying .gitignore -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905
+copying LICENSE -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905
+copying MANIFEST.in -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905
+copying README.ko.md -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905
+copying README.md -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905
+copying pyproject.toml -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905
+copying .github/workflows/publish.yml -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/.github/workflows
+copying assets/img1.png -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/assets
+copying assets/img2.png -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/assets
+copying src/orca_keychron/__init__.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/__main__.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/autostart.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/cli.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/config.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/device_lock.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/digit_hold.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/indicator.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/keychron_hid.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/models.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/orca_navigation.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/orca_status.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/permissions.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/rendering.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron/worktree_tracker.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron
+copying src/orca_keychron.egg-info/PKG-INFO -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+copying src/orca_keychron.egg-info/SOURCES.txt -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+copying src/orca_keychron.egg-info/dependency_links.txt -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+copying src/orca_keychron.egg-info/entry_points.txt -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+copying src/orca_keychron.egg-info/requires.txt -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+copying src/orca_keychron.egg-info/scm_file_list.json -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+copying src/orca_keychron.egg-info/scm_version.json -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+copying src/orca_keychron.egg-info/top_level.txt -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+copying src/orca_keychron_gjc/__init__.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/__main__.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/autostart.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/cli.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/config.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/gjc_install.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/gjc_protocol.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/gjc_source.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/gjc_tracker.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc
+copying src/orca_keychron_gjc/assets/decision-parent.md -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc/assets
+copying src/orca_keychron_gjc/assets/decision-worker.md -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc/assets
+copying src/orca_keychron_gjc/assets/gjc_hook.ts -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron_gjc/assets
+copying tests/test_autostart.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_cli.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_config.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_device_lock.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_digit_hold.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_autostart.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_autostart_faults.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_cli.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_cli_faults.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_config.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_install.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_install_faults.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_protocol.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_runtime_integration.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_source.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_state_invariants.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_successor_fixture.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_tracker.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_gjc_transport_faults.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_indicator.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_keychron_hid.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_keychron_hid_faults.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_orca_navigation.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_orca_status.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_permissions.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_rendering.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying tests/test_worktree_tracker.py -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/tests
+copying src/orca_keychron.egg-info/SOURCES.txt -> orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/src/orca_keychron.egg-info
+Writing orca_keychron-0.1.2.dev1+ga1e844f34.d20260905/setup.cfg
+Creating tar archive
+removing 'orca_keychron-0.1.2.dev1+ga1e844f34.d20260905' (and everything under it)
+Building wheel from source distribution...
+running egg_info
+writing src/orca_keychron.egg-info/PKG-INFO
+writing dependency_links to src/orca_keychron.egg-info/dependency_links.txt
+writing entry points to src/orca_keychron.egg-info/entry_points.txt
+writing requirements to src/orca_keychron.egg-info/requires.txt
+writing top-level names to src/orca_keychron.egg-info/top_level.txt
+listing git files failed - pretending there aren't any
+reading manifest file 'src/orca_keychron.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/orca_keychron.egg-info/SOURCES.txt'
+running bdist_wheel
+running build
+running build_py
+creating build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/config.py -> build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/__init__.py -> build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/autostart.py -> build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/cli.py -> build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/gjc_install.py -> build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/gjc_source.py -> build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/gjc_tracker.py -> build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/__main__.py -> build/lib/orca_keychron_gjc
+copying src/orca_keychron_gjc/gjc_protocol.py -> build/lib/orca_keychron_gjc
+creating build/lib/orca_keychron
+copying src/orca_keychron/config.py -> build/lib/orca_keychron
+copying src/orca_keychron/models.py -> build/lib/orca_keychron
+copying src/orca_keychron/rendering.py -> build/lib/orca_keychron
+copying src/orca_keychron/orca_navigation.py -> build/lib/orca_keychron
+copying src/orca_keychron/indicator.py -> build/lib/orca_keychron
+copying src/orca_keychron/device_lock.py -> build/lib/orca_keychron
+copying src/orca_keychron/__init__.py -> build/lib/orca_keychron
+copying src/orca_keychron/autostart.py -> build/lib/orca_keychron
+copying src/orca_keychron/keychron_hid.py -> build/lib/orca_keychron
+copying src/orca_keychron/cli.py -> build/lib/orca_keychron
+copying src/orca_keychron/permissions.py -> build/lib/orca_keychron
+copying src/orca_keychron/digit_hold.py -> build/lib/orca_keychron
+copying src/orca_keychron/worktree_tracker.py -> build/lib/orca_keychron
+copying src/orca_keychron/__main__.py -> build/lib/orca_keychron
+copying src/orca_keychron/orca_status.py -> build/lib/orca_keychron
+running egg_info
+writing src/orca_keychron.egg-info/PKG-INFO
+writing dependency_links to src/orca_keychron.egg-info/dependency_links.txt
+writing entry points to src/orca_keychron.egg-info/entry_points.txt
+writing requirements to src/orca_keychron.egg-info/requires.txt
+writing top-level names to src/orca_keychron.egg-info/top_level.txt
+listing git files failed - pretending there aren't any
+reading manifest file 'src/orca_keychron.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src/orca_keychron.egg-info/SOURCES.txt'
+creating build/lib/orca_keychron_gjc/assets
+copying src/orca_keychron_gjc/assets/gjc_hook.ts -> build/lib/orca_keychron_gjc/assets
+copying src/orca_keychron_gjc/assets/decision-parent.md -> build/lib/orca_keychron_gjc/assets
+copying src/orca_keychron_gjc/assets/decision-worker.md -> build/lib/orca_keychron_gjc/assets
+copying src/orca_keychron_gjc/assets/decision-parent.md -> build/lib/orca_keychron_gjc/assets
+copying src/orca_keychron_gjc/assets/decision-worker.md -> build/lib/orca_keychron_gjc/assets
+copying src/orca_keychron_gjc/assets/gjc_hook.ts -> build/lib/orca_keychron_gjc/assets
+installing to build/bdist.macosx-10.9-universal2/wheel
+running install
+running install_lib
+creating build/bdist.macosx-10.9-universal2/wheel
+creating build/bdist.macosx-10.9-universal2/wheel/orca_keychron_gjc
+copying build/lib/orca_keychron_gjc/config.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+copying build/lib/orca_keychron_gjc/__init__.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+copying build/lib/orca_keychron_gjc/autostart.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+copying build/lib/orca_keychron_gjc/cli.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+copying build/lib/orca_keychron_gjc/gjc_install.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+copying build/lib/orca_keychron_gjc/gjc_source.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+copying build/lib/orca_keychron_gjc/gjc_tracker.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+creating build/bdist.macosx-10.9-universal2/wheel/orca_keychron_gjc/assets
+copying build/lib/orca_keychron_gjc/assets/decision-parent.md -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc/assets
+copying build/lib/orca_keychron_gjc/assets/decision-worker.md -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc/assets
+copying build/lib/orca_keychron_gjc/assets/gjc_hook.ts -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc/assets
+copying build/lib/orca_keychron_gjc/__main__.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+copying build/lib/orca_keychron_gjc/gjc_protocol.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron_gjc
+creating build/bdist.macosx-10.9-universal2/wheel/orca_keychron
+copying build/lib/orca_keychron/config.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/models.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/rendering.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/orca_navigation.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/indicator.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/device_lock.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/__init__.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/autostart.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/keychron_hid.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/cli.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/permissions.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/digit_hold.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/worktree_tracker.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/__main__.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+copying build/lib/orca_keychron/orca_status.py -> build/bdist.macosx-10.9-universal2/wheel/./orca_keychron
+running install_egg_info
+Copying src/orca_keychron.egg-info to build/bdist.macosx-10.9-universal2/wheel/./orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3.9.egg-info
+running install_scripts
+creating build/bdist.macosx-10.9-universal2/wheel/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.dist-info/WHEEL
+creating '/tmp/gjc-test-audit/final-dist/.tmp-_6436p16/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl' and adding 'build/bdist.macosx-10.9-universal2/wheel' to it
+adding 'orca_keychron/__init__.py'
+adding 'orca_keychron/__main__.py'
+adding 'orca_keychron/autostart.py'
+adding 'orca_keychron/cli.py'
+adding 'orca_keychron/config.py'
+adding 'orca_keychron/device_lock.py'
+adding 'orca_keychron/digit_hold.py'
+adding 'orca_keychron/indicator.py'
+adding 'orca_keychron/keychron_hid.py'
+adding 'orca_keychron/models.py'
+adding 'orca_keychron/orca_navigation.py'
+adding 'orca_keychron/orca_status.py'
+adding 'orca_keychron/permissions.py'
+adding 'orca_keychron/rendering.py'
+adding 'orca_keychron/worktree_tracker.py'
+adding 'orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.dist-info/licenses/LICENSE'
+adding 'orca_keychron_gjc/__init__.py'
+adding 'orca_keychron_gjc/__main__.py'
+adding 'orca_keychron_gjc/autostart.py'
+adding 'orca_keychron_gjc/cli.py'
+adding 'orca_keychron_gjc/config.py'
+adding 'orca_keychron_gjc/gjc_install.py'
+adding 'orca_keychron_gjc/gjc_protocol.py'
+adding 'orca_keychron_gjc/gjc_source.py'
+adding 'orca_keychron_gjc/gjc_tracker.py'
+adding 'orca_keychron_gjc/assets/decision-parent.md'
+adding 'orca_keychron_gjc/assets/decision-worker.md'
+adding 'orca_keychron_gjc/assets/gjc_hook.ts'
+adding 'orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.dist-info/METADATA'
+adding 'orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.dist-info/WHEEL'
+adding 'orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.dist-info/entry_points.txt'
+adding 'orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.dist-info/top_level.txt'
+adding 'orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.dist-info/RECORD'
+removing build/bdist.macosx-10.9-universal2/wheel
+Successfully built /tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.tar.gz
+Successfully built /tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl

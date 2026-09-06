@@ -1,0 +1,79 @@
+--- baseline-gjc_hook.ts
++++ audited-gjc_hook.ts
+@@ -28,6 +28,7 @@
+ interface Tool {
+   name: string;
+   questionIds: string[];
++  decisionTokens: Map<string, symbol>;
+ }
+ interface Session {
+   sessionId: string;
+@@ -38,7 +39,7 @@
+   queued: boolean;
+   tools: Map<string, Tool>;
+   resolved: Set<string>;
+-  decisions: Set<string>;
++  decisions: Map<string, symbol>;
+   yielded?: "done" | "waiting" | "failed" | "unknown";
+ }
+ export interface Snapshot {
+@@ -84,7 +85,7 @@
+   return text(value.customInput, 16000) || (Array.isArray(value.selectedOptions) && value.selectedOptions.some(option => text(option, 2000)));
+ }
+ function newSession(sessionId: string): Session {
+-  return { sessionId, state: "idle", active: false, maintenance: false, queued: false, tools: new Map(), resolved: new Set(), decisions: new Set() };
++  return { sessionId, state: "idle", active: false, maintenance: false, queued: false, tools: new Map(), resolved: new Set(), decisions: new Map() };
+ }
+ 
+ /** Testable process-local state machine. Production loaders use createHook below. */
+@@ -184,7 +185,17 @@
+     if (isRoot) this.rootEvents.add(event);
+     let session = this.sessions.get(sessionId);
+     if (!session) {
+-      if (this.sessions.size >= MAX_SESSIONS) { this.complete = false; this.schedule(); return; }
++      if (this.sessions.size >= MAX_SESSIONS) {
++        this.complete = false;
++        if (type !== "session_switch" || !isRoot) { this.schedule(); return; }
++        // The current root must remain observable, especially its shutdown.
++        // Prefer an inactive record without pending work; coverage stays incomplete
++        // even if retaining the new root requires dropping an unresolved record.
++        const candidates = [...this.sessions.values()];
++        const evicted = candidates.find(row => !row.active && !row.tools.size && !row.decisions.size && !row.maintenance && !row.queued)
++          ?? candidates.find(row => row.sessionId !== this.rootId) ?? candidates[0];
++        this.sessions.delete(evicted.sessionId);
++      }
+       session = newSession(sessionId);
+       this.sessions.set(sessionId, session);
+     }
+@@ -296,7 +307,12 @@
+     const args = record(event.args);
+     const questionIds = name === "ask" && Array.isArray(args?.questions)
+       ? args.questions.slice(0, MAX_TOOLS).map(q => identifier(record(q)?.id)).filter((id): id is string => Boolean(id)) : [];
+-    session.tools.set(id, { name, questionIds });
++    const decisionTokens = new Map<string, symbol>();
++    for (const questionId of questionIds) {
++      const owners = [...this.sessions.values()].filter(child => child.decisions.has(questionId));
++      if (owners.length === 1) decisionTokens.set(questionId, owners[0].decisions.get(questionId)!);
++    }
++    session.tools.set(id, { name, questionIds, decisionTokens });
+     session.state = "working";
+   }
+   private toolEnd(session: Session, event: RecordValue): void {
+@@ -325,7 +341,8 @@
+             session.yielded = "unknown";
+             if (session.decisions.size >= MAX_TOOLS) this.complete = false;
+           } else {
+-            session.decisions.add(requestId);
++            // A new receipt for a reused ID cannot be answered by an older ask.
++            if (!session.decisions.has(requestId)) session.decisions.set(requestId, Symbol());
+             session.yielded = "waiting";
+           }
+         } else session.yielded = "done";
+@@ -340,6 +357,7 @@
+         const owners = [...this.sessions.values()].filter(child => child.decisions.has(requestId));
+         if (owners.length > 1) { this.complete = false; continue; }
+         for (const child of owners) {
++          if (child.decisions.get(requestId) !== tool.decisionTokens.get(requestId)) continue;
+           child.decisions.delete(requestId);
+           child.yielded = undefined;
+           child.state = child.active ? "working" : "unknown";

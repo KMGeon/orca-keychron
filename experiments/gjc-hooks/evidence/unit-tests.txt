@@ -1,0 +1,37 @@
+bun test v1.4.0 (34cbb9a40)
+
+experiments/gjc-hooks/reducer-model.test.ts:
+(pass) RECOMMENDED: one observed pending ask outranks ten running members [0.88ms]
+(pass) RECOMMENDED: resolving one of two asks leaves orange [0.07ms]
+(pass) RECOMMENDED: tool/runtime pairs and replay do not double count or reopen [0.09ms]
+(pass) RECOMMENDED: same toolCallId in different producers/sessions is independent [0.05ms]
+(pass) RECOMMENDED: recovered tool failure followed by successful final response is green [0.07ms]
+(pass) RECOMMENDED: completed with final assistant error is red [0.05ms]
+(pass) RECOMMENDED: completed with only toolUse plus aborted/error tool is not green [0.05ms]
+(pass) RECOMMENDED: sequence gap remains unknown even if later success arrives [0.04ms]
+(pass) RECOMMENDED: producer crash cannot retain green; replacement requires explicit membership [0.06ms]
+(pass) RECOMMENDED: parentSession/cwd/Orca hints never add slot members [0.03ms]
+(pass) RECOMMENDED: observed pending ask outranks failure; resolving exposes failure [0.04ms]
+(pass) RECOMMENDED: maintenance/checkpoints and queued work are not completion [0.09ms]
+(pass) RECOMMENDED: reducer does not mutate previous input state [0.03ms]
+(pass) CAPTURED TUI metadata replay: 2 asks, one resolved, other aborted, outer completed is not green [0.43ms]
+(pass) RECOMMENDED: per-producer continuity allows session switching without false gaps [0.04ms]
+
+experiments/gjc-hooks/observer.test.ts:
+(pass) MOCK: documented lifecycle registration; runtime-only events require opt in [1.34ms]
+(pass) MOCK: handlers preserve tool behavior and capture API metadata [1.09ms]
+(pass) MOCK: interleaved sessions and child identity are never globally overwritten [0.71ms]
+(pass) MOCK: duplicate source callbacks retain distinct sequence identity for audit [0.78ms]
+(pass) MOCK: loop-end completed retains assistant failure/abort evidence [0.41ms]
+(pass) MOCK: maintenance, retries, cancellation and shutdown preserve distinctions [0.76ms]
+(pass) MOCK: context failure and missing socket/log destination never throw or block [5.64ms]
+(pass) MOCK: Unix socket pushes records immediately in order without polling [14.19ms]
+(pass) MOCK: local TCP pushes the same framing [13.58ms]
+(pass) MOCK: delayed receiver startup reconnects and flushes pending events [113.03ms]
+(pass) MOCK: receiver disconnect then new events reconnect; no ACK guarantee claimed [160.34ms]
+(pass) MOCK: disconnected queue is bounded and exposes event loss [125.03ms]
+
+ 27 pass
+ 0 fail
+ 83 expect() calls
+Ran 27 tests across 2 files. [454.00ms]

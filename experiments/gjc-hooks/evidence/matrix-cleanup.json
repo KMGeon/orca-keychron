@@ -1,0 +1,78 @@
+{
+  "isolationCandidates": [
+    {
+      "case": "matrix_isolation_committed",
+      "root": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_committed/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-57e0187",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_committed",
+      "root": "/private/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_committed/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-e425146",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_uncommitted",
+      "root": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_uncommitted/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-cda0126",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_uncommitted",
+      "root": "/private/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_uncommitted/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-125ff49",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_rcopy_committed",
+      "root": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_rcopy_committed/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-f15bb8c",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_rcopy_committed",
+      "root": "/private/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_rcopy_committed/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-cb196db",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_rcopy_uncommitted",
+      "root": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_rcopy_uncommitted/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-9b0bb12",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_rcopy_uncommitted",
+      "root": "/private/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_rcopy_uncommitted/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-7699064",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_cwd_committed",
+      "root": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_committed/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-cc381d3",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_cwd_committed",
+      "root": "/private/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_committed/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-e2fe400",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_cwd_uncommitted",
+      "root": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_uncommitted/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-70a2a07",
+      "exists": false
+    },
+    {
+      "case": "matrix_isolation_cwd_uncommitted",
+      "root": "/private/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_uncommitted/workspace",
+      "dir": "<home>/.gjc/wt/0-lab_child_0-c39dda5",
+      "exists": false
+    }
+  ],
+  "remainingOwnedProcesses": [],
+  "manualDeletionRequired": false
+}

@@ -1,0 +1,6 @@
+COMMAND ['/tmp/gjc-test-audit/final-install-py39/bin/python', '-I', '-c', "import sys, importlib.metadata, orca_keychron, orca_keychron_gjc; print(sys.version); print(importlib.metadata.version('orca-keychron')); print(orca_keychron.__file__); print(orca_keychron_gjc.__file__)"]
+3.9.6 (default, May 22 2026, 11:13:45) 
+[Clang 21.0.0 (clang-2100.1.1.101)]
+0.1.2.dev1+ga1e844f34.d20260905
+/private/tmp/gjc-test-audit/final-install-py39/lib/python3.9/site-packages/orca_keychron/__init__.py
+/private/tmp/gjc-test-audit/final-install-py39/lib/python3.9/site-packages/orca_keychron_gjc/__init__.py

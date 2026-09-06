@@ -1,0 +1,40 @@
+source=screen
+  └─ [lab_q1] · options:2
+    Local Keychron experiment: select Continue or Stop.
+      ├─ ☐ Continue
+      └─ ☐ Stop
+ ✔ Ask
+  Local Keychron experiment: select Continue or Stop.
+  └─ ☑ Continue
+ Ask 1 questions
+  └─ [lab_q2] · options:2
+    Local Keychron experiment: select Continue or Stop.
+      ├─ ☐ Continue
+      └─ ☐ Stop
+ Tool execution was aborted.
+ user
+ [GJC_CASE:ask]
+ Ask 1 questions
+  └─ [lab_q1] · options:2
+    Local Keychron experiment: select Continue or Stop.
+      ├─ ☐ Continue
+      └─ ☐ Stop
+ Tool execution was aborted.
+ user
+ [GJC_CASE:hang]
+ gajae
+ LOCAL_EXPERIMENT_WAITING
+ Operation aborted
+ user
+ [GJC_CASE:bash_slow]
+ ┌─── ⏳ Bash ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ $ python3 -c 'import time; print("LOCAL_BASH_SLEEP", flush=True); time.sleep(20)'                                                                                                                            │
+ ├─── Output ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+ │ LOCAL_BASH_SLEEP                                                                                                                                                                                             │
+ │ ⟦Timeout: 25s⟧                                                                                                                                                                                               │
+ └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+ ⠸ Working… ⟦esc⟧
+ ⬢ lab-ask · 0.0% / 🗑 …eriments/cases/tui_v2/workspace ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 🦞 1 job running / v0.16.4
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ > Type your message... ↩: Steer · ⌥Q: Queue · ⇧⇥: Thinking · ⌃L: Model · ⌃R: History · ⇧↩/⌃J: New line · ⌃C: Clear                                                                                            │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

@@ -1,0 +1,7 @@
+COMMAND ['/tmp/gjc-test-audit/final-py313/bin/python', '-m', 'twine', 'check', '--strict', '/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl', '/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.tar.gz']
+Checking 
+/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3
+-none-any.whl: [32mPASSED[0m
+Checking 
+/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.tar
+.gz: [32mPASSED[0m

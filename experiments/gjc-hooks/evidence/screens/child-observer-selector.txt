@@ -1,0 +1,15 @@
+source=screen
+╭─── gjc v0.16.4 · release build · GJC Forge ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ Session Observer
+ child_ask [active] executor · lab-success
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   [User]
+     Complete the assignment below, thoroughly:
+     [GJC_CASE:child_ask] Local deterministic hook experiment. Perform only the local mock provider's harmless action.
+ ▶ [ask]
+     questions: [{"id":"lab_q1","question":"Local Keychron experiment: select Continue or Stop.","options":[{"label":"Continue"},{"label":"Stop"}],"multi":false}]
+     ⏳ pending
+ 1 tools · 20/128K ctx · Σ20 · 445ms
+ j/k:select  Enter:expand  PgUp/PgDn:page  [/]/←→:cycle agents  Esc/Ctrl+S:close  g/G:top/bottom
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

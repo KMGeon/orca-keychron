@@ -1,0 +1,40 @@
+GJC protocol/tracker second audit - GREEN evidence
+Date: 2026-09-06 Asia/Seoul
+
+Focused Python 3.13 command:
+  uv run pytest -q tests/test_gjc_state_invariants.py \
+    tests/test_gjc_protocol.py tests/test_gjc_tracker.py
+Result:
+  88 passed in 0.16s
+
+Focused lint command:
+  uv run ruff check src/orca_keychron_gjc/gjc_protocol.py \
+    src/orca_keychron_gjc/gjc_tracker.py tests/test_gjc_state_invariants.py \
+    tests/test_gjc_protocol.py tests/test_gjc_tracker.py
+Result:
+  All checks passed!
+
+Isolated Python 3.9 compatibility command:
+  audit_tmp_dir=$(mktemp -d /tmp/gjc-state-audit.XXXXXX)
+  uv venv "$audit_tmp_dir/venv" \
+    --python /Library/Developer/CommandLineTools/usr/bin/python3
+  uv pip install --python "$audit_tmp_dir/venv/bin/python" pytest
+  PYTHONPATH=src "$audit_tmp_dir/venv/bin/python" -m pytest -q \
+    tests/test_gjc_state_invariants.py tests/test_gjc_protocol.py \
+    tests/test_gjc_tracker.py
+Result:
+  Python 3.9.6
+  88 passed in 0.22s
+
+Cleanup verification:
+  temporary Python 3.9 environment cleaned
+  no owned test subprocess or FIFO remained
+
+Regression transitions:
+  REG-2 FIFO registry: bounded subprocess timed out before fix; now rejects
+    the non-regular registry with PermissionError and exits normally.
+  WIRE-5 byte encoding: UTF-16LE, UTF-32LE and UTF-8 BOM were accepted before
+    fix (3 failed); all three strict JSON Lines rejection cases now pass.
+  STATE-3 closed+pending challenge was reclassified after contract review:
+    waiting/human priority and pending counts are intentionally retained, while
+    a closed child is excluded from agent_count. No weakening edit remains.

@@ -1,0 +1,10 @@
+retry: 
+  enabled: false
+  maxRetries: 0
+notifications: 
+  enabled: false
+telemetry: 
+  enabled: false
+marketplace: 
+  autoUpdate: false
+configSchemaVersion: 2

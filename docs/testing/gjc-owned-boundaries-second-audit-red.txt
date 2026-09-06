@@ -1,0 +1,24 @@
+GJC installer/config/autostart second audit - RED evidence
+Date: 2026-09-06 Asia/Seoul
+Task: task_6d650a53ac47 / ctx_fb75e13996de
+
+Locally executed before product fixes:
+
+  .venv/bin/python -m pytest -q tests/test_gjc_install_faults.py tests/test_gjc_autostart_faults.py tests/test_gjc_config.py
+
+Result:
+
+  16 failed, 21 passed in 0.15s
+
+Failures demonstrated requirement outcomes rather than mocked call counts:
+
+- R04/R05: new managed ancestors inherited a permissive umask; a 0644 managed loader still reported healthy and could be silently accepted; wrong manifest version pin was accepted; no directory fsync checkpoint existed.
+- R07: a 0600 config inside a 0755 runtime directory loaded successfully.
+- R12: launchctl inspection errors were treated as service absence; relative interpreters were installed; WorkingDirectory was absent; unsafe log directory/definition changes were accepted; rollback bootout failure was hidden.
+
+Additional coordinator-provided RED oracle, prioritized immediately afterward:
+
+- msg_77f5495c96d3: Python -O removed assert-based manifest/journal ownership validation and allowed unowned-file deletion.
+- msg_c57d12f7ce75 and msg_a4163f9d66d1: config and installer manifest FIFOs blocked on ordinary read opens.
+
+The optimized-mode and FIFO regression tests were added to the same focused audit set. They are subprocess-bounded at five seconds so a future blocking regression fails instead of hanging the suite.

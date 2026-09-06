@@ -1,0 +1,1866 @@
+[
+  {
+    "case": "matrix_pause",
+    "scenario": "matrix_pause",
+    "returncode": 0,
+    "timeout": false,
+    "seconds": 25.51,
+    "sessionIds": [
+      "01a072b8-0246-713f-8eb9-ab21a058dddf",
+      "01a072b8-0439-757c-a4f4-e04b8fe4b1fa"
+    ],
+    "terminals": [
+      {
+        "schemaVersion": 1,
+        "producerId": "7103a6c6-ab33-4d70-8862-6edb481328e9",
+        "sequence": 10,
+        "eventId": "7103a6c6-ab33-4d70-8862-6edb481328e9:10",
+        "observedAt": "2026-09-05T17:57:49.874Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-0439-757c-a4f4-e04b8fe4b1fa",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 57,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:57",
+        "observedAt": "2026-09-05T17:58:01.592Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "toolResults": [
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 10,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:10",
+        "observedAt": "2026-09-05T17:57:37.415Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_14f1220e4d13_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 11,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:11",
+        "observedAt": "2026-09-05T17:57:37.415Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_14f1220e4d13_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 18,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:18",
+        "observedAt": "2026-09-05T17:57:37.431Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_6cd596e99e15_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 19,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:19",
+        "observedAt": "2026-09-05T17:57:37.431Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_6cd596e99e15_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 26,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:26",
+        "observedAt": "2026-09-05T17:57:51.496Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_2bd33902a620_0",
+        "toolName": "bash",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 27,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:27",
+        "observedAt": "2026-09-05T17:57:51.497Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_2bd33902a620_0",
+        "toolName": "bash",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 34,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:34",
+        "observedAt": "2026-09-05T17:57:51.530Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_8031f0d1ffea_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 35,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:35",
+        "observedAt": "2026-09-05T17:57:51.530Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_8031f0d1ffea_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 42,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:42",
+        "observedAt": "2026-09-05T17:57:51.544Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_107a1498551f_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 43,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:43",
+        "observedAt": "2026-09-05T17:57:51.544Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_107a1498551f_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 50,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:50",
+        "observedAt": "2026-09-05T17:58:01.563Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_5c7e021cc885_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "7cb7f836-9e2d-4329-a1fa-31853517c055",
+        "sequence": 51,
+        "eventId": "7cb7f836-9e2d-4329-a1fa-31853517c055:51",
+        "observedAt": "2026-09-05T17:58:01.564Z",
+        "pid": 7989,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-0246-713f-8eb9-ab21a058dddf",
+        "hasUI": false,
+        "toolCallId": "call_5c7e021cc885_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ],
+    "stderrTail": "",
+    "verdict": "not verified: request too early; inspection remained running; no paused boundary"
+  },
+  {
+    "case": "matrix_isolation_uncommitted",
+    "scenario": "matrix_isolation",
+    "returncode": 0,
+    "timeout": false,
+    "seconds": 1.5,
+    "sessionIds": [
+      "01a072b8-026f-72cf-9ab3-ed328aef0992"
+    ],
+    "terminals": [
+      {
+        "schemaVersion": 1,
+        "producerId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d",
+        "sequence": 25,
+        "eventId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d:25",
+        "observedAt": "2026-09-05T17:57:37.689Z",
+        "pid": 8012,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-026f-72cf-9ab3-ed328aef0992",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "toolResults": [
+      {
+        "schemaVersion": 1,
+        "producerId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d",
+        "sequence": 10,
+        "eventId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d:10",
+        "observedAt": "2026-09-05T17:57:37.453Z",
+        "pid": 8012,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-026f-72cf-9ab3-ed328aef0992",
+        "hasUI": false,
+        "toolCallId": "call_181f26588e31_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d",
+        "sequence": 11,
+        "eventId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d:11",
+        "observedAt": "2026-09-05T17:57:37.453Z",
+        "pid": 8012,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-026f-72cf-9ab3-ed328aef0992",
+        "hasUI": false,
+        "toolCallId": "call_181f26588e31_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d",
+        "sequence": 18,
+        "eventId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d:18",
+        "observedAt": "2026-09-05T17:57:37.666Z",
+        "pid": 8012,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-026f-72cf-9ab3-ed328aef0992",
+        "hasUI": false,
+        "toolCallId": "call_9785dfa0fd6c_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d",
+        "sequence": 19,
+        "eventId": "ee6cc979-9fc0-4757-a093-3bbfe0c6401d:19",
+        "observedAt": "2026-09-05T17:57:37.666Z",
+        "pid": 8012,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-026f-72cf-9ab3-ed328aef0992",
+        "hasUI": false,
+        "toolCallId": "call_9785dfa0fd6c_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ],
+    "stderrTail": "",
+    "verdict": "blocked before child session creation: detached job failed; only root hook observed; cannot conclude committed vs uncommitted hook discovery"
+  },
+  {
+    "case": "matrix_isolation_committed",
+    "scenario": "matrix_isolation",
+    "returncode": 0,
+    "timeout": false,
+    "seconds": 1.47,
+    "sessionIds": [
+      "01a072b8-0294-71df-aef1-a9d14bd3eea3"
+    ],
+    "terminals": [
+      {
+        "schemaVersion": 1,
+        "producerId": "65cd0599-cdee-41bf-b290-f27a962b8715",
+        "sequence": 25,
+        "eventId": "65cd0599-cdee-41bf-b290-f27a962b8715:25",
+        "observedAt": "2026-09-05T17:57:37.689Z",
+        "pid": 8016,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-0294-71df-aef1-a9d14bd3eea3",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "toolResults": [
+      {
+        "schemaVersion": 1,
+        "producerId": "65cd0599-cdee-41bf-b290-f27a962b8715",
+        "sequence": 10,
+        "eventId": "65cd0599-cdee-41bf-b290-f27a962b8715:10",
+        "observedAt": "2026-09-05T17:57:37.511Z",
+        "pid": 8016,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-0294-71df-aef1-a9d14bd3eea3",
+        "hasUI": false,
+        "toolCallId": "call_7323676b5327_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "65cd0599-cdee-41bf-b290-f27a962b8715",
+        "sequence": 11,
+        "eventId": "65cd0599-cdee-41bf-b290-f27a962b8715:11",
+        "observedAt": "2026-09-05T17:57:37.512Z",
+        "pid": 8016,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-0294-71df-aef1-a9d14bd3eea3",
+        "hasUI": false,
+        "toolCallId": "call_7323676b5327_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "65cd0599-cdee-41bf-b290-f27a962b8715",
+        "sequence": 18,
+        "eventId": "65cd0599-cdee-41bf-b290-f27a962b8715:18",
+        "observedAt": "2026-09-05T17:57:37.668Z",
+        "pid": 8016,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-0294-71df-aef1-a9d14bd3eea3",
+        "hasUI": false,
+        "toolCallId": "call_f91c963b6f65_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "65cd0599-cdee-41bf-b290-f27a962b8715",
+        "sequence": 19,
+        "eventId": "65cd0599-cdee-41bf-b290-f27a962b8715:19",
+        "observedAt": "2026-09-05T17:57:37.669Z",
+        "pid": 8016,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-0294-71df-aef1-a9d14bd3eea3",
+        "hasUI": false,
+        "toolCallId": "call_f91c963b6f65_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ],
+    "stderrTail": "",
+    "verdict": "blocked before child session creation: detached job failed; only root hook observed; cannot conclude committed vs uncommitted hook discovery"
+  },
+  {
+    "case": "matrix_pause_boundary",
+    "scenario": "matrix_pause",
+    "returncode": 0,
+    "timeout": false,
+    "seconds": 9.86,
+    "sessionIds": [
+      "01a072b8-b700-7580-bfca-689a0e1379b1",
+      "01a072b8-b8a4-7674-a6b1-6545ad260f2f"
+    ],
+    "terminals": [
+      {
+        "schemaVersion": 1,
+        "producerId": "feea2909-2eca-46c2-bc20-b2fa80a7bd18",
+        "sequence": 15,
+        "eventId": "feea2909-2eca-46c2-bc20-b2fa80a7bd18:15",
+        "observedAt": "2026-09-05T17:58:27.948Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-b8a4-7674-a6b1-6545ad260f2f",
+        "hasUI": false,
+        "stopReason": "paused",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "d0643854-0805-4b5e-b414-36cef68095dc",
+        "sequence": 10,
+        "eventId": "d0643854-0805-4b5e-b414-36cef68095dc:10",
+        "observedAt": "2026-09-05T17:58:32.129Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-b8a4-7674-a6b1-6545ad260f2f",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "d0643854-0805-4b5e-b414-36cef68095dc",
+        "sequence": 18,
+        "eventId": "d0643854-0805-4b5e-b414-36cef68095dc:18",
+        "observedAt": "2026-09-05T17:58:32.139Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-b8a4-7674-a6b1-6545ad260f2f",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "d0643854-0805-4b5e-b414-36cef68095dc",
+        "sequence": 26,
+        "eventId": "d0643854-0805-4b5e-b414-36cef68095dc:26",
+        "observedAt": "2026-09-05T17:58:32.155Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-b8a4-7674-a6b1-6545ad260f2f",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "d0643854-0805-4b5e-b414-36cef68095dc",
+        "sequence": 34,
+        "eventId": "d0643854-0805-4b5e-b414-36cef68095dc:34",
+        "observedAt": "2026-09-05T17:58:32.165Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-b8a4-7674-a6b1-6545ad260f2f",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 65,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:65",
+        "observedAt": "2026-09-05T17:58:32.430Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "toolResults": [
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 10,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:10",
+        "observedAt": "2026-09-05T17:58:23.616Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_782a9d0c2198_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 11,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:11",
+        "observedAt": "2026-09-05T17:58:23.617Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_782a9d0c2198_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 18,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:18",
+        "observedAt": "2026-09-05T17:58:25.671Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_c81d72d7d4f3_0",
+        "toolName": "bash",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 19,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:19",
+        "observedAt": "2026-09-05T17:58:25.672Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_c81d72d7d4f3_0",
+        "toolName": "bash",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 26,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:26",
+        "observedAt": "2026-09-05T17:58:25.707Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_20ef6255880a_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 27,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:27",
+        "observedAt": "2026-09-05T17:58:25.707Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_20ef6255880a_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "feea2909-2eca-46c2-bc20-b2fa80a7bd18",
+        "sequence": 11,
+        "eventId": "feea2909-2eca-46c2-bc20-b2fa80a7bd18:11",
+        "observedAt": "2026-09-05T17:58:27.937Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-b8a4-7674-a6b1-6545ad260f2f",
+        "hasUI": false,
+        "toolCallId": "call_c57b1944c073_0",
+        "toolName": "bash",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "feea2909-2eca-46c2-bc20-b2fa80a7bd18",
+        "sequence": 12,
+        "eventId": "feea2909-2eca-46c2-bc20-b2fa80a7bd18:12",
+        "observedAt": "2026-09-05T17:58:27.938Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-b8a4-7674-a6b1-6545ad260f2f",
+        "hasUI": false,
+        "toolCallId": "call_c57b1944c073_0",
+        "toolName": "bash",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 34,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:34",
+        "observedAt": "2026-09-05T17:58:31.728Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_05f3fb475bb2_0",
+        "toolName": "bash",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 35,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:35",
+        "observedAt": "2026-09-05T17:58:31.728Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_05f3fb475bb2_0",
+        "toolName": "bash",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 42,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:42",
+        "observedAt": "2026-09-05T17:58:31.755Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_ac427c059770_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 43,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:43",
+        "observedAt": "2026-09-05T17:58:31.755Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_ac427c059770_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 50,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:50",
+        "observedAt": "2026-09-05T17:58:31.764Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_d443a2caef5e_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 51,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:51",
+        "observedAt": "2026-09-05T17:58:31.764Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_d443a2caef5e_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 58,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:58",
+        "observedAt": "2026-09-05T17:58:32.412Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_2881751d0c75_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "99b42233-175a-4453-8ab0-3b191c4184cd",
+        "sequence": 59,
+        "eventId": "99b42233-175a-4453-8ab0-3b191c4184cd:59",
+        "observedAt": "2026-09-05T17:58:32.412Z",
+        "pid": 10395,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072b8-b700-7580-bfca-689a0e1379b1",
+        "hasUI": false,
+        "toolCallId": "call_2881751d0c75_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ],
+    "stderrTail": "",
+    "verdict": "verified actual paused boundary, inspection paused, resume new job running, await completed; logical child session preserved, producer incarnation changed"
+  },
+  {
+    "case": "matrix_isolation_rcopy_uncommitted",
+    "scenario": "matrix_isolation",
+    "returncode": 0,
+    "timeout": false,
+    "seconds": 16.32,
+    "sessionIds": [
+      "01a072ba-9d43-7213-b1b4-14ace884b43c",
+      "01a072ba-9f65-72c9-a097-b23afcfb86e8"
+    ],
+    "terminals": [
+      {
+        "schemaVersion": 1,
+        "producerId": "cfa636ee-f3a7-438d-9eb9-9c99fd6d25b2",
+        "sequence": 10,
+        "eventId": "cfa636ee-f3a7-438d-9eb9-9c99fd6d25b2:10",
+        "observedAt": "2026-09-05T18:00:40.610Z",
+        "pid": 13067,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072ba-9f65-72c9-a097-b23afcfb86e8",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "3fe186fc-ba27-4945-a8a6-f030f666e77a",
+        "sequence": 25,
+        "eventId": "3fe186fc-ba27-4945-a8a6-f030f666e77a:25",
+        "observedAt": "2026-09-05T18:00:43.167Z",
+        "pid": 13067,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072ba-9d43-7213-b1b4-14ace884b43c",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "toolResults": [
+      {
+        "schemaVersion": 1,
+        "producerId": "3fe186fc-ba27-4945-a8a6-f030f666e77a",
+        "sequence": 10,
+        "eventId": "3fe186fc-ba27-4945-a8a6-f030f666e77a:10",
+        "observedAt": "2026-09-05T18:00:28.102Z",
+        "pid": 13067,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072ba-9d43-7213-b1b4-14ace884b43c",
+        "hasUI": false,
+        "toolCallId": "call_b9afa0685e32_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "3fe186fc-ba27-4945-a8a6-f030f666e77a",
+        "sequence": 11,
+        "eventId": "3fe186fc-ba27-4945-a8a6-f030f666e77a:11",
+        "observedAt": "2026-09-05T18:00:28.102Z",
+        "pid": 13067,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072ba-9d43-7213-b1b4-14ace884b43c",
+        "hasUI": false,
+        "toolCallId": "call_b9afa0685e32_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "3fe186fc-ba27-4945-a8a6-f030f666e77a",
+        "sequence": 18,
+        "eventId": "3fe186fc-ba27-4945-a8a6-f030f666e77a:18",
+        "observedAt": "2026-09-05T18:00:43.128Z",
+        "pid": 13067,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072ba-9d43-7213-b1b4-14ace884b43c",
+        "hasUI": false,
+        "toolCallId": "call_1ed45bb3f781_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "3fe186fc-ba27-4945-a8a6-f030f666e77a",
+        "sequence": 19,
+        "eventId": "3fe186fc-ba27-4945-a8a6-f030f666e77a:19",
+        "observedAt": "2026-09-05T18:00:43.129Z",
+        "pid": 13067,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072ba-9d43-7213-b1b4-14ace884b43c",
+        "hasUI": false,
+        "toolCallId": "call_1ed45bb3f781_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "matrix_isolation_rcopy_committed",
+    "scenario": "matrix_isolation",
+    "returncode": 0,
+    "timeout": false,
+    "seconds": 16.3,
+    "sessionIds": [
+      "01a072ba-9d5d-7758-a098-e543b9b010ae",
+      "01a072ba-9f7b-7417-811d-74b3b9cf5fff"
+    ],
+    "terminals": [
+      {
+        "schemaVersion": 1,
+        "producerId": "daf16f36-c7d0-434c-9a32-ae0528755e63",
+        "sequence": 10,
+        "eventId": "daf16f36-c7d0-434c-9a32-ae0528755e63:10",
+        "observedAt": "2026-09-05T18:00:40.624Z",
+        "pid": 13071,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072ba-9f7b-7417-811d-74b3b9cf5fff",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "559874cb-06cf-4311-86da-6a5dc6a750b3",
+        "sequence": 25,
+        "eventId": "559874cb-06cf-4311-86da-6a5dc6a750b3:25",
+        "observedAt": "2026-09-05T18:00:43.180Z",
+        "pid": 13071,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "agent_end",
+        "sessionId": "01a072ba-9d5d-7758-a098-e543b9b010ae",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "toolResults": [
+      {
+        "schemaVersion": 1,
+        "producerId": "559874cb-06cf-4311-86da-6a5dc6a750b3",
+        "sequence": 10,
+        "eventId": "559874cb-06cf-4311-86da-6a5dc6a750b3:10",
+        "observedAt": "2026-09-05T18:00:28.131Z",
+        "pid": 13071,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072ba-9d5d-7758-a098-e543b9b010ae",
+        "hasUI": false,
+        "toolCallId": "call_ffd4f4601335_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "559874cb-06cf-4311-86da-6a5dc6a750b3",
+        "sequence": 11,
+        "eventId": "559874cb-06cf-4311-86da-6a5dc6a750b3:11",
+        "observedAt": "2026-09-05T18:00:28.132Z",
+        "pid": 13071,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072ba-9d5d-7758-a098-e543b9b010ae",
+        "hasUI": false,
+        "toolCallId": "call_ffd4f4601335_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "559874cb-06cf-4311-86da-6a5dc6a750b3",
+        "sequence": 18,
+        "eventId": "559874cb-06cf-4311-86da-6a5dc6a750b3:18",
+        "observedAt": "2026-09-05T18:00:43.154Z",
+        "pid": 13071,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_result",
+        "sessionId": "01a072ba-9d5d-7758-a098-e543b9b010ae",
+        "hasUI": false,
+        "toolCallId": "call_738208fb8466_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "559874cb-06cf-4311-86da-6a5dc6a750b3",
+        "sequence": 19,
+        "eventId": "559874cb-06cf-4311-86da-6a5dc6a750b3:19",
+        "observedAt": "2026-09-05T18:00:43.155Z",
+        "pid": 13071,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "type": "tool_execution_end",
+        "sessionId": "01a072ba-9d5d-7758-a098-e543b9b010ae",
+        "hasUI": false,
+        "toolCallId": "call_738208fb8466_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ],
+    "stderrTail": ""
+  },
+  {
+    "case": "matrix_isolation_cwd_uncommitted",
+    "scenario": "matrix_isolation",
+    "returncode": 0,
+    "timeout": false,
+    "seconds": 2.01,
+    "sessionIds": [
+      "01a072bb-4dc3-749c-99da-7723ecfc4923",
+      "01a072bb-5033-722d-a76d-a50f87b00d0f"
+    ],
+    "terminals": [
+      {
+        "schemaVersion": 1,
+        "producerId": "157ac4df-0afc-45ab-be96-179d8afaa7ea",
+        "sequence": 10,
+        "eventId": "157ac4df-0afc-45ab-be96-179d8afaa7ea:10",
+        "observedAt": "2026-09-05T18:01:13.828Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "<home>/.gjc/wt/0-lab_child_0-70a2a07/merged",
+        "type": "agent_end",
+        "sessionId": "01a072bb-5033-722d-a76d-a50f87b00d0f",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "157ac4df-0afc-45ab-be96-179d8afaa7ea",
+        "sequence": 18,
+        "eventId": "157ac4df-0afc-45ab-be96-179d8afaa7ea:18",
+        "observedAt": "2026-09-05T18:01:13.842Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "<home>/.gjc/wt/0-lab_child_0-70a2a07/merged",
+        "type": "agent_end",
+        "sessionId": "01a072bb-5033-722d-a76d-a50f87b00d0f",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "157ac4df-0afc-45ab-be96-179d8afaa7ea",
+        "sequence": 26,
+        "eventId": "157ac4df-0afc-45ab-be96-179d8afaa7ea:26",
+        "observedAt": "2026-09-05T18:01:13.853Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "<home>/.gjc/wt/0-lab_child_0-70a2a07/merged",
+        "type": "agent_end",
+        "sessionId": "01a072bb-5033-722d-a76d-a50f87b00d0f",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "157ac4df-0afc-45ab-be96-179d8afaa7ea",
+        "sequence": 34,
+        "eventId": "157ac4df-0afc-45ab-be96-179d8afaa7ea:34",
+        "observedAt": "2026-09-05T18:01:13.862Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "<home>/.gjc/wt/0-lab_child_0-70a2a07/merged",
+        "type": "agent_end",
+        "sessionId": "01a072bb-5033-722d-a76d-a50f87b00d0f",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "121ed5a5-d13a-44c5-b25d-31bd336781f4",
+        "sequence": 25,
+        "eventId": "121ed5a5-d13a-44c5-b25d-31bd336781f4:25",
+        "observedAt": "2026-09-05T18:01:14.150Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_uncommitted/workspace",
+        "type": "agent_end",
+        "sessionId": "01a072bb-4dc3-749c-99da-7723ecfc4923",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "toolResults": [
+      {
+        "schemaVersion": 1,
+        "producerId": "121ed5a5-d13a-44c5-b25d-31bd336781f4",
+        "sequence": 10,
+        "eventId": "121ed5a5-d13a-44c5-b25d-31bd336781f4:10",
+        "observedAt": "2026-09-05T18:01:13.348Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_uncommitted/workspace",
+        "type": "tool_result",
+        "sessionId": "01a072bb-4dc3-749c-99da-7723ecfc4923",
+        "hasUI": false,
+        "toolCallId": "call_cf52f06c6ad2_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "121ed5a5-d13a-44c5-b25d-31bd336781f4",
+        "sequence": 11,
+        "eventId": "121ed5a5-d13a-44c5-b25d-31bd336781f4:11",
+        "observedAt": "2026-09-05T18:01:13.348Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_uncommitted/workspace",
+        "type": "tool_execution_end",
+        "sessionId": "01a072bb-4dc3-749c-99da-7723ecfc4923",
+        "hasUI": false,
+        "toolCallId": "call_cf52f06c6ad2_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "121ed5a5-d13a-44c5-b25d-31bd336781f4",
+        "sequence": 18,
+        "eventId": "121ed5a5-d13a-44c5-b25d-31bd336781f4:18",
+        "observedAt": "2026-09-05T18:01:14.132Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_uncommitted/workspace",
+        "type": "tool_result",
+        "sessionId": "01a072bb-4dc3-749c-99da-7723ecfc4923",
+        "hasUI": false,
+        "toolCallId": "call_8584c0390903_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "121ed5a5-d13a-44c5-b25d-31bd336781f4",
+        "sequence": 19,
+        "eventId": "121ed5a5-d13a-44c5-b25d-31bd336781f4:19",
+        "observedAt": "2026-09-05T18:01:14.133Z",
+        "pid": 14228,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_uncommitted/workspace",
+        "type": "tool_execution_end",
+        "sessionId": "01a072bb-4dc3-749c-99da-7723ecfc4923",
+        "hasUI": false,
+        "toolCallId": "call_8584c0390903_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ],
+    "stderrTail": "",
+    "observedSessionCwds": [
+      [
+        "01a072bb-4dc3-749c-99da-7723ecfc4923",
+        "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_uncommitted/workspace"
+      ],
+      [
+        "01a072bb-5033-722d-a76d-a50f87b00d0f",
+        "<home>/.gjc/wt/0-lab_child_0-70a2a07/merged"
+      ]
+    ],
+    "childAwaitDetails": {
+      "subagents": [
+        {
+          "id": "0-lab_child_0",
+          "jobId": "0-lab_child_0",
+          "status": "failed",
+          "label": "0-lab_child_0",
+          "agent": "executor",
+          "agentSource": "project",
+          "durationMs": 787,
+          "description": "fixture child",
+          "errorText": "<task-summary>\n<header>0/1 succeeded [781ms]</header>\n\n<agent id=\"0-lab_child_0\" agent=\"executor\">\n<status>merge failed</status>\n<meta lines=\"1\" size=\"156B\" />\n\n<synopsis ref=\"agent://0-lab_child_0\">\nTask merge_failed; changes were not persisted to the owner worktree. Recovery p\u2026",
+          "resultPreview": "<task-summary>\n<header>0/1 succeeded [781ms]</header>\n\n<agent id=\"0-lab_child_0\" agent=\"executor\">\n<status>merge failed</status>\n<meta lines=\"1\" size=\"156B\" />\n\n<synopsis ref=\"agent://0-lab_child_0\">\nTask merge_failed; changes were not persisted to the owner worktree. Recovery p\u2026",
+          "truncated": true,
+          "outputRef": "agent://0-lab_child_0",
+          "effectiveModel": "keychron-lab/lab-success",
+          "requestedModel": "keychron-lab/lab-success",
+          "liveProgressAvailable": false
+        }
+      ],
+      "awaitOutcome": "completed",
+      "waitOutcome": "completed",
+      "condition": "all_terminal",
+      "terminalIds": [
+        "0-lab_child_0"
+      ]
+    },
+    "verdict": "rcopy isolated task launched child; hook observed root and child; see observedSessionCwds and childAwaitDetails for execution path/completion evidence"
+  },
+  {
+    "case": "matrix_isolation_cwd_committed",
+    "scenario": "matrix_isolation",
+    "returncode": 0,
+    "timeout": false,
+    "seconds": 2.0,
+    "sessionIds": [
+      "01a072bb-4ddd-77f8-9b80-bde12f7f3d47",
+      "01a072bb-5051-71ea-a7ed-af02b7e5e0ac"
+    ],
+    "terminals": [
+      {
+        "schemaVersion": 1,
+        "producerId": "0ce78180-6387-493c-a1cd-6ca9d6fe45f2",
+        "sequence": 10,
+        "eventId": "0ce78180-6387-493c-a1cd-6ca9d6fe45f2:10",
+        "observedAt": "2026-09-05T18:01:13.856Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "<home>/.gjc/wt/0-lab_child_0-cc381d3/merged",
+        "type": "agent_end",
+        "sessionId": "01a072bb-5051-71ea-a7ed-af02b7e5e0ac",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "0ce78180-6387-493c-a1cd-6ca9d6fe45f2",
+        "sequence": 18,
+        "eventId": "0ce78180-6387-493c-a1cd-6ca9d6fe45f2:18",
+        "observedAt": "2026-09-05T18:01:13.869Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "<home>/.gjc/wt/0-lab_child_0-cc381d3/merged",
+        "type": "agent_end",
+        "sessionId": "01a072bb-5051-71ea-a7ed-af02b7e5e0ac",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "0ce78180-6387-493c-a1cd-6ca9d6fe45f2",
+        "sequence": 26,
+        "eventId": "0ce78180-6387-493c-a1cd-6ca9d6fe45f2:26",
+        "observedAt": "2026-09-05T18:01:13.877Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "<home>/.gjc/wt/0-lab_child_0-cc381d3/merged",
+        "type": "agent_end",
+        "sessionId": "01a072bb-5051-71ea-a7ed-af02b7e5e0ac",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "0ce78180-6387-493c-a1cd-6ca9d6fe45f2",
+        "sequence": 34,
+        "eventId": "0ce78180-6387-493c-a1cd-6ca9d6fe45f2:34",
+        "observedAt": "2026-09-05T18:01:13.886Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "<home>/.gjc/wt/0-lab_child_0-cc381d3/merged",
+        "type": "agent_end",
+        "sessionId": "01a072bb-5051-71ea-a7ed-af02b7e5e0ac",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "52348558-d488-4a98-a661-201c410ac29e",
+        "sequence": 25,
+        "eventId": "52348558-d488-4a98-a661-201c410ac29e:25",
+        "observedAt": "2026-09-05T18:01:14.174Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_committed/workspace",
+        "type": "agent_end",
+        "sessionId": "01a072bb-4ddd-77f8-9b80-bde12f7f3d47",
+        "hasUI": false,
+        "stopReason": "completed",
+        "hasError": false,
+        "isIdle": true,
+        "hasQueuedMessages": false,
+        "assistantOutcomes": [
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "toolUse",
+            "hasError": false
+          },
+          {
+            "stopReason": "stop",
+            "hasError": false
+          }
+        ]
+      }
+    ],
+    "toolResults": [
+      {
+        "schemaVersion": 1,
+        "producerId": "52348558-d488-4a98-a661-201c410ac29e",
+        "sequence": 10,
+        "eventId": "52348558-d488-4a98-a661-201c410ac29e:10",
+        "observedAt": "2026-09-05T18:01:13.374Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_committed/workspace",
+        "type": "tool_result",
+        "sessionId": "01a072bb-4ddd-77f8-9b80-bde12f7f3d47",
+        "hasUI": false,
+        "toolCallId": "call_f99796222d91_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "52348558-d488-4a98-a661-201c410ac29e",
+        "sequence": 11,
+        "eventId": "52348558-d488-4a98-a661-201c410ac29e:11",
+        "observedAt": "2026-09-05T18:01:13.374Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_committed/workspace",
+        "type": "tool_execution_end",
+        "sessionId": "01a072bb-4ddd-77f8-9b80-bde12f7f3d47",
+        "hasUI": false,
+        "toolCallId": "call_f99796222d91_0",
+        "toolName": "task",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "52348558-d488-4a98-a661-201c410ac29e",
+        "sequence": 18,
+        "eventId": "52348558-d488-4a98-a661-201c410ac29e:18",
+        "observedAt": "2026-09-05T18:01:14.158Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_committed/workspace",
+        "type": "tool_result",
+        "sessionId": "01a072bb-4ddd-77f8-9b80-bde12f7f3d47",
+        "hasUI": false,
+        "toolCallId": "call_910959661ae5_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      },
+      {
+        "schemaVersion": 1,
+        "producerId": "52348558-d488-4a98-a661-201c410ac29e",
+        "sequence": 19,
+        "eventId": "52348558-d488-4a98-a661-201c410ac29e:19",
+        "observedAt": "2026-09-05T18:01:14.158Z",
+        "pid": 14232,
+        "orcaTerminalHandle": "term_84bfc843-ddbc-4141-8c45-449e2a227e86",
+        "orcaPaneKey": "28457251-fbbe-43e3-8765-53537f265392:597d39d5-193a-48d5-8df9-e7ecb8bf3cf4",
+        "observedCwd": "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_committed/workspace",
+        "type": "tool_execution_end",
+        "sessionId": "01a072bb-4ddd-77f8-9b80-bde12f7f3d47",
+        "hasUI": false,
+        "toolCallId": "call_910959661ae5_0",
+        "toolName": "subagent",
+        "isError": false,
+        "hasError": false,
+        "isIdle": false,
+        "hasQueuedMessages": false
+      }
+    ],
+    "stderrTail": "",
+    "observedSessionCwds": [
+      [
+        "01a072bb-5051-71ea-a7ed-af02b7e5e0ac",
+        "<home>/.gjc/wt/0-lab_child_0-cc381d3/merged"
+      ],
+      [
+        "01a072bb-4ddd-77f8-9b80-bde12f7f3d47",
+        "/tmp/gjc-keychron-live-experiments/cases/matrix_isolation_cwd_committed/workspace"
+      ]
+    ],
+    "childAwaitDetails": {
+      "subagents": [
+        {
+          "id": "0-lab_child_0",
+          "jobId": "0-lab_child_0",
+          "status": "failed",
+          "label": "0-lab_child_0",
+          "agent": "executor",
+          "agentSource": "project",
+          "durationMs": 787,
+          "description": "fixture child",
+          "errorText": "<task-summary>\n<header>0/1 succeeded [782ms]</header>\n\n<agent id=\"0-lab_child_0\" agent=\"executor\">\n<status>merge failed</status>\n<meta lines=\"1\" size=\"156B\" />\n\n<synopsis ref=\"agent://0-lab_child_0\">\nTask merge_failed; changes were not persisted to the owner worktree. Recovery p\u2026",
+          "resultPreview": "<task-summary>\n<header>0/1 succeeded [782ms]</header>\n\n<agent id=\"0-lab_child_0\" agent=\"executor\">\n<status>merge failed</status>\n<meta lines=\"1\" size=\"156B\" />\n\n<synopsis ref=\"agent://0-lab_child_0\">\nTask merge_failed; changes were not persisted to the owner worktree. Recovery p\u2026",
+          "truncated": true,
+          "outputRef": "agent://0-lab_child_0",
+          "effectiveModel": "keychron-lab/lab-success",
+          "requestedModel": "keychron-lab/lab-success",
+          "liveProgressAvailable": false
+        }
+      ],
+      "awaitOutcome": "completed",
+      "waitOutcome": "completed",
+      "condition": "all_terminal",
+      "terminalIds": [
+        "0-lab_child_0"
+      ]
+    },
+    "verdict": "rcopy isolated task launched child; hook observed root and child; see observedSessionCwds and childAwaitDetails for execution path/completion evidence"
+  }
+]

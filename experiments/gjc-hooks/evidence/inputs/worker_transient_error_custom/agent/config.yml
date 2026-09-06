@@ -1,0 +1,15 @@
+retry: 
+  enabled: true
+  maxRetries: 2
+  baseDelayMs: 20
+  requestMaxRetries: 0
+notifications: 
+  enabled: false
+telemetry: 
+  enabled: false
+marketplace: 
+  autoUpdate: false
+task: 
+  enableLsp: false
+  maxRecursionDepth: 3
+configSchemaVersion: 2

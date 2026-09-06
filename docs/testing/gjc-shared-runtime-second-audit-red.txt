@@ -1,0 +1,19 @@
+GJC shared runtime second audit - RED
+Date: 2026-09-06 Asia/Seoul
+
+Command:
+uv run --extra dev pytest -q tests/test_digit_hold.py::test_listener_wait_failure_stops_started_native_listener tests/test_gjc_cli_faults.py::test_human_status_distinguishes_assigned_slot_after_key_range_from_overflow tests/test_keychron_hid_faults.py::test_partial_usb_write_is_a_hard_failure_and_close_releases_lock tests/test_gjc_runtime_integration.py::test_actual_receiver_snapshot_drives_palette_fake_hid_and_navigation
+
+Observed before product fixes:
+FFF.                                                                     [100%]
+3 failed, 1 passed in 0.42s
+
+Failures:
+1. test_listener_wait_failure_stops_started_native_listener
+   native.stopped was 0, proving a listener started before wait() failed was not stopped.
+2. test_human_status_distinguishes_assigned_slot_after_key_range_from_overflow
+   assigned slot index 12 printed as "overflow".
+3. test_partial_usb_write_is_a_hard_failure_and_close_releases_lock
+   a 32-of-33-byte HID write did not raise KeychronError.
+
+The real GjcStatusSource pipeline case passed in the same red run.

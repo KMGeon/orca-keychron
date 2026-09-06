@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "verdict": "fail",
+  "failureType": "AuditFailure",
+  "failure": "REQ-DECISION-2 parent did not verify completion for req_1",
+  "provenance": {
+    "productSourceBefore": "693127095f3f62f54a10041a8cc1b7039d30426f0234ad7f70aeb458b7ee46b8",
+    "productSourceAfter": "3504e0915625cf32b95ca0fcbd5e8d038a7c9fbaa683a562d8f60d09eba5f4f1",
+    "wheelSha256": null
+  },
+  "limitations": {
+    "realModelCompliance": "unproven",
+    "physicalKeyboardAndHid": "unproven and not exercised"
+  },
+  "cleanup": {
+    "ownedTerminalHandles": [
+      "term_ddd9886b-d06a-4eb1-83fd-57ca87fc64af",
+      "term_dd4b220b-3808-49e5-b58f-623c33b0bf3d",
+      "term_ef5b1bbe-b9d8-439b-b62d-001724e4072a",
+      "term_780fe4fc-adc1-4bb8-ad15-97f6807dacc1",
+      "term_1eb51fc0-a0db-4446-b60f-560632ba7e46",
+      "term_09f1d19a-922b-43ea-8014-29ad4340e1e2",
+      "term_c2cee698-0d24-427b-92e6-46fe06d6ce08",
+      "term_91119980-c86c-4cfe-94f1-65102d418320",
+      "term_96c128fe-8737-4def-8199-adcb8bcd6aa6",
+      "term_2b016629-78db-4f97-bf35-34062cc56996"
+    ],
+    "allOwnedTerminalsClosed": true,
+    "errors": []
+  },
+  "elapsedSeconds": 33.1
+}

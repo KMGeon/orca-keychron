@@ -1,0 +1,46 @@
+source=screen
+╭─── gjc v0.16.4 · release build · GJC Forge ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │ What's New                                                                                            │
+│                                                                                                       │ ▸ Added selectable astra-lite, astra-default, and astra-heavy CODEX presets with ASTRA- labels, plus …│
+│                                                                                                       │ ▸ An interactive gjc now shows up inside Paseo by itself, controllable from the desktop and mobile ap…│
+│                                                                                                       │ ▸ Corrected a stale claim in docs/external-control-readiness.md: interactive gjc sessions are broker-…│
+│                                                                                                       │ ▸ An externally submitted prompt against a session on the SDK-only host runtime no longer hangs forev…│
+│                                               GJC Forge                                               │ ▸ An ACP client attached to a live interactive session now receives the turn it submitted: assistant …│
+│                                          shape · act · prove                                          │ ▸ gjc no longer reports an error at every interactive launch when the Paseo daemon requires a passwor…│
+│                                                                                                       │ … /changelog for full notes                                                                           │
+│                                 ╭────────────────╮        ╭────────╮                                  │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                 ╰──────╮      ╭──╯     ╭──╯  ╭─────╯                                  │ Flow keys                                                                                             │
+│                                        ╰──────╯    ╭───╯  ╭──╯                                        │ / commands · # actions · ! shell · $ python · ? keymap · ⌃L model · ⇧⇥ reasoning · ⇥ complete         │
+│                                        ╭──────╮    ╰───╮  ╰──╮                                        │ ⌃J newline · ⌃C clear                                                                                 │
+│                                 ╭──────╯      ╰──╮     ╰──╮  ╰─────╮                                  │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                 ╰────────────────╯        ╰────────╯                                  │ Project pulse                                                                                         │
+│                                                                                                       │ No LSP servers                                                                                        │
+│                                                ⣾ ready                                                │ ───────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                            [ ⬢ Local ask ]                                            │ Session trail                                                                                         │
+│                                          [ 📦 keychron-lab ]                                          │ No saved trails                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+│                                                                                                       │                                                                                                       │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ user
+ [GJC_CASE:ask]
+ Ask 1 questions
+  └─ [lab_q1] · options:2
+    Local Keychron experiment: select Continue or Stop.
+      ├─ ☐ Continue
+      └─ ☐ Stop
+ ⠦ Working… ⟦esc⟧
+ ⬢ lab-ask · 0.0% / 🗑 …eriments/cases/tui_v2/workspace ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── v0.16.4
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ Local Keychron experiment: select Continue or Stop.
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+│❯ Continue                                                                                                                                                                                                      │
+│  Stop                                                                                                                                                                                                          │
+│  Other (type your own)                                                                                                                                                                                         │
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ↑/↓ select  enter  esc  PgUp/PgDn/Ctrl+u/d: question · Wheel: transcript
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

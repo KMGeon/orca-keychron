@@ -1,0 +1,195 @@
+{
+  "build": {
+    "command": [
+      "uv",
+      "build",
+      "--out-dir",
+      "/tmp/gjc-test-audit/final-dist"
+    ],
+    "returncode": 0,
+    "seconds": 2.16,
+    "log": "docs/testing/final-build.txt"
+  },
+  "python313": {
+    "command": [
+      "/tmp/gjc-test-audit/final-py313/bin/python",
+      "-m",
+      "coverage",
+      "run",
+      "--branch",
+      "--data-file=/tmp/gjc-test-audit/.coverage-final",
+      "--source=src/orca_keychron,src/orca_keychron_gjc",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "returncode": 0,
+    "seconds": 21.57,
+    "log": "docs/testing/final-python313.txt"
+  },
+  "coverage": {
+    "command": [
+      "/tmp/gjc-test-audit/final-py313/bin/python",
+      "-m",
+      "coverage",
+      "report",
+      "--data-file=/tmp/gjc-test-audit/.coverage-final"
+    ],
+    "returncode": 0,
+    "seconds": 0.2,
+    "log": "docs/testing/final-coverage.txt"
+  },
+  "coverage-json": {
+    "command": [
+      "/tmp/gjc-test-audit/final-py313/bin/python",
+      "-m",
+      "coverage",
+      "json",
+      "--data-file=/tmp/gjc-test-audit/.coverage-final",
+      "-o",
+      "<workspace>/docs/testing/coverage-final.json"
+    ],
+    "returncode": 0,
+    "seconds": 0.26,
+    "log": "docs/testing/final-coverage-json.txt"
+  },
+  "python39": {
+    "command": [
+      "/tmp/gjc-validation.K3OypM/py39-gate/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "returncode": 0,
+    "seconds": 33.6,
+    "log": "docs/testing/final-python39.txt"
+  },
+  "bun": {
+    "command": [
+      "bun",
+      "test",
+      "tests/"
+    ],
+    "returncode": 0,
+    "seconds": 2.36,
+    "log": "docs/testing/final-bun.txt"
+  },
+  "ruff": {
+    "command": [
+      "/tmp/gjc-test-audit/final-py313/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "."
+    ],
+    "returncode": 0,
+    "seconds": 0.08,
+    "log": "docs/testing/final-ruff.txt"
+  },
+  "whitespace": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "seconds": 0.03,
+    "log": "docs/testing/final-whitespace.txt"
+  },
+  "workflows": {
+    "command": [
+      "/tmp/gjc-linux-ci-audit/bin/actionlint",
+      ".github/workflows/tests.yml",
+      ".github/workflows/publish.yml"
+    ],
+    "returncode": 0,
+    "seconds": 0.02,
+    "log": "docs/testing/final-workflows.txt"
+  },
+  "metadata": {
+    "command": [
+      "/tmp/gjc-test-audit/final-py313/bin/python",
+      "-m",
+      "twine",
+      "check",
+      "--strict",
+      "/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl",
+      "/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905.tar.gz"
+    ],
+    "returncode": 0,
+    "seconds": 0.19,
+    "log": "docs/testing/final-metadata.txt"
+  },
+  "venv39": {
+    "command": [
+      "uv",
+      "venv",
+      "--python",
+      "/tmp/gjc-validation.K3OypM/py39-gate/bin/python",
+      "/tmp/gjc-test-audit/final-install-py39"
+    ],
+    "returncode": 0,
+    "seconds": 0.2,
+    "log": "docs/testing/final-venv39.txt"
+  },
+  "install39": {
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/tmp/gjc-test-audit/final-install-py39/bin/python",
+      "/tmp/gjc-test-audit/final-dist/orca_keychron-0.1.2.dev1+ga1e844f34.d20260905-py3-none-any.whl"
+    ],
+    "returncode": 0,
+    "seconds": 0.65,
+    "log": "docs/testing/final-install39.txt"
+  },
+  "dependencies39": {
+    "command": [
+      "uv",
+      "pip",
+      "check",
+      "--python",
+      "/tmp/gjc-test-audit/final-install-py39/bin/python"
+    ],
+    "returncode": 0,
+    "seconds": 0.02,
+    "log": "docs/testing/final-dependencies39.txt"
+  },
+  "installed-versions39": {
+    "command": [
+      "/tmp/gjc-test-audit/final-install-py39/bin/python",
+      "-I",
+      "-c",
+      "import sys, importlib.metadata, orca_keychron, orca_keychron_gjc; print(sys.version); print(importlib.metadata.version('orca-keychron')); print(orca_keychron.__file__); print(orca_keychron_gjc.__file__)"
+    ],
+    "returncode": 0,
+    "seconds": 0.19,
+    "log": "docs/testing/final-installed-versions39.txt"
+  },
+  "installed-help39-orca_keychron": {
+    "command": [
+      "/tmp/gjc-test-audit/final-install-py39/bin/python",
+      "-I",
+      "-m",
+      "orca_keychron",
+      "--help"
+    ],
+    "returncode": 0,
+    "seconds": 0.26,
+    "log": "docs/testing/final-installed-help39-orca_keychron.txt"
+  },
+  "installed-help39-orca_keychron_gjc": {
+    "command": [
+      "/tmp/gjc-test-audit/final-install-py39/bin/python",
+      "-I",
+      "-m",
+      "orca_keychron_gjc",
+      "--help"
+    ],
+    "returncode": 0,
+    "seconds": 0.32,
+    "log": "docs/testing/final-installed-help39-orca_keychron_gjc.txt"
+  }
+}

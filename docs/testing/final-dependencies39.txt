@@ -1,0 +1,4 @@
+COMMAND ['uv', 'pip', 'check', '--python', '/tmp/gjc-test-audit/final-install-py39/bin/python']
+Using Python 3.9.6 environment at: /private/tmp/gjc-test-audit/final-install-py39
+Checked 9 packages in 0.43ms
+All installed packages are compatible

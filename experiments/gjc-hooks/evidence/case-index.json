@@ -1,0 +1,461 @@
+[
+  {
+    "case": "bash",
+    "eventCount": 18,
+    "streamCount": 18,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "http_error",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "matrix_isolation_committed",
+    "eventCount": 26,
+    "streamCount": null,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "matrix_isolation_cwd_committed",
+    "eventCount": 61,
+    "streamCount": null,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "matrix_isolation_cwd_uncommitted",
+    "eventCount": 61,
+    "streamCount": null,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "matrix_isolation_rcopy_committed",
+    "eventCount": 42,
+    "streamCount": null,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "matrix_isolation_rcopy_uncommitted",
+    "eventCount": 42,
+    "streamCount": null,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "matrix_isolation_uncommitted",
+    "eventCount": 26,
+    "streamCount": null,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "matrix_pause",
+    "eventCount": 74,
+    "streamCount": null,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "matrix_pause_boundary",
+    "eventCount": 117,
+    "streamCount": null,
+    "sessionCount": 2,
+    "producerCount": 3,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "read_doc",
+    "eventCount": 11,
+    "streamCount": 11,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "read_named",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "read_runtime",
+    "eventCount": 18,
+    "streamCount": 18,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "stream_error",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "success_v2",
+    "eventCount": 7,
+    "streamCount": 7,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "task",
+    "eventCount": 18,
+    "streamCount": 18,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "task_ask",
+    "eventCount": 18,
+    "streamCount": 18,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "task_mixed",
+    "eventCount": 18,
+    "streamCount": 18,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "tool_failure",
+    "eventCount": 18,
+    "streamCount": 18,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "tool_retry",
+    "eventCount": 26,
+    "streamCount": 26,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "transport_after_sigkill",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "transport_late_receiver",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "transport_receiver_loss",
+    "eventCount": 10,
+    "streamCount": 6,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": false
+  },
+  {
+    "case": "transport_same_cwd_a",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "transport_same_cwd_b",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "transport_sigkill",
+    "eventCount": 6,
+    "streamCount": 6,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "tui_child",
+    "eventCount": 35,
+    "streamCount": null,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "tui_retry",
+    "eventCount": 9,
+    "streamCount": null,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "tui_v2",
+    "eventCount": 94,
+    "streamCount": null,
+    "sessionCount": 2,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "ui_fixture",
+    "eventCount": 1,
+    "streamCount": null,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": null
+  },
+  {
+    "case": "worker_task_fail",
+    "eventCount": 26,
+    "streamCount": 26,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_fail_configured",
+    "eventCount": 37,
+    "streamCount": 37,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_nested",
+    "eventCount": 26,
+    "streamCount": 26,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_nested_clean",
+    "eventCount": 60,
+    "streamCount": 60,
+    "sessionCount": 3,
+    "producerCount": 3,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_nested_configured",
+    "eventCount": 73,
+    "streamCount": 73,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_nested_custom",
+    "eventCount": 60,
+    "streamCount": 60,
+    "sessionCount": 3,
+    "producerCount": 3,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_pair",
+    "eventCount": 26,
+    "streamCount": 26,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_pair_configured",
+    "eventCount": 96,
+    "streamCount": 96,
+    "sessionCount": 3,
+    "producerCount": 3,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait",
+    "eventCount": 26,
+    "streamCount": 26,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait_ask",
+    "eventCount": 26,
+    "streamCount": 26,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait_ask_clean",
+    "eventCount": 36,
+    "streamCount": 36,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait_ask_configured",
+    "eventCount": 67,
+    "streamCount": 67,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait_ask_custom",
+    "eventCount": 36,
+    "streamCount": 36,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait_configured",
+    "eventCount": 61,
+    "streamCount": 61,
+    "sessionCount": 2,
+    "producerCount": 2,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait_mixed",
+    "eventCount": 26,
+    "streamCount": 26,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait_mixed_configured",
+    "eventCount": 114,
+    "streamCount": 114,
+    "sessionCount": 4,
+    "producerCount": 4,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_task_wait_mixed_custom",
+    "eventCount": 61,
+    "streamCount": 61,
+    "sessionCount": 4,
+    "producerCount": 4,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_transient_error_clean",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_transient_error_configured",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_transient_error_custom",
+    "eventCount": 10,
+    "streamCount": 10,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  },
+  {
+    "case": "worker_transient_error_fallback",
+    "eventCount": 12,
+    "streamCount": 12,
+    "sessionCount": 1,
+    "producerCount": 1,
+    "anyParentHeader": false,
+    "streamEventIdsMatch": true
+  }
+]

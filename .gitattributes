@@ -1,0 +1,9 @@
+# Preserve archived evidence bytes, including documented sanitized public copies.
+# Whitespace checks still apply to product and test code.
+docs/testing/*.txt -whitespace
+docs/testing/*.patch -whitespace
+docs/testing/product-documentation-evidence/**/*.txt -whitespace
+experiments/*/evidence/** -whitespace
+
+# This frozen Markdown report uses intentional two-space line breaks.
+docs/testing/gjc-state-audit.md whitespace=-blank-at-eol

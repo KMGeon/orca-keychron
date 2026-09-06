@@ -1,0 +1,2 @@
+COMMAND ['/tmp/gjc-test-audit/final-py313/bin/python', '-m', 'coverage', 'json', '--data-file=/tmp/gjc-test-audit/.coverage-final', '-o', '<workspace>/docs/testing/coverage-final.json']
+Wrote JSON report to <workspace>/docs/testing/coverage-final.json

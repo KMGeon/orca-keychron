@@ -1,0 +1,20 @@
+bun test v1.4.0 (34cbb9a40)
+
+observer.test.ts:
+(pass) MOCK: documented lifecycle registration; runtime-only events require opt in [4.15ms]
+(pass) MOCK: handlers preserve tool behavior and capture API metadata [2.35ms]
+(pass) MOCK: interleaved sessions and child identity are never globally overwritten [0.65ms]
+(pass) MOCK: duplicate source callbacks retain distinct sequence identity for audit [0.54ms]
+(pass) MOCK: loop-end completed retains assistant failure/abort evidence [0.41ms]
+(pass) MOCK: maintenance, retries, cancellation and shutdown preserve distinctions [0.79ms]
+(pass) MOCK: context failure and missing socket/log destination never throw or block [10.33ms]
+(pass) MOCK: Unix socket pushes records immediately in order without polling [14.55ms]
+(pass) MOCK: local TCP pushes the same framing [13.69ms]
+(pass) MOCK: delayed receiver startup reconnects and flushes pending events [110.12ms]
+(pass) MOCK: receiver disconnect then new events reconnect; no ACK guarantee claimed [156.53ms]
+(pass) MOCK: disconnected queue is bounded and exposes event loss [114.72ms]
+
+ 12 pass
+ 0 fail
+ 55 expect() calls
+Ran 12 tests across 1 file. [447.00ms]

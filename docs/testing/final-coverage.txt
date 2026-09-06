@@ -1,0 +1,29 @@
+COMMAND ['/tmp/gjc-test-audit/final-py313/bin/python', '-m', 'coverage', 'report', '--data-file=/tmp/gjc-test-audit/.coverage-final']
+Name                                    Stmts   Miss Branch BrPart  Cover
+-------------------------------------------------------------------------
+src/orca_keychron/__init__.py               5      2      0      0    60%
+src/orca_keychron/__main__.py               3      3      2      0     0%
+src/orca_keychron/autostart.py             58     10     10      4    79%
+src/orca_keychron/cli.py                  204     81     48      9    55%
+src/orca_keychron/config.py                67     13     14      3    78%
+src/orca_keychron/device_lock.py           52      0     14      0   100%
+src/orca_keychron/digit_hold.py           163     32     50      4    77%
+src/orca_keychron/indicator.py            140      6     48      5    94%
+src/orca_keychron/keychron_hid.py         218     32     76     16    82%
+src/orca_keychron/models.py                24      0      0      0   100%
+src/orca_keychron/orca_navigation.py       68     14     26      9    76%
+src/orca_keychron/orca_status.py           68      9     24      6    84%
+src/orca_keychron/permissions.py           26      2      6      1    91%
+src/orca_keychron/rendering.py             40      1     22      1    97%
+src/orca_keychron/worktree_tracker.py      98      3     40      3    96%
+src/orca_keychron_gjc/__init__.py           5      2      0      0    60%
+src/orca_keychron_gjc/__main__.py           2      2      0      0     0%
+src/orca_keychron_gjc/autostart.py        272     47     78     14    81%
+src/orca_keychron_gjc/cli.py              325     53     80     22    79%
+src/orca_keychron_gjc/config.py           149     17     42      8    87%
+src/orca_keychron_gjc/gjc_install.py      400     40    148     28    88%
+src/orca_keychron_gjc/gjc_protocol.py     115      1     38      1    99%
+src/orca_keychron_gjc/gjc_source.py       337     19    128     11    94%
+src/orca_keychron_gjc/gjc_tracker.py      244     17     94     17    90%
+-------------------------------------------------------------------------
+TOTAL                                    3083    406    988    162    85%
