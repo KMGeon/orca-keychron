@@ -1,3 +1,9 @@
+import sys
+from types import ModuleType, SimpleNamespace
+
+import pytest
+
+from orca_keychron import digit_hold
 from orca_keychron.digit_hold import DigitHoldListener, HoldSelection
 from orca_keychron.models import WorktreeIndicator
 
@@ -62,6 +68,29 @@ def test_selection_cancels_when_slot_is_reassigned():
     selection.set_worktrees([worktree(0, "tab:second")])
 
     assert selection.pop_ready(2) is None
+
+
+def test_immediate_selection_cancels_when_target_disappears_before_dispatch():
+    selection = HoldSelection()
+    selection.set_indicators([worktree(0, "tab:first")])
+    selection.press("1", now=1, option_only=True)
+    selection.release("1")
+    selection.set_indicators([])
+
+    assert selection.pop_ready(2) is None
+
+
+def test_selection_accepts_gjc_without_worktree_identity():
+    from types import SimpleNamespace
+
+    selection = HoldSelection()
+    selection.set_indicators([
+        SimpleNamespace(slot=0, target_pane_keys=("gjc:root",), launch_id="launch-one"),
+        SimpleNamespace(slot=-1, target_pane_keys=("gjc:overflow",)),
+    ])
+    selection.press("1", now=1, option_only=True)
+
+    assert selection.pop_ready(2) == "gjc:root"
 
 
 def test_selection_cycles_worktree_action_targets():
@@ -149,3 +178,74 @@ def test_option_minus_and_equal_use_mac_physical_keycodes():
         assert listener._darwin_intercept(FakeQuartz.kCGEventKeyDown, event) is None
         assert selection.pop_ready(10) == expected
         assert listener._darwin_intercept(FakeQuartz.kCGEventKeyUp, event) is None
+
+
+def test_mac_repeat_does_not_advance_target_until_keyup():
+    selection = HoldSelection()
+    selection.set_worktrees([worktree(0, "tab:first", "tab:second")])
+    listener = DigitHoldListener(selection, clock=lambda: 10, frontmost_check=lambda: True)
+    listener._quartz = FakeQuartz
+    event = {"keycode": 18, "flags": FakeQuartz.kCGEventFlagMaskAlternate}
+
+    assert listener._darwin_intercept(FakeQuartz.kCGEventKeyDown, event) is None
+    assert listener._darwin_intercept(FakeQuartz.kCGEventKeyDown, event) is None
+    assert selection.pop_ready(10) == "tab:first"
+    assert selection.pop_ready(10) is None
+    assert listener._darwin_intercept(FakeQuartz.kCGEventKeyUp, event) is None
+    assert listener._darwin_intercept(FakeQuartz.kCGEventKeyDown, event) is None
+    assert selection.pop_ready(10) == "tab:second"
+
+
+def test_mac_filter_passes_unmapped_and_extra_modifier_events_through():
+    selection = HoldSelection()
+    selection.set_worktrees([worktree(0)])
+    listener = DigitHoldListener(selection, clock=lambda: 10, frontmost_check=lambda: True)
+    listener._quartz = FakeQuartz
+    unmapped = {"keycode": 99, "flags": FakeQuartz.kCGEventFlagMaskAlternate}
+    shifted = {
+        "keycode": 18,
+        "flags": FakeQuartz.kCGEventFlagMaskAlternate | FakeQuartz.kCGEventFlagMaskShift,
+    }
+
+    assert listener._darwin_intercept(FakeQuartz.kCGEventKeyDown, unmapped) is unmapped
+    assert listener._darwin_intercept(FakeQuartz.kCGEventKeyDown, shifted) is shifted
+    assert listener._darwin_intercept(FakeQuartz.kCGEventKeyUp, shifted) is shifted
+    assert selection.pop_ready(10) is None
+
+
+def test_listener_wait_failure_stops_started_native_listener(monkeypatch):
+    """A failed accessibility/input-monitoring startup must not leak its hook."""
+    native = SimpleNamespace(started=False, stopped=0)
+
+    class NativeListener:
+        def __init__(self, **_callbacks):
+            pass
+
+        def start(self):
+            native.started = True
+
+        def wait(self):
+            raise RuntimeError("native listener initialization failed")
+
+        def stop(self):
+            native.stopped += 1
+
+    keys = SimpleNamespace(**{
+        name: object()
+        for name in (
+            "alt", "alt_l", "alt_r", "cmd", "cmd_l", "cmd_r",
+            "ctrl", "ctrl_l", "ctrl_r", "shift", "shift_l", "shift_r",
+        )
+    })
+    pynput = ModuleType("pynput")
+    pynput.keyboard = SimpleNamespace(Key=keys, Listener=NativeListener)
+    monkeypatch.setitem(sys.modules, "pynput", pynput)
+    monkeypatch.setattr(digit_hold.sys, "platform", "linux")
+    listener = DigitHoldListener(HoldSelection())
+
+    with pytest.raises(RuntimeError, match="native listener initialization failed"):
+        listener.start()
+
+    assert native.started is True
+    assert native.stopped == 1
+    assert listener._listener is None

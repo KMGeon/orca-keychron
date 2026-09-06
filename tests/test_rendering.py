@@ -1,10 +1,13 @@
 from orca_keychron.models import WorktreeIndicator
 from orca_keychron.rendering import (
+    CANCELLED,
     GREEN,
     MAGENTA,
     ORANGE,
+    PAUSED,
     RED,
     SKY_BLUE,
+    UNKNOWN,
     YELLOW,
     render_zone,
 )
@@ -43,4 +46,17 @@ def test_render_zone_uses_sky_blue_for_unassigned_number_slots():
         1: YELLOW,
         2: SKY_BLUE,
         3: SKY_BLUE,
+    }
+
+
+def test_gjc_additional_states_are_distinct_from_orca_and_success():
+    states = ("unknown", "failed", "paused", "cancelled", "idle")
+    colors = render_zone([worktree(state, i) for i, state in enumerate(states)], range(5))
+    assert colors == {0: UNKNOWN, 1: RED, 2: PAUSED, 3: CANCELLED, 4: SKY_BLUE}
+    assert len({UNKNOWN, PAUSED, CANCELLED, SKY_BLUE, GREEN, ORANGE, YELLOW, RED}) == 8
+
+
+def test_overflow_or_negative_slots_cannot_color_a_different_key():
+    assert render_zone([worktree("failed", -1), worktree("working", 2)], [10, 20]) == {
+        10: SKY_BLUE, 20: SKY_BLUE,
     }

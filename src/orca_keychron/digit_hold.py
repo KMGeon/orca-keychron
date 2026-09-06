@@ -4,10 +4,11 @@ import sys
 import threading
 import time
 from collections.abc import Callable, Iterable
+from contextlib import suppress
 from dataclasses import dataclass
 from math import isfinite
 
-from .models import WorktreeIndicator
+from .models import DisplayIndicator
 
 KEY_SLOTS = {key: slot for slot, key in enumerate("1234567890-=")}
 MAC_KEYCODE_KEYS = {18: "1", 19: "2", 20: "3", 21: "4", 23: "5", 22: "6"}
@@ -41,16 +42,16 @@ class HoldSelection:
         self._targets: dict[int, tuple[str, ...]] = {}
         self._next_target: dict[int, int] = {}
         self._held: HeldSelection | None = None
-        self._ready_pane: str | None = None
+        self._ready: HeldSelection | None = None
         self._triggered = False
         self._lock = threading.Lock()
 
-    def set_worktrees(self, worktrees: Iterable[WorktreeIndicator]) -> None:
+    def set_indicators(self, indicators: Iterable[DisplayIndicator]) -> None:
         with self._lock:
             targets = {
-                worktree.slot: worktree.target_pane_keys
-                for worktree in worktrees
-                if worktree.target_pane_keys
+                indicator.slot: indicator.target_pane_keys
+                for indicator in indicators
+                if indicator.target_pane_keys and 0 <= indicator.slot < len(KEY_SLOTS)
             }
             for slot, pane_keys in targets.items():
                 if self._targets.get(slot) != pane_keys:
@@ -61,6 +62,14 @@ class HoldSelection:
                 for slot, index in self._next_target.items()
                 if slot in targets
             }
+            if self._ready is not None and self._ready.pane_key not in targets.get(
+                KEY_SLOTS[self._ready.digit], ()
+            ):
+                self._ready = None
+
+    def set_worktrees(self, worktrees: Iterable[DisplayIndicator]) -> None:
+        """Compatibility entrypoint for existing Orca integrations."""
+        self.set_indicators(worktrees)
 
     def press(self, digit: str, now: float, option_only: bool = False) -> None:
         slot = KEY_SLOTS.get(digit)
@@ -77,7 +86,7 @@ class HoldSelection:
                 self._held = HeldSelection(digit, pane_key, now)
                 self._triggered = self.hold_seconds == 0
                 if self._triggered:
-                    self._ready_pane = pane_key
+                    self._ready = self._held
 
     def release(self, digit: str) -> None:
         with self._lock:
@@ -87,9 +96,9 @@ class HoldSelection:
 
     def pop_ready(self, now: float) -> str | None:
         with self._lock:
-            if self._ready_pane is not None:
-                pane_key = self._ready_pane
-                self._ready_pane = None
+            if self._ready is not None:
+                pane_key = self._ready.pane_key
+                self._ready = None
                 return pane_key
             if (
                 self._held is None
@@ -157,15 +166,22 @@ class DigitHoldListener:
             else {"on_press": self._on_press, "on_release": self._on_release}
         )
         listener = keyboard.Listener(**callbacks, **options)
-        listener.start()
-        listener.wait()
         self._listener = listener
+        try:
+            listener.start()
+            listener.wait()
+        except BaseException:
+            # wait() is part of pynput startup: retain the native object before
+            # either call so an accessibility/backend failure cannot leak it.
+            self._listener = None
+            with suppress(Exception):
+                listener.stop()
+            raise
 
     def stop(self) -> None:
-        listener = self._listener
+        listener, self._listener = self._listener, None
         if listener is not None:
             listener.stop()
-            self._listener = None
 
     def _on_press(self, key: object) -> None:
         if key in self._modifier_keys:
@@ -212,9 +228,9 @@ class DigitHoldListener:
                 return event
             self.selection.press(digit, self.clock(), option_only=True)
             if self.selection.suppress_repeat(digit):
-                print(f"Selected worktree slot {digit}", flush=True)
+                print(f"Selected indicator slot {digit}", flush=True)
                 return None
-            print(f"Ignored Option+{digit}: worktree slot is empty", flush=True)
+            print(f"Ignored Option+{digit}: indicator slot is empty", flush=True)
             return None
         if not self.selection.suppress_repeat(digit):
             return event

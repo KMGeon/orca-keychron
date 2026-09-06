@@ -42,6 +42,7 @@ def test_indicator_rejects_firmware_without_per_key_rgb():
         {"poll_interval": float("nan")},
         {"led_total": 0},
         {"led_total": 257},
+        {"mode": "unsupported"},
     ],
 )
 def test_indicator_rejects_invalid_configuration(kwargs):
@@ -253,3 +254,115 @@ def test_slow_poll_does_not_block_navigation_health_checks_or_restore(monkeypatc
     assert device.restored == (EFFECT_MIXED, 42)
     assert device.closed
     assert not any(t.name.startswith("orca-status") for t in threading.enumerate())
+
+
+def gjc_indicator(state):
+    # Deliberately has no worktree_id/host_id; GJC identity is its launch.
+    return SimpleNamespace(
+        launch_id="launch-one", identity_label="launch-one", state=state,
+        slot=0, target_pane_keys=("gjc-tab:leaf",), agent_count=3,
+    )
+
+
+def test_gjc_consumes_pushed_model_and_expires_lease_without_orca_polling(monkeypatch):
+    from orca_keychron.rendering import ORANGE, UNKNOWN
+
+    class PushSource:
+        command = ("orca",)
+        calls = 0
+        started = False
+        stopped = False
+
+        def start(self):
+            self.started = True
+
+        def stop(self):
+            self.stopped = True
+
+        def indicators(self, now):
+            assert self.started
+            assert isinstance(now, float)
+            state = ("waiting", "unknown", "working", "done")[min(self.calls, 3)]
+            self.calls += 1
+            return [gjc_indicator(state)]
+
+        def snapshot(self):
+            pytest.fail("GJC mode must never poll Orca or GJC snapshots")
+
+    class Device(RecordingDevice):
+        def set_zone(self, colors, total):
+            super().set_zone(colors, total)
+            if colors[1] == ORANGE:
+                indicator.selection.press("1", 0, option_only=True)
+            if colors[1] == GREEN:
+                indicator.stop()
+
+    def no_worktree_tracker(*_args, **_kwargs):
+        pytest.fail("GJC launches must not be aggregated as Orca worktrees")
+
+    opened = []
+
+    def open_pane(_self, pane):
+        opened.append(pane)
+        return OrcaWorktreeTab("actual-worktree", "gjc-tab")
+
+    monkeypatch.setattr("orca_keychron.indicator.WorktreeTracker", no_worktree_tracker)
+    monkeypatch.setattr("orca_keychron.indicator.OrcaWorktreeTabNavigator.open", open_pane)
+    source = PushSource()
+    device = Device()
+    indicator = Indicator(
+        source, zone=(1,), mode="gjc", device_factory=lambda **_: device,
+        listener_factory=lambda _: PassiveListener(),
+    )
+
+    run_bounded(indicator)
+
+    assert [frame[1] for frame in device.frames] == [ORANGE, UNKNOWN, YELLOW, GREEN]
+    assert opened == ["gjc-tab:leaf"]
+    assert source.calls == 4
+    assert source.started and source.stopped
+    assert indicator.tracker is None
+    assert device.restored == (EFFECT_MIXED, 42)
+    assert device.closed
+    assert not any(t.name.startswith("orca-status") for t in threading.enumerate())
+
+
+@pytest.mark.parametrize("failure_at", ["start", "indicators", "stop"])
+def test_gjc_runtime_failure_always_closes_source_and_device(failure_at):
+    class FailingSource:
+        command = ("orca",)
+        stops = 0
+
+        def start(self):
+            if failure_at == "start":
+                raise RuntimeError("start failed")
+
+        def indicators(self, now):
+            if failure_at == "indicators":
+                raise RuntimeError("indicators failed")
+            indicator.stop()
+            return []
+
+        def stop(self):
+            self.stops += 1
+            # Source cleanup must not delay restoring the device lighting.
+            assert device.closed
+            if failure_at == "stop":
+                raise RuntimeError("stop failed")
+
+    source = FailingSource()
+    device = RecordingDevice()
+    indicator = Indicator(
+        source, mode="gjc", device_factory=lambda **_: device,
+        listener_factory=lambda _: PassiveListener(),
+    )
+
+    with pytest.raises(RuntimeError, match=f"{failure_at} failed"):
+        run_bounded(indicator)
+
+    assert source.stops == 1
+    assert device.closed
+    if failure_at == "start":
+        assert not device.configured
+    else:
+        assert device.restored == (EFFECT_MIXED, 42)
