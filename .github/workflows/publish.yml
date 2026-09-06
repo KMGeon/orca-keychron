@@ -29,10 +29,20 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install project and test dependencies
-        run: python -m pip install --upgrade ".[dev]"
+        run: python -m pip install --upgrade ".[dev]" build
 
-      - name: Run tests
-        run: python -m pytest
+      - name: Set up Bun for native hook and installed-loader tests
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: "1.4.0"
+
+      - name: Build wheel for isolated package integration tests
+        run: python -m build --wheel --outdir dist/test-wheel
+
+      - name: Verify requirements against fresh Python and Bun test results
+        env:
+          GJC_TEST_WHEEL_DIR: dist/test-wheel
+        run: python scripts/requirements.py --verify-tests
 
       - name: Run lint
         if: matrix.python-version == '3.13'

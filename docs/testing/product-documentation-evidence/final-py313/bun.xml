@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="bun test" tests="44" assertions="163" failures="0" skipped="0" time="2.266666">
+  <testsuite name="tests/gjc_hook.test.ts" file="tests/gjc_hook.test.ts" tests="21" assertions="93" failures="0" skipped="0" time="1.523305">
+    <testcase name="requires actual interactive Orca identity; explicitly headless fixtures allowed" classname="" time="0.003806" file="tests/gjc_hook.test.ts" line="41" assertions="5" />
+    <testcase name="duplicate loaders and repeated or late starts never double count asks" classname="" time="0.000337" file="tests/gjc_hook.test.ts" line="55" assertions="3" />
+    <testcase name="tool name mismatch cannot clear a pending ask" classname="" time="0.000106" file="tests/gjc_hook.test.ts" line="72" assertions="2" />
+    <testcase name="final assistant outcome, retry, late failures, pause and queued work" classname="" time="0.000143" file="tests/gjc_hook.test.ts" line="80" assertions="7" />
+    <testcase name="cancelled ask followed by completed toolUse is never green" classname="" time="0.000098" file="tests/gjc_hook.test.ts" line="104" assertions="1" />
+    <testcase name="child shutdown and parent completion retain decision; only matching real answer clears it" classname="" time="0.00036" file="tests/gjc_hook.test.ts" line="113" assertions="8" />
+    <testcase name="multi-answer correlation clears only matching decision and collisions stay uncertain" classname="" time="0.000197" file="tests/gjc_hook.test.ts" line="131" assertions="4" />
+    <testcase name="malformed yield is unknown, child shutdown alone never proves success" classname="" time="0.000332" file="tests/gjc_hook.test.ts" line="144" assertions="6" />
+    <testcase name="parent instructions append without replacing prompt and stay root-only" classname="" time="0.000091" file="tests/gjc_hook.test.ts" line="158" assertions="3" />
+    <testcase name="session and tool bounds mark incomplete while retaining a valid root" classname="" time="0.001222" file="tests/gjc_hook.test.ts" line="165" assertions="7" />
+    <testcase name="normal session switch keeps one root and preserves old unresolved requests" classname="" time="0.000068" file="tests/gjc_hook.test.ts" line="180" assertions="2" />
+    <testcase name="fresh readonly facades preserve /new and resume work, completion and shutdown" classname="" time="0.309862" file="tests/gjc_hook.test.ts" line="187" assertions="12" />
+    <testcase name="unrelated interactive loader cannot switch, mutate or close the root even with a reused ID" classname="" time="0.000387" file="tests/gjc_hook.test.ts" line="212" assertions="4" />
+    <testcase name="headless child reopening current root cannot switch or shut it down" classname="" time="0.252273" file="tests/gjc_hook.test.ts" line="227" assertions="4" />
+    <testcase name="duplicate root loaders remain recognized when event delivery order changes after switch" classname="" time="0.252409" file="tests/gjc_hook.test.ts" line="242" assertions="2" />
+    <testcase name="socket reconnect replaces lost history with latest complete snapshot and flushes closure" classname="" time="0.134831" file="tests/gjc_hook.test.ts" line="258" assertions="8" />
+    <testcase name="backpressure coalesces to one latest frame and bounded shutdown completes without receiver" classname="" time="0.253376" file="tests/gjc_hook.test.ts" line="282" assertions="5" />
+    <testcase name="separate installed loaders share a publisher and duplicate events" classname="" time="0.000456" file="tests/gjc_hook.test.ts" line="298" assertions="4" />
+    <testcase name="emitted snapshots satisfy the actual Python receiver schema, including closed pending child" classname="" time="0.303358" file="tests/gjc_hook.test.ts" line="319" assertions="2" />
+    <testcase name="exhausted retry remains failed when an outstanding tool ends late" classname="" time="0.000308" file="tests/gjc_hook.test.ts" line="331" assertions="1" />
+    <testcase name="resolved-call memory is bounded and exhaustion explicitly downgrades coverage" classname="" time="0.001046" file="tests/gjc_hook.test.ts" line="340" assertions="3" />
+  </testsuite>
+  <testsuite name="tests/gjc_hook_faults.test.ts" file="tests/gjc_hook_faults.test.ts" tests="23" assertions="70" failures="0" skipped="0" time="0.737439">
+    <testcase name="H-ID: capacity /new tracks the actual root and its explicit shutdown" classname="" time="0.251674" file="tests/gjc_hook_faults.test.ts" line="47" assertions="6" />
+    <testcase name="H-CORR: an ask predating a decision cannot resolve that later decision" classname="" time="0.000306" file="tests/gjc_hook_faults.test.ts" line="62" assertions="1" />
+    <testcase name="H-ID: capacity /new preserves sole ask before nonpending active sessions" classname="" time="0.000561" file="tests/gjc_hook_faults.test.ts" line="71" assertions="5" />
+    <testcase name="H-ID: capacity /new preserves sole decision before nonpending active sessions" classname="" time="0.00041" file="tests/gjc_hook_faults.test.ts" line="71" assertions="5" />
+    <testcase name="H-CORR: concurrent old answers cannot resolve a reused request ID" classname="" time="0.000139" file="tests/gjc_hook_faults.test.ts" line="89" assertions="3" />
+    <testcase name="H-PENDING: root completion and nested terminal events retain every deep request" classname="" time="0.000165" file="tests/gjc_hook_faults.test.ts" line="102" assertions="5" />
+    <testcase name="H-PRIORITY: pending ask remains waiting over failure, cancellation and retry" classname="" time="0.000105" file="tests/gjc_hook_faults.test.ts" line="120" assertions="5" />
+    <testcase name="H-YIELD: malformed yield receipt stays unknown 0" classname="" time="0.000068" file="tests/gjc_hook_faults.test.ts" line="132" assertions="1" />
+    <testcase name="H-YIELD: malformed yield receipt stays unknown 1" classname="" time="0.00003" file="tests/gjc_hook_faults.test.ts" line="132" assertions="1" />
+    <testcase name="H-YIELD: malformed yield receipt stays unknown 2" classname="" time="0.000033" file="tests/gjc_hook_faults.test.ts" line="132" assertions="1" />
+    <testcase name="H-YIELD: malformed yield receipt stays unknown 3" classname="" time="0.000026" file="tests/gjc_hook_faults.test.ts" line="132" assertions="1" />
+    <testcase name="H-YIELD: malformed yield receipt stays unknown 4" classname="" time="0.000028" file="tests/gjc_hook_faults.test.ts" line="132" assertions="1" />
+    <testcase name="H-YIELD: malformed yield receipt stays unknown 5" classname="" time="0.000027" file="tests/gjc_hook_faults.test.ts" line="132" assertions="1" />
+    <testcase name="H-YIELD: malformed yield receipt stays unknown 6" classname="" time="0.00003" file="tests/gjc_hook_faults.test.ts" line="132" assertions="1" />
+    <testcase name="H-BOUNDS: independent session tool IDs deduplicate, overflow remains incomplete" classname="" time="0.000271" file="tests/gjc_hook_faults.test.ts" line="140" assertions="5" />
+    <testcase name="H-LOADER: original payloads establish duplicate root provenance in both delivery orders" classname="" time="0.000061" file="tests/gjc_hook_faults.test.ts" line="153" assertions="4" />
+    <testcase name="H-ID: child reopening current root never takes authority even after resume" classname="" time="0.000047" file="tests/gjc_hook_faults.test.ts" line="167" assertions="2" />
+    <testcase name="H-BOUNDS: exhausted receipt history never claims complete recovery" classname="" time="0.00101" file="tests/gjc_hook_faults.test.ts" line="174" assertions="3" />
+    <testcase name="H-TRANSPORT: event-synchronized Unix reconnect sends latest full state and closed flush" classname="" time="0.104013" file="tests/gjc_hook_faults.test.ts" line="183" assertions="3" />
+    <testcase name="H-LIVENESS: real Bun process exits with absent receiver without disposal" classname="" time="0.016573" file="tests/gjc_hook_faults.test.ts" line="250" assertions="3" />
+    <testcase name="H-LINEAGE: real nested process inherits owner marker and cannot claim a root" classname="" time="0.027557" file="tests/gjc_hook_faults.test.ts" line="255" assertions="6" />
+    <testcase name="H-BACKPRESSURE: real paused receiver bounds buffered frames and shutdown exits" classname="" time="0.331288" file="tests/gjc_hook_faults.test.ts" line="267" assertions="5" />
+    <testcase name="H-PENDING: reopening a child ID and late terminal events retain unresolved decision" classname="" time="0.000897" file="tests/gjc_hook_faults.test.ts" line="296" assertions="2" />
+  </testsuite>
+</testsuites>

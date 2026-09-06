@@ -1,0 +1,48 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+______________ test_exact_parameter_id_can_contain_double_colons _______________
+
+    def test_exact_parameter_id_can_contain_double_colons():
+        selector = "test_waiting[case::value]"
+        cases = [{"classname": "tests.test_behavior", "name": selector, "outcome": "passed"}]
+>       assert gate.verify_links(one_check(selector=selector), {"pytest": cases}) == {
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "pytest": 1, "bun": 0,
+        }
+
+tests/test_requirements_traceability.py:192: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/requirements.py:390: in verify_links
+    require(bool(matches), f"test not executed: {label}")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = False
+message = 'test not executed: R39 tests/test_behavior.py::test_waiting[case::value]'
+
+    def require(condition: bool, message: str) -> None:
+        if not condition:
+>           raise TraceabilityError(message)
+E           requirement_gate.TraceabilityError: test not executed: R39 tests/test_behavior.py::test_waiting[case::value]
+
+scripts/requirements.py:42: TraceabilityError
+____ test_input_receipt_tracks_executed_experiment_helpers_not_old_evidence ____
+
+tmp_path = PosixPath('/private/var/folders/2k/mc6hm2hs6rq726jxg7134yb00000gn/T/pytest-of-mugeon/pytest-444/test_input_receipt_tracks_exec0')
+
+    def test_input_receipt_tracks_executed_experiment_helpers_not_old_evidence(tmp_path):
+        folder = tmp_path / "experiments/gjc-e2e-audit"
+        folder.mkdir(parents=True)
+        helper = folder / "audit_support.py"
+        helper.write_text("def verify(): return True\n")
+        before = gate.input_hashes(tmp_path)
+        helper.write_text("def verify(): return False\n")
+>       assert gate.input_hashes(tmp_path) != before
+E       AssertionError: assert {} != {}
+E        +  where {} = <function input_hashes at 0x10adddf80>(PosixPath('/private/var/folders/2k/mc6hm2hs6rq726jxg7134yb00000gn/T/pytest-of-mugeon/pytest-444/test_input_receipt_tracks_exec0'))
+E        +    where <function input_hashes at 0x10adddf80> = gate.input_hashes
+
+tests/test_requirements_traceability.py:204: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_requirements_traceability.py::test_exact_parameter_id_can_contain_double_colons
+FAILED tests/test_requirements_traceability.py::test_input_receipt_tracks_executed_experiment_helpers_not_old_evidence
+2 failed, 14 deselected in 0.03s
